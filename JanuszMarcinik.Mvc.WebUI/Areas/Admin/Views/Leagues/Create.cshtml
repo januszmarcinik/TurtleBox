@@ -1,0 +1,23 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues;
+@model LeagueViewModel
+
+@{
+    ViewBag.Title = "Nowa liga";
+}
+
+<h3>@ViewBag.Title</h3>
+<hr />
+
+@using (var form = Html.Bootstrap().Begin(new Form())) 
+{
+    @Html.AntiForgeryToken()
+
+    @form.FormGroup().TextBoxFor(x => x.Name)
+    @form.FormGroup().TextBoxFor(x => x.Country)
+    @form.FormGroup().TextBoxFor(x => x.DescriptionName)
+
+    <div class="btn-group">
+        @Html.Bootstrap().BackButton(MVC.Admin.Leagues.Index())
+        @Html.Bootstrap().SubmitSaveButton()
+    </div>
+}

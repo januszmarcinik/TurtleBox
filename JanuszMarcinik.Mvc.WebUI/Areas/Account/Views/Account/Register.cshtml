@@ -1,0 +1,25 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Account
+@model RegisterViewModel
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form(MVC.Account.Account.Register()).Class("form-horizontal").LabelWidthSm(2).InputWidthSm(10)))
+{
+    @Html.AntiForgeryToken()
+    <h4>Tworzenie nowego konta</h4>
+    <hr />
+    @Html.ValidationSummary("", new { @class = "text-danger" })
+
+    @form.FormGroup().TextBoxFor(m => m.Email)
+    @form.FormGroup().PasswordFor(m => m.Password)
+    @form.FormGroup().PasswordFor(m => m.ConfirmPassword)
+
+    @Html.Bootstrap().SubmitButton().Text("Zarejestruj").Class("col-sm-offset-2").Style(ButtonStyle.Primary)
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

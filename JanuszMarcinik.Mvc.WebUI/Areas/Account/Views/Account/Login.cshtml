@@ -1,0 +1,34 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Account
+@model LoginViewModel
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+<h2>@ViewBag.Title</h2>
+<div class="row">
+    <div class="col-sm-8">
+            @using (var form = Html.Bootstrap().Begin(new Form(MVC.Account.Account.Login(ViewBag.ReturnUrl)).Class("form-horizontal")
+                .LabelWidthSm(2).InputWidthSm(10)))
+            {
+                @Html.AntiForgeryToken()
+                <h4>Logowanie przy użyciu lokalnego konta</h4>
+                <hr />
+                @Html.Bootstrap().ValidationSummary().Class("text-danger")
+                @form.FormGroup().TextBoxFor(m => m.Email)
+                @form.FormGroup().PasswordFor(m => m.Password)
+                @form.FormGroup().CheckBoxFor(m => m.RememberMe)
+                
+                @Html.Bootstrap().SubmitButton().Text("Zaloguj").Class("col-sm-offset-2")
+                <hr />
+                <p>@Html.Bootstrap().ActionLink("Utwórz nowe konto", MVC.Account.Account.Register())</p>
+                <p>@Html.Bootstrap().ActionLink("Zapomniałem hasła", MVC.Account.Account.ForgotPassword())</p>
+            }
+    </div>
+    <div class="col-sm-4">
+        @Html.Partial(MVC.Account.Account.Views._ExternalLoginsListPartial, new ExternalLoginListViewModel { ReturnUrl = ViewBag.ReturnUrl })
+    </div>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
