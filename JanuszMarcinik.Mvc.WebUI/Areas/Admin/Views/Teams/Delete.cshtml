@@ -17,11 +17,10 @@
         {
             @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.TeamId)
+            @Html.HiddenFor(x => x.LeagueId)
 
-            @form.FormGroup().TextBoxFor(x => x.DisplayedName).Readonly(true)
             @form.FormGroup().TextBoxFor(x => x.Name).Readonly(true)
-            @form.FormGroup().TextBoxFor(x => x.City).Readonly(true)
-            @form.FormGroup().TextBoxFor(x => x.Acronym).Readonly(true)
+            @form.FormGroup().TextBoxFor(x => x.Coach).Readonly(true)
 
         }
 

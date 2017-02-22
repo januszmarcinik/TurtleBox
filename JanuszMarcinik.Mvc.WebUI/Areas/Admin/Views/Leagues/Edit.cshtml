@@ -2,23 +2,44 @@
 @model LeagueViewModel
 
 @{
-    ViewBag.Title = "Edycja";
+    ViewBag.Title = "Edycja ligi";
 }
 
-<h3>@ViewBag.Title</h3>
-<hr />
+<h2 class="center-block">
+    <span class="label label-warning center-block">@ViewBag.Title</span>
+</h2>
 
-@using (var form = Html.Bootstrap().Begin(new Form()))
+@using (var form = Html.Bootstrap().Begin(new Form().Upload()))
 {
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(x => x.LeagueId)
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.LeagueId)
 
-    @form.FormGroup().TextBoxFor(x => x.Name)
-    @form.FormGroup().TextBoxFor(x => x.Country)
-    @form.FormGroup().TextBoxFor(x => x.DescriptionName)
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Name)
+                    @form.FormGroup().TextBoxFor(x => x.Country)
+                    @form.FormGroup().TextBoxFor(x => x.DescriptionName)
+                </div>
+                <div class="col-sm-6">
+                    @if (!string.IsNullOrEmpty(Model.ImagePath))
+                    {
+                        <img class="img-thumbnail" height="150" width="150" src="@Url.Action(MVC.Admin.Leagues.GetImage(Model.ImagePath))" />
+                    }
+                    @form.FormGroup().FileFor(x => x.Image)
+                </div>
+            </div>
+        }
 
-    <div class="btn-group">
-        @Html.Bootstrap().BackButton(MVC.Admin.Leagues.Index())
-        @Html.Bootstrap().SubmitSaveButton()
-    </div>
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.Leagues.Index())
+            </div>
+        }
+    }
 }

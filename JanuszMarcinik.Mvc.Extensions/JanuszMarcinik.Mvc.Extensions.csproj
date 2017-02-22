@@ -81,8 +81,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Helpers\BootstrapHelper.cs" />
+    <Compile Include="Helpers\ButtonsHelper.cs" />
     <Compile Include="Helpers\FontAwesome.cs" />
+    <Compile Include="Helpers\FormHelper.cs" />
     <Compile Include="Helpers\LinksHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -93,7 +94,12 @@
   <ItemGroup>
     <Content Include="Scripts\TwitterBootstrapMvcJs.js" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\JanuszMarcinik.Mvc.Domain\JanuszMarcinik.Mvc.Domain.csproj">
+      <Project>{DD1A95EE-18F7-486D-A821-10B8CE043634}</Project>
+      <Name>JanuszMarcinik.Mvc.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

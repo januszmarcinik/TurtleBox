@@ -261,6 +261,9 @@
     <Content Include="Areas\Admin\Views\Shared\Grid.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\bo_play_pattern.png" />
+    <Content Include="Images\Leagues\bundesliga.png" />
+    <Content Include="Images\Leagues\darmstadt.png" />
+    <Content Include="Images\Teams\Bundesliga\borussia-dortmund.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -311,10 +314,10 @@
     <Compile Include="Areas\Account\Models\Manage\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\AdminProfile.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\LeaguesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SeasonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TeamsController.cs" />
-    <Compile Include="Areas\Admin\Models\Images\ImageViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Leagues\LeagueDataSource.cs" />
     <Compile Include="Areas\Admin\Models\Leagues\LeagueViewModel.cs" />
     <Compile Include="Areas\Admin\Models\MatchViewModel.cs" />
@@ -342,6 +345,9 @@
     <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Admin.AdminController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Admin.LeaguesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -395,6 +401,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Views\Admin\" />
     <Folder Include="Areas\Home\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />

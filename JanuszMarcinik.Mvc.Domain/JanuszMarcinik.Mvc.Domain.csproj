@@ -127,16 +127,15 @@
     <Compile Include="Application\DataSource\DataSource.cs" />
     <Compile Include="Application\DataSource\DataSourceListAttribute.cs" />
     <Compile Include="Application\Entities\Goal.cs" />
-    <Compile Include="Application\Entities\Image.cs" />
     <Compile Include="Application\Entities\League.cs" />
     <Compile Include="Application\Entities\Match.cs" />
     <Compile Include="Application\Entities\Player.cs" />
     <Compile Include="Application\Entities\Season.cs" />
     <Compile Include="Application\Entities\Table.cs" />
     <Compile Include="Application\Entities\Team.cs" />
+    <Compile Include="Application\Managers\ImageManager.cs" />
     <Compile Include="Application\Migrations\Configuration.cs" />
     <Compile Include="Application\Services\GoalService.cs" />
-    <Compile Include="Application\Services\ImageService.cs" />
     <Compile Include="Application\Services\LeagueService.cs" />
     <Compile Include="Application\Services\MatchService.cs" />
     <Compile Include="Application\Services\PlayerService.cs" />

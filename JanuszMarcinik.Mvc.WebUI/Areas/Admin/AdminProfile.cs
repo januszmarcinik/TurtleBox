@@ -21,7 +21,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin
         {
             CreateMap<Season, SeasonViewModel>();
 
-            CreateMap<League, LeagueViewModel>();
+            CreateMap<League, LeagueViewModel>()
+                .Ignore(p => p.Image);
 
             CreateMap<Team, TeamViewModel>()
                 .ForMember(p => p.League, o => o.MapFrom(s => s.League))

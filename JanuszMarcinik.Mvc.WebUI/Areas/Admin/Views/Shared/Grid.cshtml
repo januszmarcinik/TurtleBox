@@ -16,21 +16,60 @@
         <table class="table table-hover table-bordered table-condensed">
             <thead>
                 <tr class="active">
+                    <th class="text-center">L/p</th>
                     @foreach (var prop in Model.Properties)
                     {
                         <th class="text-center">@prop.DisplayName</th>
                     }
-
                     <th></th>
                 </tr>
             </thead>
             <tbody class="text-center">
-                @foreach (var row in Model.Data)
+                @for (int i = 0; i < Model.Data.Count(); i++)
+                {
+                    <tr>
+                        <td>@(i + 1)</td>
+                        @foreach (var item in Model.Data[i].Values)
+                        {
+                            if (item == Model.IsImage)
+                            {
+                                <td>
+                                    <img class="img-responsive center-block" height="32" width="32" src="@Url.Action(MVC.Admin.Admin.GetImage(Model.Data[i].ImagePath))" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td>@item</td>
+                            }
+                        }
+
+                        <td>
+                            <div class="btn-group">
+                                @if (!string.IsNullOrEmpty(Model.Data[i].ListText))
+                                {
+                                    @Html.Bootstrap().ListButton(Model.Data[i].ListText, Model.Data[i].ListAction)
+                                }
+                                @Html.Bootstrap().EditButton(Model.Data[i].EditAction)
+                                @Html.Bootstrap().DeleteButton(Model.Data[i].DeleteAction)
+                            </div>
+                        </td>
+                    </tr>
+                }
+                @*@foreach (var row in Model.Data)
                 {
                     <tr>
                         @foreach (var item in row.Values)
                         {
-                            <td>@item</td>
+                            if (item == Model.IsImage)
+                            {
+                                <td>
+                                    <img class="img-responsive center-block" height="32" width="32" src="@Url.Action(MVC.Admin.Teams.GetImage(row.ImagePath))" />
+                                </td>
+                            }
+                            else
+                            {
+                                <td>@item</td>
+                            }
                         }
 
                         <td>
@@ -44,7 +83,7 @@
                             </div>
                         </td>
                     </tr>
-                }
+                }*@
             </tbody>
         </table>
     }

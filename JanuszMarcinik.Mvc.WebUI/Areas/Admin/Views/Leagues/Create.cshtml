@@ -5,19 +5,36 @@
     ViewBag.Title = "Nowa liga";
 }
 
-<h3>@ViewBag.Title</h3>
-<hr />
+<h2 class="center-block">
+    <span class="label label-success center-block">@ViewBag.Title</span>
+</h2>
 
-@using (var form = Html.Bootstrap().Begin(new Form())) 
+@using (var form = Html.Bootstrap().Begin(new Form().Upload()))
 {
-    @Html.AntiForgeryToken()
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
 
-    @form.FormGroup().TextBoxFor(x => x.Name)
-    @form.FormGroup().TextBoxFor(x => x.Country)
-    @form.FormGroup().TextBoxFor(x => x.DescriptionName)
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Name)
+                    @form.FormGroup().TextBoxFor(x => x.Country)
+                    @form.FormGroup().TextBoxFor(x => x.DescriptionName)
+                </div>
+                <div class="col-sm-6">
+                    @form.FormGroup().FileFor(x => x.Image)
+                </div>
+            </div>
+        }
 
-    <div class="btn-group">
-        @Html.Bootstrap().BackButton(MVC.Admin.Leagues.Index())
-        @Html.Bootstrap().SubmitSaveButton()
-    </div>
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.Leagues.Index())
+            </div>
+        }
+    }
 }

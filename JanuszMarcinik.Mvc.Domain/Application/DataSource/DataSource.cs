@@ -38,7 +38,8 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
             this.Data = new List<DataItem>();
         }
 
-        public long ParentId { get; set; }
+        public string IsImage = "ImageValue";
+
         public string Title { get; set; }
         public ActionResult AddAction { get; set; }
         public ActionResult BackAction { get; set; }

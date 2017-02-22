@@ -9,7 +9,7 @@
     <span class="label label-success center-block">@ViewBag.Title</span>
 </h2>
 
-@using (var form = Html.Bootstrap().Begin(new Form()))
+@using (var form = Html.Bootstrap().Begin(new Form().Upload()))
 {
     using (var panel = Html.Bootstrap().Begin(new Panel()))
     {
@@ -18,10 +18,15 @@
             @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.LeagueId)
 
-            @form.FormGroup().TextBoxFor(x => x.DisplayedName)
-            @form.FormGroup().TextBoxFor(x => x.Name)
-            @form.FormGroup().TextBoxFor(x => x.City)
-            @form.FormGroup().TextBoxFor(x => x.Acronym)
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Name)
+                    @form.FormGroup().TextBoxFor(x => x.Coach)
+                </div>
+                <div class="col-sm-6">
+                    @form.FormGroup().FileFor(x => x.Image)
+                </div>
+            </div>
         }
 
         using (panel.BeginFooter())

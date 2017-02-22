@@ -2,24 +2,33 @@
 @model LeagueViewModel
 
 @{
-    ViewBag.Title = "Usuwanie";
+    ViewBag.Title = "Usuwanie ligi";
 }
 
-<h3>@ViewBag.Title</h3>
-<h4>Czy na pewno chcesz usunąć ligę?</h4>
-<hr />
+<h2 class="center-block">
+    <span class="label label-danger center-block">@ViewBag.Title</span>
+</h2>
 
 @using (var form = Html.Bootstrap().Begin(new Form()))
 {
-    @Html.AntiForgeryToken()
-    @Html.HiddenFor(x => x.LeagueId)
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.LeagueId)
 
-    @form.FormGroup().TextBoxFor(x => x.Name).Readonly(true)
-    @form.FormGroup().TextBoxFor(x => x.Country).Readonly(true)
-    @form.FormGroup().TextBoxFor(x => x.DescriptionName).Readonly(true)
+            @form.FormGroup().TextBoxFor(x => x.Name).Readonly(true)
+            @form.FormGroup().TextBoxFor(x => x.Country).Readonly(true)
+            @form.FormGroup().TextBoxFor(x => x.DescriptionName).Readonly(true)
+        }
 
-    <div class="btn-group">
-        @Html.Bootstrap().BackButton(MVC.Admin.Leagues.Index())
-        @Html.Bootstrap().SubmitDeleteButton()
-    </div>
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitDeleteButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.Leagues.Index())
+            </div>
+        }
+    }
 }

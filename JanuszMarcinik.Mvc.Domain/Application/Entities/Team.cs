@@ -20,19 +20,13 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities
         public string Name { get; set; }
 
         [MaxLength(50)]
-        public string City { get; set; }
+        public string Coach { get; set; }
 
-        [MaxLength(10)]
-        public string Acronym { get; set; }
-
-        [MaxLength(50)]
-        public string DisplayedName { get; set; }
+        [MaxLength(100)]
+        public string ImagePath { get; set; }
 
         public long LeagueId { get; set; }
         public virtual League League { get; set; }
-
-        public long ImageId { get; set; }
-        public virtual Image Image { get; set; }
 
         public virtual ICollection<Table> Tables { get; set; }
         public virtual ICollection<Player> Players { get; set; }

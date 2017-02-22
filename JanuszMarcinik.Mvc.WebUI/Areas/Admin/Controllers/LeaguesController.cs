@@ -4,11 +4,12 @@ using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues;
 using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
+using JanuszMarcinik.Mvc.Domain.Application.Managers;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
 {
     [Authorize]
-    public partial class LeaguesController : Controller
+    public partial class LeaguesController : AdminController
     {
         #region LeaguesController
         private LeagueService _leagueService;
@@ -52,6 +53,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                     DescriptionName = model.DescriptionName
                 };
 
+                if (model.Image != null)
+                {
+                    var imageManager = new ImageManager(model.Image, ImageFolder.Leagues, string.Empty);
+                    if (UploadImage(imageManager))
+                    {
+                        league.ImagePath = imageManager.FilePath;
+                    }
+                }
+
                 _leagueService.Create(league);
 
                 return RedirectToAction(MVC.Admin.Leagues.Index());
@@ -80,6 +90,21 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                 league.Country = model.Country;
                 league.DescriptionName = model.DescriptionName;
                 league.Name = model.Name;
+
+                if (model.Image != null)
+                {
+                    var imageManager = new ImageManager(model.Image, ImageFolder.Leagues, string.Empty);
+
+                    if (!string.IsNullOrEmpty(league.ImagePath))
+                    {
+                        RemoveImage(imageManager, league.ImagePath);
+                    }
+
+                    if (UploadImage(imageManager))
+                    {
+                        league.ImagePath = imageManager.FilePath;
+                    }
+                }
 
                 _leagueService.Update(league);
                 return RedirectToAction(MVC.Admin.Leagues.Index());

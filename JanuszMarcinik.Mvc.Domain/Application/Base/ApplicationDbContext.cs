@@ -14,7 +14,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
         public DbSet<Season> Seasons { get; set; }
         public DbSet<Table> Tables { get; set; }
         public DbSet<Team> Teams { get; set; }
-        public DbSet<Image> Images { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

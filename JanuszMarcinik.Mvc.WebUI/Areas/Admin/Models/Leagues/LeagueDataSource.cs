@@ -1,7 +1,6 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
 using System.Collections.Generic;
-using System.Linq;
-using System;
+using System.Web;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues
 {
@@ -19,9 +18,26 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues
             foreach (var league in this.Leagues)
             {
                 var row = new DataItem();
-                row.Values.AddRange(this.Properties.Select(x => league.GetType().GetProperty(x.PropertyName).GetValue(league).ToString()).ToList());
-
+                foreach (var prop in this.Properties)
+                {
+                    if (league.GetType().GetProperty(prop.PropertyName).PropertyType == typeof(HttpPostedFileBase))
+                    {
+                        row.Values.Add(this.IsImage);
+                    }
+                    else
+                    {
+                        try
+                        {
+                            row.Values.Add(league.GetType().GetProperty(prop.PropertyName).GetValue(league).ToString());
+                        }
+                        catch
+                        {
+                            row.Values.Add(string.Empty);
+                        }
+                    }
+                }
                 row.ListText = "Drużyny";
+                row.ImagePath = league.ImagePath;
                 row.ListAction = MVC.Admin.Teams.List(league.LeagueId);
                 row.EditAction = MVC.Admin.Leagues.Edit(league.LeagueId);
                 row.DeleteAction = MVC.Admin.Leagues.Delete(league.LeagueId);

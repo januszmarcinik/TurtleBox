@@ -25,6 +25,9 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities
         [MaxLength(50)]
         public string DescriptionName { get; set; }
 
+        [MaxLength(100)]
+        public string ImagePath { get; set; }
+
         public virtual ICollection<Team> Teams { get; set; }
         public virtual ICollection<Match> Matches { get; set; }
     }

@@ -1,7 +1,7 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Images;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues;
 using System.ComponentModel.DataAnnotations;
+using System.Web;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Teams
 {
@@ -15,24 +15,17 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Teams
         public string Name { get; set; }
 
         [DataSourceList(Order = 3)]
-        [Display(Name = "Miasto")]
-        [StringLength(50, ErrorMessage = "Miasto musi zawierać od 3 do 50 znaków.", MinimumLength = 3)]
-        public string City { get; set; }
+        [Display(Name = "Trener")]
+        [StringLength(50, ErrorMessage = "Nazwa trenera musi zawierać od 3 do 50 znaków.", MinimumLength = 3)]
+        public string Coach { get; set; }
 
-        [DataSourceList(Order = 4)]
-        [Display(Name = "Skrót")]
-        [StringLength(10, ErrorMessage = "Skrót musi zawierać od 1 do 10 znaków.", MinimumLength = 1)]
-        public string Acronym { get; set; }
+        public string ImagePath { get; set; }
 
         [DataSourceList(Order = 1)]
-        [Display(Name = "Wyświetlana nazwa")]
-        [StringLength(50, ErrorMessage = "Wyświetlana nazwa musi zawierać od 3 do 50 znaków.", MinimumLength = 3)]
-        public string DisplayedName { get; set; }
+        [Display(Name = "Herb")]
+        public HttpPostedFileBase Image { get; set; }
 
         public long LeagueId { get; set; }
         public LeagueViewModel League { get; set; }
-
-        public long ImageId { get; set; }
-        public ImageViewModel Image { get; set; }
     }
 }

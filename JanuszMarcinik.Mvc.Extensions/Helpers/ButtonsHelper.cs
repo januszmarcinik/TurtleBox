@@ -5,7 +5,7 @@ using TwitterBootstrapMVC.Controls;
 
 namespace JanuszMarcinik.Mvc.Extensions.Helpers
 {
-    public static class BootstrapHelper
+    public static class ButtonsHelper
     {
         public static BootstrapActionLinkButton AddButton<TModel>(this BootstrapBase<TModel> bootstrap, ActionResult result) where TModel : class
         {
