@@ -1,0 +1,13 @@
+﻿
+@{
+    ViewBag.Title = "Panel administratora";
+}
+
+<h2 class="center-block">
+    <span class="label label-info center-block">@ViewBag.Title</span>
+</h2>
+
+<div class="list-group">
+    @Html.Bootstrap().ListGroupItem("Użytkownicy", MVC.Account.Users.List()).PrependIcon(FontAwesome.users)
+    @Html.Bootstrap().ListGroupItem("Role użytkowników", MVC.Account.Roles.List()).PrependIcon(FontAwesome.uniweral_access)
+</div>

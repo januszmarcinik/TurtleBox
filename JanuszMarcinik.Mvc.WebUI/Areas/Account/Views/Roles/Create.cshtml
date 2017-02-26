@@ -1,0 +1,34 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles.RoleViewModel
+
+@{
+    ViewBag.Title = "Nowa rola";
+}
+
+<h2 class="center-block">
+    <span class="label label-success center-block">@ViewBag.Title</span>
+</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Name)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Account.Roles.List())
+            </div>
+        }
+    }
+}

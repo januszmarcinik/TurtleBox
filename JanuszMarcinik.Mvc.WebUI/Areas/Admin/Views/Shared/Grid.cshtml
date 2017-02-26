@@ -25,45 +25,16 @@
                 </tr>
             </thead>
             <tbody class="text-center">
-                @for (int i = 0; i < Model.Data.Count(); i++)
+                @foreach (var row in Model.Data)
                 {
                     <tr>
-                        <td>@(i + 1)</td>
-                        @foreach (var item in Model.Data[i].Values)
-                        {
-                            if (item == Model.IsImage)
-                            {
-                                <td>
-                                    <img class="img-responsive center-block" height="32" width="32" src="@Url.Action(MVC.Admin.Admin.GetImage(Model.Data[i].ImagePath))" />
-                                </td>
-                            }
-                            else
-                            {
-                                <td>@item</td>
-                            }
-                        }
-
-                        <td>
-                            <div class="btn-group">
-                                @if (!string.IsNullOrEmpty(Model.Data[i].ListText))
-                                {
-                                    @Html.Bootstrap().ListButton(Model.Data[i].ListText, Model.Data[i].ListAction)
-                                }
-                                @Html.Bootstrap().EditButton(Model.Data[i].EditAction)
-                                @Html.Bootstrap().DeleteButton(Model.Data[i].DeleteAction)
-                            </div>
-                        </td>
-                    </tr>
-                }
-                @*@foreach (var row in Model.Data)
-                {
-                    <tr>
+                        <td>@(Model.Data.IndexOf(row) + 1)</td>
                         @foreach (var item in row.Values)
                         {
                             if (item == Model.IsImage)
                             {
                                 <td>
-                                    <img class="img-responsive center-block" height="32" width="32" src="@Url.Action(MVC.Admin.Teams.GetImage(row.ImagePath))" />
+                                    <img class="img-responsive center-block" height="32" width="32" src="@Url.Action(row.GetImageAction)" />
                                 </td>
                             }
                             else
@@ -83,7 +54,7 @@
                             </div>
                         </td>
                     </tr>
-                }*@
+                }
             </tbody>
         </table>
     }

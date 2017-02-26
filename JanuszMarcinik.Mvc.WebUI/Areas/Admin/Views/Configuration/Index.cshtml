@@ -1,0 +1,18 @@
+﻿@{
+    ViewBag.Title = "Panel konfiguracyjny";
+}
+
+<h2 class="center-block">
+    <span class="label label-info center-block">@ViewBag.Title</span>
+</h2>
+
+<div class="list-group">
+    @if (User.IsInRole("Konfiguracja: Sezony"))
+    {
+        @Html.Bootstrap().ListGroupItem("Sezony", MVC.Admin.Seasons.Index()).PrependIcon(FontAwesome.flag_checkered)
+    }
+    @if (User.IsInRole("Konfiguracja: Ligi"))
+    {
+        @Html.Bootstrap().ListGroupItem("Ligi", MVC.Admin.Leagues.Index()).PrependIcon(FontAwesome.list_alt)
+    }
+</div>

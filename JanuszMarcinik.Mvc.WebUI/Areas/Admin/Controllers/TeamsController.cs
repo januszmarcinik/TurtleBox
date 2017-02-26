@@ -6,11 +6,12 @@ using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Teams;
 using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Application.Managers;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues;
+using JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
 {
     [Authorize]
-    public partial class TeamsController : AdminController
+    public partial class TeamsController : ImageController
     {
         #region TeamsController
         private TeamService _teamService;
@@ -137,6 +138,14 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             _teamService.Delete(model.TeamId);
 
             return RedirectToAction(MVC.Admin.Teams.List(model.LeagueId));
+        }
+        #endregion
+
+        #region GetImage()
+        public virtual FileContentResult GetImage(string path)
+        {
+            byte[] image = System.IO.File.ReadAllBytes(Server.MapPath(Url.Content(path)));
+            return File(image, System.Net.Mime.MediaTypeNames.Application.Octet);
         }
         #endregion
     }

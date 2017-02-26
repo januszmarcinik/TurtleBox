@@ -26,7 +26,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Seasons
             }
 
             this.AddAction = MVC.Admin.Seasons.Create();
-            this.BackAction = MVC.Home.Home.Index();
+            this.BackAction = MVC.Admin.Configuration.Index();
             this.Title = "Sezony";
         }
     }

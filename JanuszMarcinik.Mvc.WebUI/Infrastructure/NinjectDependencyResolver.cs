@@ -1,4 +1,6 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Services;
+using JanuszMarcinik.Mvc.Domain.Identity.Context;
+using JanuszMarcinik.Mvc.Domain.Identity.Managers;
 using Ninject;
 using Ninject.Web.Common;
 using System;
@@ -36,6 +38,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Infrastructure
             kernel.Bind<SeasonService>().ToSelf().InRequestScope();
             kernel.Bind<TableService>().ToSelf().InRequestScope();
             kernel.Bind<TeamService>().ToSelf().InRequestScope();
+
+            kernel.Bind<ApplicationIdentityDbContext>().ToSelf().InRequestScope();
         }
     }
 }

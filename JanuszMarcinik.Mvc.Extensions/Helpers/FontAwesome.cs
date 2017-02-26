@@ -519,6 +519,7 @@
         public const string underline = "fa fa-fw fa-underline";
         public const string undo = "fa fa-fw fa-undo";
         public const string university = "fa fa-fw fa-university";
+        public const string uniweral_access = "fa fa-universal-access";
         public const string unlink = "fa fa-fw fa-unlink";
         public const string unlock = "fa fa-fw fa-unlock";
         public const string unlock_alt = "fa fa-fw fa-unlock-alt";

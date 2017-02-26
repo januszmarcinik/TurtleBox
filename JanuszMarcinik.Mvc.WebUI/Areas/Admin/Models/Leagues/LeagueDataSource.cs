@@ -37,16 +37,16 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues
                     }
                 }
                 row.ListText = "Drużyny";
-                row.ImagePath = league.ImagePath;
                 row.ListAction = MVC.Admin.Teams.List(league.LeagueId);
                 row.EditAction = MVC.Admin.Leagues.Edit(league.LeagueId);
                 row.DeleteAction = MVC.Admin.Leagues.Delete(league.LeagueId);
+                row.GetImageAction = MVC.Admin.Leagues.GetImage(league.ImagePath);
 
                 this.Data.Add(row);
             }
 
             this.AddAction = MVC.Admin.Leagues.Create();
-            this.BackAction = MVC.Home.Home.Index();
+            this.BackAction = MVC.Admin.Configuration.Index();
             this.Title = "Ligi";
         }
     }

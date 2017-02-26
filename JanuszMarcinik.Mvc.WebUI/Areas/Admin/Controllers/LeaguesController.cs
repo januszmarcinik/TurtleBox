@@ -5,11 +5,12 @@ using System.Collections.Generic;
 using System.Web.Mvc;
 using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Application.Managers;
+using JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
 {
-    [Authorize]
-    public partial class LeaguesController : AdminController
+    [Authorize(Roles = "Konfiguracja: Ligi")]
+    public partial class LeaguesController : ImageController
     {
         #region LeaguesController
         private LeagueService _leagueService;
@@ -129,6 +130,14 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             _leagueService.Delete(id);
 
             return RedirectToAction(MVC.Admin.Leagues.Index());
+        }
+        #endregion
+
+        #region GetImage()
+        public virtual FileContentResult GetImage(string path)
+        {
+            byte[] image = System.IO.File.ReadAllBytes(Server.MapPath(Url.Content(path)));
+            return File(image, System.Net.Mime.MediaTypeNames.Application.Octet);
         }
         #endregion
     }

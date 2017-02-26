@@ -40,7 +40,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Teams
                 }
                 row.EditAction = MVC.Admin.Teams.Edit(team.TeamId);
                 row.DeleteAction = MVC.Admin.Teams.Delete(team.TeamId);
-                row.ImagePath = team.ImagePath;
+                row.GetImageAction = MVC.Admin.Teams.GetImage(team.ImagePath);
 
                 this.Data.Add(row);
             }

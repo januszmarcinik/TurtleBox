@@ -15,7 +15,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
         public ActionResult ListAction { get; set; }
         public ActionResult EditAction { get; set; }
         public ActionResult DeleteAction { get; set; }
-
-        public string ImagePath { get; set; }
+        public ActionResult GetImageAction { get; set; }
     }
 }

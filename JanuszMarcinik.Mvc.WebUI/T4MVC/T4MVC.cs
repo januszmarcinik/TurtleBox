@@ -43,14 +43,17 @@ namespace T4MVC
     {
         public readonly string Name = "Account";
         public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.AccountController Account = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_AccountController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.ImageController Image = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_ImageController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.ManageController Manage = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_ManageController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.RolesController Roles = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_RolesController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.UsersController Users = new JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.T4MVC_UsersController();
         public T4MVC.Account.SharedController Shared = new T4MVC.Account.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class AdminClass
     {
         public readonly string Name = "Admin";
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.AdminController Admin = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_AdminController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.ConfigurationController Configuration = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_ConfigurationController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.LeaguesController Leagues = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_LeaguesController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.SeasonsController Seasons = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_SeasonsController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TeamsController Teams = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TeamsController();
@@ -61,7 +64,6 @@ namespace T4MVC
     {
         public readonly string Name = "Home";
         public JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers.HomeController Home = new JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers.T4MVC_HomeController();
-        public T4MVC.Home.LeaguesController Leagues = new T4MVC.Home.LeaguesController();
         public T4MVC.Home.ManageController Manage = new T4MVC.Home.ManageController();
     }
 }

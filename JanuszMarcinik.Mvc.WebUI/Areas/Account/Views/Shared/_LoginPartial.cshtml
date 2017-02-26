@@ -5,12 +5,16 @@
     {
         @Html.AntiForgeryToken()
         <ul class="nav navbar-nav navbar-right">
-            <li>
-                @Html.ActionLink(User.Identity.GetUserName(), MVC.Account.Manage.Index())
-            </li>
-            <li>
-                @Html.SubmitLink("Wyloguj", "formLogOut")
-            </li>
+            @if (User.IsInRole("Administrator"))
+            {
+                <li>@Html.Bootstrap().ActionLink("Panel administratora", MVC.Account.Users.Index())</li>
+            }
+            @if (User.IsInRole("Konfiguracja"))
+            {
+                <li>@Html.Bootstrap().ActionLink("Konfiguracja", MVC.Admin.Configuration.Index())</li>
+            }
+            <li>@Html.ActionLink(User.Identity.GetUserName(), MVC.Account.Manage.Index())</li>
+            <li>@Html.SubmitLink("Wyloguj", "formLogOut")</li>
         </ul>
     }
 }

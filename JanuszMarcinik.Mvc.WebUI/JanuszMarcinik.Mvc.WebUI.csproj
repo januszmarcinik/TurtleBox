@@ -232,17 +232,10 @@
     <Content Include="Areas\Account\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Lockout.cshtml" />
-    <Content Include="Areas\Account\Views\Shared\_MainEditor.cshtml" />
-    <Content Include="Areas\Account\Views\Shared\_Label.cshtml" />
     <Content Include="Areas\Home\Views\Manage\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Seasons\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Seasons\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Seasons\Edit.cshtml" />
-    <Content Include="Areas\Home\Views\Leagues\Create.cshtml" />
-    <Content Include="Areas\Home\Views\Leagues\Delete.cshtml" />
-    <Content Include="Areas\Home\Views\Leagues\Details.cshtml" />
-    <Content Include="Areas\Home\Views\Leagues\Edit.cshtml" />
-    <Content Include="Areas\Home\Views\Leagues\Index.cshtml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -259,6 +252,12 @@
     <Content Include="Areas\Admin\Views\Leagues\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Leagues\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\Grid.cshtml" />
+    <Content Include="Areas\Account\Views\Users\Index.cshtml" />
+    <Content Include="Areas\Account\Views\Roles\Create.cshtml" />
+    <Content Include="Areas\Account\Views\Roles\Edit.cshtml" />
+    <Content Include="Areas\Account\Views\Roles\Delete.cshtml" />
+    <Content Include="Areas\Account\Views\Users\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Configuration\Index.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\bo_play_pattern.png" />
     <Content Include="Images\Leagues\bundesliga.png" />
@@ -294,7 +293,11 @@
   <ItemGroup>
     <Compile Include="App_Start\AutoMapperConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
+    <Compile Include="Areas\Account\AccountProfile.cs" />
+    <Compile Include="Areas\Account\Controllers\ImageController.cs" />
     <Compile Include="Areas\Account\Controllers\ManageController.cs" />
+    <Compile Include="Areas\Account\Controllers\RolesController.cs" />
+    <Compile Include="Areas\Account\Controllers\UsersController.cs" />
     <Compile Include="Areas\Account\Models\Account\ExternalLoginConfirmationViewModel.cs" />
     <Compile Include="Areas\Account\Models\Account\ExternalLoginListViewModel.cs" />
     <Compile Include="Areas\Account\Models\Account\ForgotPasswordViewModel.cs" />
@@ -312,9 +315,13 @@
     <Compile Include="Areas\Account\Models\Manage\ManageLoginsViewModel.cs" />
     <Compile Include="Areas\Account\Models\Manage\SetPasswordViewModel.cs" />
     <Compile Include="Areas\Account\Models\Manage\VerifyPhoneNumberViewModel.cs" />
+    <Compile Include="Areas\Account\Models\Roles\RoleDataSource.cs" />
+    <Compile Include="Areas\Account\Models\Roles\RoleViewModel.cs" />
+    <Compile Include="Areas\Account\Models\Users\UserDataSource.cs" />
+    <Compile Include="Areas\Account\Models\Users\UserViewModel.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\AdminProfile.cs" />
-    <Compile Include="Areas\Admin\Controllers\AdminController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
     <Compile Include="Areas\Admin\Controllers\LeaguesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SeasonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TeamsController.cs" />
@@ -331,7 +338,13 @@
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="T4MVC\Account.ImageController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC\Account.ManageController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Account.RolesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Account.SharedController.generated.cs">
@@ -346,7 +359,10 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\Admin.AdminController.generated.cs">
+    <Compile Include="T4MVC\Account.UsersController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Admin.ConfigurationController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Admin.LeaguesController.generated.cs">
@@ -365,9 +381,6 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="T4MVC\Home.LeaguesController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="T4MVC\Home.ManageController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -401,7 +414,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Admin\" />
+    <Folder Include="Areas\Account\Views\Image\" />
     <Folder Include="Areas\Home\Models\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />

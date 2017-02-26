@@ -38,15 +38,11 @@ namespace T4MVC.Account
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string _Label = "_Label";
                 public readonly string _LoginPartial = "_LoginPartial";
-                public readonly string _MainEditor = "_MainEditor";
                 public readonly string Error = "Error";
                 public readonly string Lockout = "Lockout";
             }
-            public readonly string _Label = "~/Areas/Account/Views/Shared/_Label.cshtml";
             public readonly string _LoginPartial = "~/Areas/Account/Views/Shared/_LoginPartial.cshtml";
-            public readonly string _MainEditor = "~/Areas/Account/Views/Shared/_MainEditor.cshtml";
             public readonly string Error = "~/Areas/Account/Views/Shared/Error.cshtml";
             public readonly string Lockout = "~/Areas/Account/Views/Shared/Lockout.cshtml";
         }

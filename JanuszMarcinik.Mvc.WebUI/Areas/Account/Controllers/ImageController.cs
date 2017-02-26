@@ -2,9 +2,9 @@
 using System.IO;
 using System.Web.Mvc;
 
-namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
+namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
 {
-    public partial class AdminController : Controller
+    public partial class ImageController : Controller
     {
         protected bool UploadImage(ImageManager imageManager)
         {
@@ -31,18 +31,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             {
                 System.IO.File.Delete(oldFilePath);
             }
-        }
-
-        public virtual FileContentResult GetImage(string path)
-        {
-            var fullPath = Server.MapPath(Url.Content(path));
-            if (System.IO.File.Exists(fullPath))
-            {
-                byte[] image = System.IO.File.ReadAllBytes(fullPath);
-                return File(image, System.Net.Mime.MediaTypeNames.Application.Octet);
-            }
-
-            return null;
         }
     }
 }

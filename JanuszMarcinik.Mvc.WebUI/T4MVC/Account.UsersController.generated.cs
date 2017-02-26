@@ -23,12 +23,12 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
+namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
 {
-    public partial class LeaguesController
+    public partial class UsersController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected LeaguesController(Dummy d) { }
+        protected UsersController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -74,21 +74,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.FileContentResult GetImage()
-        {
-            return new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetImage);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public LeaguesController Actions { get { return MVC.Admin.Leagues; } }
+        public UsersController Actions { get { return MVC.Account.Users; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Admin";
+        public readonly string Area = "Account";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Leagues";
+        public readonly string Name = "Users";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Leagues";
+        public const string NameConst = "Users";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -97,33 +91,23 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string Create = "Create";
+            public readonly string List = "List";
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
             public readonly string DeleteConfirmed = "Delete";
-            public readonly string GetImage = "GetImage";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string Create = "Create";
+            public const string List = "List";
             public const string Edit = "Edit";
             public const string Delete = "Delete";
             public const string DeleteConfirmed = "Delete";
-            public const string GetImage = "GetImage";
         }
 
 
-        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Create
-        {
-            public readonly string model = "model";
-        }
         static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
@@ -147,15 +131,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_DeleteConfirmed
         {
-            public readonly string id = "id";
-        }
-        static readonly ActionParamsClass_GetImage s_params_GetImage = new ActionParamsClass_GetImage();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_GetImage GetImageParams { get { return s_params_GetImage; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_GetImage
-        {
-            public readonly string path = "path";
+            public readonly string model = "model";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -167,20 +143,18 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Create = "Create";
-                public readonly string Delete = "Delete";
                 public readonly string Edit = "Edit";
+                public readonly string Index = "Index";
             }
-            public readonly string Create = "~/Areas/Admin/Views/Leagues/Create.cshtml";
-            public readonly string Delete = "~/Areas/Admin/Views/Leagues/Delete.cshtml";
-            public readonly string Edit = "~/Areas/Admin/Views/Leagues/Edit.cshtml";
+            public readonly string Edit = "~/Areas/Account/Views/Users/Edit.cshtml";
+            public readonly string Index = "~/Areas/Account/Views/Users/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_LeaguesController : JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.LeaguesController
+    public partial class T4MVC_UsersController : JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.UsersController
     {
-        public T4MVC_LeaguesController() : base(Dummy.Instance) { }
+        public T4MVC_UsersController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -194,33 +168,21 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create()
+        public override System.Web.Mvc.ActionResult List()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            CreateOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
+            ListOverride(callInfo);
             return callInfo;
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues.LeagueViewModel model);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues.LeagueViewModel model)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            CreateOverride(callInfo, model);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(long id)
+        public override System.Web.Mvc.ActionResult Edit(string id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
@@ -229,10 +191,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues.LeagueViewModel model);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users.UserViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues.LeagueViewModel model)
+        public override System.Web.Mvc.ActionResult Edit(JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users.UserViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -241,10 +203,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string id);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Delete(long id)
+        public override System.Web.Mvc.ActionResult Delete(string id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
@@ -253,26 +215,14 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void DeleteConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+        partial void DeleteConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users.UserViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult DeleteConfirmed(long id)
+        public override System.Web.Mvc.ActionResult DeleteConfirmed(JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users.UserViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            DeleteConfirmedOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void GetImageOverride(T4MVC_System_Web_Mvc_FileContentResult callInfo, string path);
-
-        [NonAction]
-        public override System.Web.Mvc.FileContentResult GetImage(string path)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetImage);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "path", path);
-            GetImageOverride(callInfo, path);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            DeleteConfirmedOverride(callInfo, model);
             return callInfo;
         }
 

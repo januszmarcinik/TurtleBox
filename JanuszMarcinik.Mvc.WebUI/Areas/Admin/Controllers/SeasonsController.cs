@@ -7,7 +7,7 @@ using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Seasons;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Konfiguracja: Sezony")]
     public partial class SeasonsController : Controller
     {
         #region SeasonsController

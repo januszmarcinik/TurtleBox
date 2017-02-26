@@ -23,15 +23,15 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
+namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
 {
-    public partial class AdminController
+    public partial class ImageController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AdminController() { }
+        public ImageController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected AdminController(Dummy d) { }
+        protected ImageController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -59,21 +59,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.FileContentResult GetImage()
-        {
-            return new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetImage);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AdminController Actions { get { return MVC.Admin.Admin; } }
+        public ImageController Actions { get { return MVC.Account.Image; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "Admin";
+        public readonly string Area = "Account";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Admin";
+        public readonly string Name = "Image";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Admin";
+        public const string NameConst = "Image";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -81,24 +75,14 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
-            public readonly string GetImage = "GetImage";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
-            public const string GetImage = "GetImage";
         }
 
 
-        static readonly ActionParamsClass_GetImage s_params_GetImage = new ActionParamsClass_GetImage();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_GetImage GetImageParams { get { return s_params_GetImage; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_GetImage
-        {
-            public readonly string path = "path";
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -114,21 +98,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_AdminController : JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.AdminController
+    public partial class T4MVC_ImageController : JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers.ImageController
     {
-        public T4MVC_AdminController() : base(Dummy.Instance) { }
-
-        [NonAction]
-        partial void GetImageOverride(T4MVC_System_Web_Mvc_FileContentResult callInfo, string path);
-
-        [NonAction]
-        public override System.Web.Mvc.FileContentResult GetImage(string path)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetImage);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "path", path);
-            GetImageOverride(callInfo, path);
-            return callInfo;
-        }
+        public T4MVC_ImageController() : base(Dummy.Instance) { }
 
     }
 }
