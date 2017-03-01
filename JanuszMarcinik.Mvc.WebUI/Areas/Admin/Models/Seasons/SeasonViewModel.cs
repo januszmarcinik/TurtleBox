@@ -5,6 +5,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Seasons
 {
     public class SeasonViewModel
     {
+        [PrimaryKey]
         public long SeasonId { get; set; }
 
         [DataSourceList(Order = 1)]

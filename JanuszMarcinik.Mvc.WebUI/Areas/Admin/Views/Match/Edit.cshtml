@@ -1,0 +1,22 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Seasons;
+@model SeasonViewModel
+
+@{
+    ViewBag.Title = "Edycja";
+}
+
+<h3>@ViewBag.Title</h3>
+<hr />
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(x => x.SeasonId)
+
+    @form.FormGroup().TextBoxFor(x => x.Years)
+
+    <div class="btn-group">
+        @Html.Bootstrap().BackButton(MVC.Admin.Seasons.Index())
+        @Html.Bootstrap().SubmitSaveButton()
+    </div>
+}

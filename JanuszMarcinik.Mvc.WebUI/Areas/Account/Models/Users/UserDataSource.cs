@@ -1,40 +1,22 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
 {
-    public class UserDataSource : DataSource
+    public class UserDataSource : DataSource<UserViewModel>
     {
-        public UserDataSource() : base(new UserViewModel()) 
-        {
-
-        }
+        public UserDataSource() : base(new UserViewModel()) { }
 
         public List<UserViewModel> Users { get; set; }
 
-        public override void PrepareData()
+        public override void SetActions()
         {
-            foreach (var user in this.Users)
-            {
-                var row = new DataItem();
-                foreach (var prop in this.Properties)
-                {
-                    try
-                    {
-                        row.Values.Add(user.GetType().GetProperty(prop.PropertyName).GetValue(user).ToString());
-                    }
-                    catch
-                    {
-                        row.Values.Add(string.Empty);
-                    }
-                }
-                row.EditAction = MVC.Account.Users.Edit(user.Id);
-                row.DeleteAction = MVC.Account.Users.Delete(user.Id);
+            base.PrepareData(this.Users);
 
-                this.Data.Add(row);
+            foreach (var row in this.Data)
+            {
+                row.EditAction = MVC.Account.Users.Edit(row.PrimaryKeyStringId);
+                row.DeleteAction = MVC.Account.Users.Delete(row.PrimaryKeyStringId);
             }
 
             this.AddAction = MVC.Account.Account.Register();

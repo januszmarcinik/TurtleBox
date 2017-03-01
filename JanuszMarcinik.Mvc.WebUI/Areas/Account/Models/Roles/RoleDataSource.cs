@@ -3,35 +3,20 @@ using System.Collections.Generic;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles
 {
-    public class RoleDataSource : DataSource
+    public class RoleDataSource : DataSource<RoleViewModel>
     {
-        public RoleDataSource() : base(new RoleViewModel()) 
-        {
-
-        }
+        public RoleDataSource() : base(new RoleViewModel()) { }
 
         public List<RoleViewModel> Roles { get; set; }
 
-        public override void PrepareData()
+        public override void SetActions()
         {
-            foreach (var role in this.Roles)
-            {
-                var row = new DataItem();
-                foreach (var prop in this.Properties)
-                {
-                    try
-                    {
-                        row.Values.Add(role.GetType().GetProperty(prop.PropertyName).GetValue(role).ToString());
-                    }
-                    catch
-                    {
-                        row.Values.Add(string.Empty);
-                    }
-                }
-                row.EditAction = MVC.Account.Roles.Edit(role.Id);
-                row.DeleteAction = MVC.Account.Roles.Delete(role.Id);
+            base.PrepareData(this.Roles);
 
-                this.Data.Add(row);
+            foreach (var row in this.Data)
+            {
+                row.EditAction = MVC.Account.Roles.Edit(row.PrimaryKeyStringId);
+                row.DeleteAction = MVC.Account.Roles.Delete(row.PrimaryKeyStringId);
             }
 
             this.AddAction = MVC.Account.Roles.Create();

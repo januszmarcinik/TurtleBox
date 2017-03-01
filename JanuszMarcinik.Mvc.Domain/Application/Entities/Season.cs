@@ -10,13 +10,13 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities
     {
         public Season()
         {
-            this.Matches = new List<Match>();
+            this.MatchDays = new List<MatchDay>();
         }
 
         public long SeasonId { get; set; }
         [MaxLength(20)]
         public string Years { get; set; }
 
-        public virtual ICollection<Match> Matches { get; set; }
+        public virtual ICollection<MatchDay> MatchDays { get; set; }
     }
 }

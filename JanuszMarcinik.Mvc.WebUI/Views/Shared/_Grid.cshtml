@@ -1,5 +1,4 @@
-﻿@using JanuszMarcinik.Mvc.Domain.Application.DataSource;
-@model DataSource
+﻿@model JanuszMarcinik.Mvc.Domain.Application.DataSource.GridModel
 
 @{
     ViewBag.Title = Model.Title;
@@ -19,7 +18,10 @@
                     <th class="text-center">L/p</th>
                     @foreach (var prop in Model.Properties)
                     {
-                        <th class="text-center">@prop.DisplayName</th>
+                        if (!string.IsNullOrEmpty(prop.DisplayName))
+                        {
+                            <th class="text-center">@prop.DisplayName</th>
+                        }
                     }
                     <th></th>
                 </tr>

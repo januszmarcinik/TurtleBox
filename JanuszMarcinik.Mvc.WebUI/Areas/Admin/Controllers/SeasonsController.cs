@@ -25,9 +25,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             var seasons = _seasonService.GetList();
             var model = new SeasonDataSource();
             model.Seasons = Mapper.Map<List<SeasonViewModel>>(seasons);
-            model.PrepareData();
+            model.SetActions();
 
-            return View(MVC.Admin.Shared.Views.Grid, model);
+            return View(MVC.Shared.Views._Grid, model.GetGridModel());
         }
         #endregion
 

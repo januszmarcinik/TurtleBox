@@ -55,8 +55,11 @@ namespace T4MVC
         public readonly string Name = "Admin";
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.ConfigurationController Configuration = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_ConfigurationController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.LeaguesController Leagues = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_LeaguesController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.MatchController Match = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_MatchController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.MatchDaysController MatchDays = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_MatchDaysController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.SeasonsController Seasons = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_SeasonsController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TeamsController Teams = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TeamsController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TimeTableController TimeTable = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TimeTableController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

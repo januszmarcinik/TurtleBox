@@ -1,28 +1,22 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Seasons
 {
-    public class SeasonDataSource : DataSource
+    public class SeasonDataSource : DataSource<SeasonViewModel>
     {
-        public SeasonDataSource() : base(new SeasonViewModel()) 
-        {
-
-        }
+        public SeasonDataSource() : base(new SeasonViewModel()) { }
 
         public List<SeasonViewModel> Seasons { get; set; }
 
-        public override void PrepareData()
+        public override void SetActions()
         {
-            foreach (var season in this.Seasons)
-            {
-                var row = new DataItem();
-                row.Values.AddRange(this.Properties.Select(x => season.GetType().GetProperty(x.PropertyName).GetValue(season).ToString()).ToList());
-                row.EditAction = MVC.Admin.Leagues.Edit(season.SeasonId);
-                row.DeleteAction = MVC.Admin.Leagues.Delete(season.SeasonId);
+            base.PrepareData(this.Seasons);
 
-                this.Data.Add(row);
+            foreach (var row in this.Data)
+            {
+                row.EditAction = MVC.Admin.Seasons.Edit(row.PrimaryKeyId);
+                row.DeleteAction = MVC.Admin.Seasons.Delete(row.PrimaryKeyId);
             }
 
             this.AddAction = MVC.Admin.Seasons.Create();

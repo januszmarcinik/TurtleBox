@@ -16,6 +16,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
             this.SelectedRoles = new List<string>();
         }
 
+        [PrimaryKeyString]
         public string Id { get; set; }
 
         [DataSourceList(Order = 1)]

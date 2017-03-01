@@ -251,13 +251,20 @@
     <Content Include="Areas\Admin\Views\Leagues\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Leagues\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Leagues\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Shared\Grid.cshtml" />
     <Content Include="Areas\Account\Views\Users\Index.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Create.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Edit.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Delete.cshtml" />
     <Content Include="Areas\Account\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Configuration\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\TimeTable\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\MatchDays\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\MatchDays\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\MatchDays\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\TimeTable\LeaguesList.cshtml" />
+    <Content Include="Areas\Admin\Views\Match\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Match\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Match\Edit.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\bo_play_pattern.png" />
     <Content Include="Images\Leagues\bundesliga.png" />
@@ -323,17 +330,22 @@
     <Compile Include="Areas\Admin\AdminProfile.cs" />
     <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
     <Compile Include="Areas\Admin\Controllers\LeaguesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MatchController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MatchDaysController.cs" />
     <Compile Include="Areas\Admin\Controllers\SeasonsController.cs" />
     <Compile Include="Areas\Admin\Controllers\TeamsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TimeTableController.cs" />
     <Compile Include="Areas\Admin\Models\Leagues\LeagueDataSource.cs" />
     <Compile Include="Areas\Admin\Models\Leagues\LeagueViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\MatchViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\PlayerViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\MatchDays\MatchDayDataSource.cs" />
+    <Compile Include="Areas\Admin\Models\MatchDays\MatchDayViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Matches\MatchDataSource.cs" />
+    <Compile Include="Areas\Admin\Models\Matches\MatchViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Seasons\SeasonDataSource.cs" />
     <Compile Include="Areas\Admin\Models\Seasons\SeasonViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\TableViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Teams\TeamDataSource.cs" />
     <Compile Include="Areas\Admin\Models\Teams\TeamViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\TimeTables\TimeTableSelectViewModels.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -368,6 +380,12 @@
     <Compile Include="T4MVC\Admin.LeaguesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="T4MVC\Admin.MatchController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Admin.MatchDaysController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC\Admin.SeasonsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -375,6 +393,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Admin.TeamsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Admin.TimeTableController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Home.HomeController.generated.cs">
@@ -405,6 +426,7 @@
     <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="T4MVC\T4MVC.tt.hooks.t4" />
     <Content Include="Areas\Account\Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Grid.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -416,8 +438,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Account\Views\Image\" />
     <Folder Include="Areas\Home\Models\" />
-    <Folder Include="Controllers\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JanuszMarcinik.Mvc.Domain\JanuszMarcinik.Mvc.Domain.csproj">

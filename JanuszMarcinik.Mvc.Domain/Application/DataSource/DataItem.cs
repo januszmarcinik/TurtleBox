@@ -10,6 +10,10 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
             this.Values = new List<string>();
         }
 
+        public long PrimaryKeyId { get; set; }
+        public string PrimaryKeyStringId { get; set; }
+        public string ImagePath { get; set; }
+
         public List<string> Values { get; set; }
         public string ListText { get; set; }
         public ActionResult ListAction { get; set; }

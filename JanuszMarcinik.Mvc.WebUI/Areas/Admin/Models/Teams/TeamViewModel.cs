@@ -7,6 +7,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Teams
 {
     public class TeamViewModel
     {
+        [PrimaryKey]
         public long TeamId { get; set; }
 
         [DataSourceList(Order = 2)]
@@ -19,6 +20,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Teams
         [StringLength(50, ErrorMessage = "Nazwa trenera musi zawierać od 3 do 50 znaków.", MinimumLength = 3)]
         public string Coach { get; set; }
 
+        [ImagePath]
         public string ImagePath { get; set; }
 
         [DataSourceList(Order = 1)]

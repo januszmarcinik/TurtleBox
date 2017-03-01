@@ -1,11 +1,11 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
-using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles
 {
     public class RoleViewModel
     {
+        [PrimaryKeyString]
         public string Id { get; set; }
 
         [DataSourceList(Order = 1)]

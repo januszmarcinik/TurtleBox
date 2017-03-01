@@ -6,6 +6,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues
 {
     public class LeagueViewModel
     {
+        [PrimaryKey]
         public long LeagueId { get; set; }
 
         [DataSourceList(Order = 2)]
@@ -23,6 +24,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues
         [StringLength(50, ErrorMessage = "Pełna nazwa ligi musi zawierać od 3 do 50 znaków.", MinimumLength = 3)]
         public string DescriptionName { get; set; }
 
+        [ImagePath]
         public string ImagePath { get; set; }
 
         [DataSourceList(Order = 1)]

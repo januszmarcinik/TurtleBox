@@ -1,0 +1,39 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.MatchDays;
+@model MatchDayViewModel
+
+@{
+    ViewBag.Title = "Edycja kolejki";
+}
+
+<h2 class="center-block">
+    <span class="label label-warning center-block">@ViewBag.Title</span>
+</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form().Upload()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.LeagueId)
+            @Html.HiddenFor(x => x.SeasonId)
+            @Html.HiddenFor(x => x.MatchDayId)
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Number)
+                    @form.FormGroup().DropDownListFromEnumFor(x => x.Round)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.MatchDays.List(Model.SeasonId, Model.LeagueId))
+            </div>
+        }
+    }
+}

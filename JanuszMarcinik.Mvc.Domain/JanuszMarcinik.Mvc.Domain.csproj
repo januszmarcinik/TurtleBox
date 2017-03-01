@@ -126,9 +126,14 @@
     <Compile Include="Application\DataSource\DataItem.cs" />
     <Compile Include="Application\DataSource\DataSource.cs" />
     <Compile Include="Application\DataSource\DataSourceListAttribute.cs" />
+    <Compile Include="Application\DataSource\GridModel.cs" />
+    <Compile Include="Application\DataSource\ImagePathAttribute.cs" />
+    <Compile Include="Application\DataSource\PrimaryKeyAttribute.cs" />
+    <Compile Include="Application\DataSource\PrimaryKeyStringAttribute.cs" />
     <Compile Include="Application\Entities\Goal.cs" />
     <Compile Include="Application\Entities\League.cs" />
     <Compile Include="Application\Entities\Match.cs" />
+    <Compile Include="Application\Entities\MatchDay.cs" />
     <Compile Include="Application\Entities\Player.cs" />
     <Compile Include="Application\Entities\Season.cs" />
     <Compile Include="Application\Entities\Table.cs" />
@@ -137,6 +142,7 @@
     <Compile Include="Application\Migrations\Configuration.cs" />
     <Compile Include="Application\Services\GoalService.cs" />
     <Compile Include="Application\Services\LeagueService.cs" />
+    <Compile Include="Application\Services\MatchDayService.cs" />
     <Compile Include="Application\Services\MatchService.cs" />
     <Compile Include="Application\Services\PlayerService.cs" />
     <Compile Include="Application\Services\SeasonService.cs" />

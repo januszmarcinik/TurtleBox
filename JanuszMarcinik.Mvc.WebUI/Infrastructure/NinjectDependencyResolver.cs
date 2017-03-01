@@ -33,6 +33,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Infrastructure
         {
             kernel.Bind<GoalService>().ToSelf().InRequestScope();
             kernel.Bind<LeagueService>().ToSelf().InRequestScope();
+            kernel.Bind<MatchDayService>().ToSelf().InRequestScope();
             kernel.Bind<MatchService>().ToSelf().InRequestScope();
             kernel.Bind<PlayerService>().ToSelf().InRequestScope();
             kernel.Bind<SeasonService>().ToSelf().InRequestScope();

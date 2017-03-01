@@ -53,9 +53,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
             var users = UserManager.Users;
             var model = new UserDataSource();
             model.Users = Mapper.Map<List<UserViewModel>>(users);
-            model.PrepareData();
+            model.SetActions();
 
-            return View(MVC.Admin.Shared.Views.Grid, model);
+            return View(MVC.Shared.Views._Grid, model.GetGridModel());
         }
         #endregion
 

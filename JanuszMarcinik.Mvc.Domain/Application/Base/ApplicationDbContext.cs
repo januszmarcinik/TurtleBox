@@ -9,6 +9,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
 
         public DbSet<Goal> Goals { get; set; }
         public DbSet<League> Leagues { get; set; }
+        public DbSet<MatchDay> MatchDays { get; set; }
         public DbSet<Match> Matches { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<Season> Seasons { get; set; }
@@ -23,9 +24,9 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
                         .WithRequired(s => s.League)
                         .HasForeignKey(s => s.LeagueId);
 
-            // League -> Matches
+            // League -> MatchDays
             modelBuilder.Entity<League>()
-                        .HasMany<Match>(s => s.Matches)
+                        .HasMany<MatchDay>(s => s.MatchDays)
                         .WithRequired(s => s.League)
                         .HasForeignKey(s => s.LeagueId);
 
@@ -43,9 +44,9 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
                         .HasForeignKey(s => s.AssistantId)
                         .WillCascadeOnDelete(false);
 
-            // Season -> Matches
+            // Season -> MatchDays
             modelBuilder.Entity<Season>()
-                        .HasMany<Match>(s => s.Matches)
+                        .HasMany<MatchDay>(s => s.MatchDays)
                         .WithRequired(s => s.Season)
                         .HasForeignKey(s => s.SeasonId);
 
@@ -60,6 +61,12 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
                         .HasMany<Player>(s => s.Players)
                         .WithRequired(s => s.Team)
                         .HasForeignKey(s => s.TeamId);
+
+            // MatchDay -> Matches
+            modelBuilder.Entity<MatchDay>()
+                        .HasMany<Match>(s => s.Matches)
+                        .WithRequired(s => s.MatchDay)
+                        .HasForeignKey(s => s.MatchDayId);
 
             // Match -> Goals
             modelBuilder.Entity<Match>()

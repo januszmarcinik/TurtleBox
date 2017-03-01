@@ -11,7 +11,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities
         public League()
         {
             this.Teams = new List<Team>();
-            this.Matches = new List<Match>();
+            this.MatchDays = new List<MatchDay>();
         }
 
         public long LeagueId { get; set; }
@@ -29,6 +29,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities
         public string ImagePath { get; set; }
 
         public virtual ICollection<Team> Teams { get; set; }
-        public virtual ICollection<Match> Matches { get; set; }
+        public virtual ICollection<MatchDay> MatchDays { get; set; }
     }
 }

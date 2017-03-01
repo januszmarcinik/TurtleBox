@@ -27,9 +27,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             var leagues = _leagueService.GetList();
             var model = new LeagueDataSource();
             model.Leagues = Mapper.Map<List<LeagueViewModel>>(leagues);
-            model.PrepareData();
+            model.SetActions();
 
-            return View(MVC.Admin.Shared.Views.Grid, model);
+            return View(MVC.Shared.Views._Grid, model.GetGridModel());
         }
         #endregion
 

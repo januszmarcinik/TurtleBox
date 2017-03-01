@@ -6,14 +6,15 @@ using System.Linq;
 
 namespace JanuszMarcinik.Mvc.Domain.Application.Services
 {
-    public class MatchService : BaseService<Match>
+    public class MatchDayService : BaseService<MatchDay>
     {
-        public List<Match> GetList(long matchDayId)
+        public List<MatchDay> GetList(long leagueId)
         {
             using (var context = new ApplicationDbContext())
             {
-                return context.Matches.Where(x => x.MatchDayId == matchDayId)
-                    .Include(x => x.MatchDay).ToList();
+                return context.MatchDays.Where(x => x.LeagueId == leagueId)
+                    .Include(x => x.League)
+                    .Include(x => x.Season).ToList();
             }
         }
     }

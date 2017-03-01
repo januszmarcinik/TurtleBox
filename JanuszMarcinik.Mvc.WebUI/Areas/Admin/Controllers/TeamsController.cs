@@ -10,7 +10,7 @@ using JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Konfiguracja: Drużyny")]
     public partial class TeamsController : ImageController
     {
         #region TeamsController
@@ -33,9 +33,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             var model = new TeamDataSource();
             model.League = Mapper.Map<LeagueViewModel>(league);
             model.Teams = Mapper.Map<List<TeamViewModel>>(teams);
-            model.PrepareData();
+            model.SetActions();
 
-            return View(MVC.Admin.Shared.Views.Grid, model);
+            return View(MVC.Shared.Views._Grid, model.GetGridModel());
         }
         #endregion
 

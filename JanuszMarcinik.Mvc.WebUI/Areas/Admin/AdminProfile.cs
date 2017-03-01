@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Application.Entities;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues;
+using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.MatchDays;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Seasons;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Teams;
 
@@ -28,11 +28,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin
                 .ForMember(p => p.League, o => o.MapFrom(s => s.League))
                 .Ignore(p => p.Image);
 
-            CreateMap<Player, PlayerViewModel>();
-
-            CreateMap<Table, TableViewModel>();
-
-            CreateMap<Match, MatchViewModel>();
+            CreateMap<MatchDay, MatchDayViewModel>();
         }
         #endregion
     }

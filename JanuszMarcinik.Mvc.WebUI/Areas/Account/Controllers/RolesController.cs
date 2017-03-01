@@ -26,9 +26,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
             var roles = _roleManager.Roles;
             var model = new RoleDataSource();
             model.Roles = Mapper.Map<List<RoleViewModel>>(roles);
-            model.PrepareData();
+            model.SetActions();
 
-            return View(MVC.Admin.Shared.Views.Grid, model);
+            return View(MVC.Shared.Views._Grid, model.GetGridModel());
         }
         #endregion
 

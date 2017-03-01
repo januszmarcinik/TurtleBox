@@ -13,6 +13,10 @@
     }
     @if (User.IsInRole("Konfiguracja: Ligi"))
     {
-        @Html.Bootstrap().ListGroupItem("Ligi", MVC.Admin.Leagues.Index()).PrependIcon(FontAwesome.list_alt)
+        @Html.Bootstrap().ListGroupItem("Ligi", MVC.Admin.Leagues.Index()).PrependIcon(FontAwesome.indent)
+    }
+    @if (User.IsInRole("Konfiguracja: Terminarze"))
+    {
+        @Html.Bootstrap().ListGroupItem("Terminarze", MVC.Admin.TimeTable.Index()).PrependIcon(FontAwesome.list_alt)
     }
 </div>

@@ -1,0 +1,17 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.TimeTables;
+@model SeasonListViewModel
+
+@{
+    ViewBag.Title = "Terminarz: Wybierz sezon";
+}
+
+<h2 class="center-block">
+    <span class="label label-info center-block">@ViewBag.Title</span>
+</h2>
+
+<div class="list-group">
+    @foreach (var season in Model.Seasons)
+    {
+        @Html.Bootstrap().ListGroupItem(season.Years, MVC.Admin.TimeTable.LeaguesList(season.SeasonId)).PrependIcon(FontAwesome.flag_checkered)
+    }
+</div>
