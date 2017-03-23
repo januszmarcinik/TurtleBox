@@ -7,16 +7,8 @@
 </h2>
 
 <div class="list-group">
-    @if (User.IsInRole("Konfiguracja: Sezony"))
+    @if (User.IsInRole("Moderator"))
     {
-        @Html.Bootstrap().ListGroupItem("Sezony", MVC.Admin.Seasons.Index()).PrependIcon(FontAwesome.flag_checkered)
-    }
-    @if (User.IsInRole("Konfiguracja: Ligi"))
-    {
-        @Html.Bootstrap().ListGroupItem("Ligi", MVC.Admin.Leagues.Index()).PrependIcon(FontAwesome.indent)
-    }
-    @if (User.IsInRole("Konfiguracja: Terminarze"))
-    {
-        @Html.Bootstrap().ListGroupItem("Terminarze", MVC.Admin.TimeTable.Index()).PrependIcon(FontAwesome.list_alt)
+        @Html.Bootstrap().ListGroupItem("Ankiety", MVC.Admin.Questionnaires.List()).PrependIcon(FontAwesome.clipboard)
     }
 </div>

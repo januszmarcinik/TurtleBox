@@ -1,0 +1,52 @@
+﻿@using Microsoft.AspNet.Identity
+
+<ul class="nav navbar-nav">
+    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+    <li><a href="#">Link</a></li>
+    
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Bundesliga<span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.Bootstrap().ActionLink("Tabela", MVC.Account.Users.Index())</li>
+            <li>@Html.Bootstrap().ActionLink("Wyniki", MVC.Account.Users.Index())</li>
+            <li>@Html.Bootstrap().ActionLink("Terminarz", MVC.Account.Users.Index())</li>
+        </ul>
+    </li>
+</ul>
+
+@if (Request.IsAuthenticated)
+{
+    using (var form = Html.Bootstrap().Begin(new Form(MVC.Account.Account.LogOff()).Id("formLogOut")))
+    {
+        @Html.AntiForgeryToken()
+        <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                    @User.Identity.GetUserName() <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    @if (User.IsInRole("Administrator"))
+                    {
+                        <li>@Html.Bootstrap().ActionLink("Panel administratora", MVC.Account.Users.Index())</li>
+                    }
+                    @if (User.IsInRole("Moderator"))
+                    {
+                        <li>@Html.Bootstrap().ActionLink("Konfiguracja", MVC.Admin.Configuration.Index())</li>
+                    }
+                    @if (User.IsInRole("Ankieter"))
+                    {
+                        <li>@Html.Bootstrap().ActionLink("Wyniki ankiet", MVC.Admin.Configuration.Index())</li>
+                    }
+                </ul>
+            </li>
+            <li>@Html.SubmitLink("Wyloguj", "formLogOut")</li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Rejestracja", MVC.Account.Account.Register())</li>
+        <li>@Html.ActionLink("Logowanie", MVC.Account.Account.Login())</li>
+    </ul>
+}

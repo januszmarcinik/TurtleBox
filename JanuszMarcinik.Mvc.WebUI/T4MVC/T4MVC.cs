@@ -31,8 +31,8 @@ public static partial class MVC
     public static AccountClass Account { get { return s_Account; } }
     static readonly AdminClass s_Admin = new AdminClass();
     public static AdminClass Admin { get { return s_Admin; } }
-    static readonly HomeClass s_Home = new HomeClass();
-    public static HomeClass Home { get { return s_Home; } }
+    static readonly ApplicationClass s_Application = new ApplicationClass();
+    public static ApplicationClass Application { get { return s_Application; } }
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -54,20 +54,14 @@ namespace T4MVC
     {
         public readonly string Name = "Admin";
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.ConfigurationController Configuration = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_ConfigurationController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.LeaguesController Leagues = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_LeaguesController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.MatchController Match = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_MatchController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.MatchDaysController MatchDays = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_MatchDaysController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.SeasonsController Seasons = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_SeasonsController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TeamsController Teams = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TeamsController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TimeTableController TimeTable = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TimeTableController();
-        public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.QuestionnairesController Questionnaires = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_QuestionnairesController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public class HomeClass
+    public class ApplicationClass
     {
-        public readonly string Name = "Home";
-        public JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers.HomeController Home = new JanuszMarcinik.Mvc.WebUI.Areas.Home.Controllers.T4MVC_HomeController();
-        public T4MVC.Home.ManageController Manage = new T4MVC.Home.ManageController();
+        public readonly string Name = "Application";
+        public JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.HomeController Home = new JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.T4MVC_HomeController();
+        public T4MVC.Application.SharedController Shared = new T4MVC.Application.SharedController();
     }
 }
 
@@ -90,19 +84,6 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
     }
      
     public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
-    
-    public string Controller { get; set; }
-    public string Action { get; set; }
-    public string Protocol { get; set; }
-    public RouteValueDictionary RouteValueDictionary { get; set; }
-}
-[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-internal partial class T4MVC_System_Web_Mvc_FileContentResult : System.Web.Mvc.FileContentResult, IT4MVCActionResult
-{
-    public T4MVC_System_Web_Mvc_FileContentResult(string area, string controller, string action, string protocol = null): base(new byte[0], " ")
-    {
-        this.InitMVCT4Result(area, controller, action, protocol);
-    }
     
     public string Controller { get; set; }
     public string Action { get; set; }
@@ -148,11 +129,9 @@ namespace Links
         public static readonly string bootstrap_theme_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap-theme.min.css") ? Url("bootstrap-theme.min.css") : Url("bootstrap-theme.css");
         public static readonly string bootstrap_theme_css_map = Url("bootstrap-theme.css.map");
         public static readonly string bootstrap_theme_min_css = Url("bootstrap-theme.min.css");
-        public static readonly string bootstrap_theme_min_css_map = Url("bootstrap-theme.min.css.map");
         public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
         public static readonly string bootstrap_css_map = Url("bootstrap.css.map");
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
-        public static readonly string bootstrap_min_css_map = Url("bootstrap.min.css.map");
         public static readonly string font_awesome_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/font-awesome.min.css") ? Url("font-awesome.min.css") : Url("font-awesome.css");
         public static readonly string font_awesome_min_css = Url("font-awesome.min.css");
         public static readonly string Site_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/Site.min.css") ? Url("Site.min.css") : Url("Site.css");

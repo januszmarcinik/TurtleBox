@@ -10,6 +10,5 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
         public List<DataItem> Data { get; set; }
         public ActionResult AddAction { get; set; }
         public ActionResult BackAction { get; set; }
-        public string IsImage { get; set; }
     }
 }

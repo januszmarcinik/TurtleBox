@@ -130,24 +130,20 @@
     <Compile Include="Application\DataSource\ImagePathAttribute.cs" />
     <Compile Include="Application\DataSource\PrimaryKeyAttribute.cs" />
     <Compile Include="Application\DataSource\PrimaryKeyStringAttribute.cs" />
-    <Compile Include="Application\Entities\Goal.cs" />
-    <Compile Include="Application\Entities\League.cs" />
-    <Compile Include="Application\Entities\Match.cs" />
-    <Compile Include="Application\Entities\MatchDay.cs" />
-    <Compile Include="Application\Entities\Player.cs" />
-    <Compile Include="Application\Entities\Season.cs" />
-    <Compile Include="Application\Entities\Table.cs" />
-    <Compile Include="Application\Entities\Team.cs" />
+    <Compile Include="Application\Entities\Dictionaries\BaseDictionary.cs" />
+    <Compile Include="Application\Entities\Questionnaires\Answer.cs" />
+    <Compile Include="Application\Entities\Questionnaires\Interviewee.cs" />
+    <Compile Include="Application\Entities\Questionnaires\Question.cs" />
+    <Compile Include="Application\Entities\Questionnaires\Questionnaire.cs" />
+    <Compile Include="Application\Entities\Questionnaires\Result.cs" />
     <Compile Include="Application\Managers\ImageManager.cs" />
     <Compile Include="Application\Migrations\Configuration.cs" />
-    <Compile Include="Application\Services\GoalService.cs" />
-    <Compile Include="Application\Services\LeagueService.cs" />
-    <Compile Include="Application\Services\MatchDayService.cs" />
-    <Compile Include="Application\Services\MatchService.cs" />
-    <Compile Include="Application\Services\PlayerService.cs" />
-    <Compile Include="Application\Services\SeasonService.cs" />
-    <Compile Include="Application\Services\TableService.cs" />
-    <Compile Include="Application\Services\TeamService.cs" />
+    <Compile Include="Application\Services\Dictionaries\BaseDictionaryService.cs" />
+    <Compile Include="Application\Services\Questionnaires\AnswerService.cs" />
+    <Compile Include="Application\Services\Questionnaires\IntervieweeService.cs" />
+    <Compile Include="Application\Services\Questionnaires\QuestionnaireService.cs" />
+    <Compile Include="Application\Services\Questionnaires\QuestionService.cs" />
+    <Compile Include="Application\Services\Questionnaires\ResultService.cs" />
     <Compile Include="Identity\Context\ApplicationIdentityDbContext.cs" />
     <Compile Include="Identity\Entities\ApplicationUser.cs" />
     <Compile Include="Identity\Managers\ApplicationSignInManager.cs" />
@@ -169,6 +165,7 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

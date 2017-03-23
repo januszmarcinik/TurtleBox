@@ -1,6 +1,7 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Services;
+using JanuszMarcinik.Mvc.Domain.Application.Services.Dictionaries;
+using JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires;
 using JanuszMarcinik.Mvc.Domain.Identity.Context;
-using JanuszMarcinik.Mvc.Domain.Identity.Managers;
 using Ninject;
 using Ninject.Web.Common;
 using System;
@@ -31,16 +32,14 @@ namespace JanuszMarcinik.Mvc.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            kernel.Bind<GoalService>().ToSelf().InRequestScope();
-            kernel.Bind<LeagueService>().ToSelf().InRequestScope();
-            kernel.Bind<MatchDayService>().ToSelf().InRequestScope();
-            kernel.Bind<MatchService>().ToSelf().InRequestScope();
-            kernel.Bind<PlayerService>().ToSelf().InRequestScope();
-            kernel.Bind<SeasonService>().ToSelf().InRequestScope();
-            kernel.Bind<TableService>().ToSelf().InRequestScope();
-            kernel.Bind<TeamService>().ToSelf().InRequestScope();
-
             kernel.Bind<ApplicationIdentityDbContext>().ToSelf().InRequestScope();
+
+            kernel.Bind<AnswerService>().ToSelf().InRequestScope();
+            kernel.Bind<IntervieweeService>().ToSelf().InRequestScope();
+            kernel.Bind<QuestionnaireService>().ToSelf().InRequestScope();
+            kernel.Bind<QuestionService>().ToSelf().InRequestScope();
+            kernel.Bind<ResultService>().ToSelf().InRequestScope();
+            kernel.Bind<BaseDictionaryService>().ToSelf().InRequestScope();
         }
     }
 }

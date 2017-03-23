@@ -7,18 +7,29 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
     {
         public DataItem()
         {
-            this.Values = new List<string>();
+            this.Values = new List<DataItemValue>();
         }
 
         public long PrimaryKeyId { get; set; }
         public string PrimaryKeyStringId { get; set; }
-        public string ImagePath { get; set; }
 
-        public List<string> Values { get; set; }
+        public List<DataItemValue> Values { get; set; }
         public string ListText { get; set; }
         public ActionResult ListAction { get; set; }
         public ActionResult EditAction { get; set; }
         public ActionResult DeleteAction { get; set; }
+    }
+
+    public class DataItemValue
+    {
+        public DataItemValue(string value, bool isImage = false)
+        {
+            this.Value = value;
+            this.IsImage = isImage;
+        }
+
+        public string Value { get; set; }
+        public bool IsImage { get; set; }
         public ActionResult GetImageAction { get; set; }
     }
 }

@@ -40,9 +40,11 @@ namespace T4MVC
             {
                 public readonly string _Grid = "_Grid";
                 public readonly string _Layout = "_Layout";
+                public readonly string _Menu = "_Menu";
             }
             public readonly string _Grid = "~/Views/Shared/_Grid.cshtml";
             public readonly string _Layout = "~/Views/Shared/_Layout.cshtml";
+            public readonly string _Menu = "~/Views/Shared/_Menu.cshtml";
         }
     }
 

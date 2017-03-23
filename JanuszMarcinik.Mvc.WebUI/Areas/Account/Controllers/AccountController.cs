@@ -145,7 +145,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction(MVC.Home.Home.Index());
+                    return RedirectToAction(MVC.Application.Home.Index());
                 }
                 AddErrors(result);
             }
@@ -376,7 +376,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         public virtual ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction(MVC.Home.Home.Index());
+            return RedirectToAction(MVC.Application.Home.Index());
         }
         #endregion
 
@@ -436,7 +436,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction(MVC.Home.Home.Index());
+            return RedirectToAction(MVC.Application.Home.Index());
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

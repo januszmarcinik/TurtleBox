@@ -33,15 +33,15 @@
                         <td>@(Model.Data.IndexOf(row) + 1)</td>
                         @foreach (var item in row.Values)
                         {
-                            if (item == Model.IsImage)
+                            if (item.IsImage)
                             {
                                 <td>
-                                    <img class="img-responsive center-block" height="32" width="32" src="@Url.Action(row.GetImageAction)" />
+                                    <img class="img-responsive center-block" height="32" width="32" src="@Url.Action(item.GetImageAction)" />
                                 </td>
                             }
                             else
                             {
-                                <td>@item</td>
+                                <td>@item.Value</td>
                             }
                         }
 

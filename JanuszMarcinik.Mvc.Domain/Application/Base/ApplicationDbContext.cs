@@ -1,4 +1,5 @@
-﻿using JanuszMarcinik.Mvc.Domain.Application.Entities;
+﻿using JanuszMarcinik.Mvc.Domain.Application.Entities.Dictionaries;
+using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
 using System.Data.Entity;
 
 namespace JanuszMarcinik.Mvc.Domain.Application.Base
@@ -7,72 +8,75 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
     {
         public ApplicationDbContext() : base("JanuszMarcinikConnection") { }
 
-        public DbSet<Goal> Goals { get; set; }
-        public DbSet<League> Leagues { get; set; }
-        public DbSet<MatchDay> MatchDays { get; set; }
-        public DbSet<Match> Matches { get; set; }
-        public DbSet<Player> Players { get; set; }
-        public DbSet<Season> Seasons { get; set; }
-        public DbSet<Table> Tables { get; set; }
-        public DbSet<Team> Teams { get; set; }
+        public DbSet<Questionnaire> Questionnaires { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Answer> Answers { get; set; }
+        public DbSet<Interviewee> Interviewees { get; set; }
+        public DbSet<Result> Results { get; set; }
+        public DbSet<BaseDictionary> BaseDictionaries { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            // League -> Teams
-            modelBuilder.Entity<League>()
-                        .HasMany<Team>(s => s.Teams)
-                        .WithRequired(s => s.League)
-                        .HasForeignKey(s => s.LeagueId);
+            #region Questionnaires
+            // Questionnaire -> Questions
+            modelBuilder.Entity<Questionnaire>()
+                        .HasMany<Question>(s => s.Questions)
+                        .WithRequired(s => s.Questionnaire)
+                        .HasForeignKey(s => s.QuestionnaireId);
 
-            // League -> MatchDays
-            modelBuilder.Entity<League>()
-                        .HasMany<MatchDay>(s => s.MatchDays)
-                        .WithRequired(s => s.League)
-                        .HasForeignKey(s => s.LeagueId);
-
-            // Player -> Goals (Assists)
-            modelBuilder.Entity<Player>()
-                        .HasMany<Goal>(s => s.Goals)
-                        .WithRequired(s => s.Scorer)
-                        .HasForeignKey(s => s.ScorerId)
+            // Questionnaire -> Results
+            modelBuilder.Entity<Questionnaire>()
+                        .HasMany<Result>(s => s.Results)
+                        .WithRequired(s => s.Questionnaire)
+                        .HasForeignKey(s => s.QuestionnaireId)
                         .WillCascadeOnDelete(false);
 
-            // Player -> Goals (Goals)
-            modelBuilder.Entity<Player>()
-                        .HasMany<Goal>(s => s.Assists)
-                        .WithRequired(s => s.Assistant)
-                        .HasForeignKey(s => s.AssistantId)
+            // Question -> Answers
+            modelBuilder.Entity<Question>()
+                        .HasMany<Answer>(s => s.Answers)
+                        .WithRequired(s => s.Question)
+                        .HasForeignKey(s => s.QuestionId);
+
+            // Question -> Results
+            modelBuilder.Entity<Question>()
+                        .HasMany<Result>(s => s.Results)
+                        .WithRequired(s => s.Question)
+                        .HasForeignKey(s => s.QuestionId);
+
+            // Answer -> Results
+            modelBuilder.Entity<Answer>()
+                        .HasMany<Result>(s => s.Results)
+                        .WithRequired(s => s.Answer)
+                        .HasForeignKey(s => s.AnswerId)
                         .WillCascadeOnDelete(false);
 
-            // Season -> MatchDays
-            modelBuilder.Entity<Season>()
-                        .HasMany<MatchDay>(s => s.MatchDays)
-                        .WithRequired(s => s.Season)
-                        .HasForeignKey(s => s.SeasonId);
+            // Interviewee -> Results
+            modelBuilder.Entity<Interviewee>()
+                        .HasMany<Result>(s => s.Results)
+                        .WithRequired(s => s.Interviewee)
+                        .HasForeignKey(s => s.IntervieweeId);
 
-            // Team -> Tables
-            modelBuilder.Entity<Team>()
-                        .HasMany<Table>(s => s.Tables)
-                        .WithRequired(s => s.Team)
-                        .HasForeignKey(s => s.TeamId);
+            // BaseDictionary -> Interviewees (Sexes)
+            modelBuilder.Entity<BaseDictionary>()
+                        .HasMany<Interviewee>(s => s.Sexes)
+                        .WithRequired(s => s.Sex)
+                        .HasForeignKey(s => s.SexId)
+                        .WillCascadeOnDelete(false);
 
-            // Team -> Players
-            modelBuilder.Entity<Team>()
-                        .HasMany<Player>(s => s.Players)
-                        .WithRequired(s => s.Team)
-                        .HasForeignKey(s => s.TeamId);
+            // BaseDictionary -> Interviewees (Seniorities)
+            modelBuilder.Entity<BaseDictionary>()
+                        .HasMany<Interviewee>(s => s.Seniorities)
+                        .WithRequired(s => s.Seniority)
+                        .HasForeignKey(s => s.SeniorityId)
+                        .WillCascadeOnDelete(false);
 
-            // MatchDay -> Matches
-            modelBuilder.Entity<MatchDay>()
-                        .HasMany<Match>(s => s.Matches)
-                        .WithRequired(s => s.MatchDay)
-                        .HasForeignKey(s => s.MatchDayId);
-
-            // Match -> Goals
-            modelBuilder.Entity<Match>()
-                        .HasMany<Goal>(s => s.Goals)
-                        .WithRequired(s => s.Match)
-                        .HasForeignKey(s => s.MatchId);
+            // BaseDictionary -> Interviewees (PlaceOfResidences)
+            modelBuilder.Entity<BaseDictionary>()
+                        .HasMany<Interviewee>(s => s.PlaceOfResidences)
+                        .WithRequired(s => s.PlaceOfResidence)
+                        .HasForeignKey(s => s.PlaceOfResidenceId)
+                        .WillCascadeOnDelete(false);
+            #endregion
         }
     }
 }

@@ -1,9 +1,6 @@
 ﻿using AutoMapper;
-using JanuszMarcinik.Mvc.Domain.Application.Entities;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Leagues;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.MatchDays;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Seasons;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Teams;
+using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
+using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin
 {
@@ -19,16 +16,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin
         #region AdminProfile()
         public AdminProfile()
         {
-            CreateMap<Season, SeasonViewModel>();
-
-            CreateMap<League, LeagueViewModel>()
-                .Ignore(p => p.Image);
-
-            CreateMap<Team, TeamViewModel>()
-                .ForMember(p => p.League, o => o.MapFrom(s => s.League))
-                .Ignore(p => p.Image);
-
-            CreateMap<MatchDay, MatchDayViewModel>();
+            CreateMap<Questionnaire, QuestionnaireViewModel>();
         }
         #endregion
     }

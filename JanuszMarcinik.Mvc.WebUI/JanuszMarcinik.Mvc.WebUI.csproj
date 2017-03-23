@@ -198,11 +198,6 @@
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="Areas\Home\Views\web.config">
-      <SubType>Designer</SubType>
-    </Content>
-    <Content Include="Areas\Home\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Home\Views\Home\Index.cshtml" />
     <Content Include="Areas\Account\Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Areas\Account\Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Areas\Account\Views\Account\ExternalLoginFailure.cshtml" />
@@ -221,21 +216,9 @@
     <Content Include="Areas\Account\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Account\Views\Manage\SetPassword.cshtml" />
     <Content Include="Areas\Account\Views\Manage\VerifyPhoneNumber.cshtml" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <Content Include="Areas\Account\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Error.cshtml" />
     <Content Include="Areas\Account\Views\Shared\Lockout.cshtml" />
-    <Content Include="Areas\Home\Views\Manage\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Seasons\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Seasons\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Seasons\Edit.cshtml" />
     <Content Include="fonts\fontawesome-webfont.eot" />
     <Content Include="fonts\fontawesome-webfont.ttf" />
     <Content Include="fonts\fontawesome-webfont.woff" />
@@ -245,26 +228,25 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Admin\Views\Teams\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Teams\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Teams\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Leagues\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Leagues\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Leagues\Edit.cshtml" />
     <Content Include="Areas\Account\Views\Users\Index.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Create.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Edit.cshtml" />
     <Content Include="Areas\Account\Views\Roles\Delete.cshtml" />
     <Content Include="Areas\Account\Views\Users\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Configuration\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\TimeTable\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\MatchDays\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\MatchDays\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\MatchDays\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\TimeTable\LeaguesList.cshtml" />
-    <Content Include="Areas\Admin\Views\Match\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Match\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Match\Edit.cshtml" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <Content Include="Areas\Application\Views\web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\Application\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Application\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Questionnaires\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Questionnaires\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Questionnaires\Edit.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\bo_play_pattern.png" />
     <Content Include="Images\Leagues\bundesliga.png" />
@@ -329,23 +311,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\AdminProfile.cs" />
     <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
-    <Compile Include="Areas\Admin\Controllers\LeaguesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\MatchController.cs" />
-    <Compile Include="Areas\Admin\Controllers\MatchDaysController.cs" />
-    <Compile Include="Areas\Admin\Controllers\SeasonsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TeamsController.cs" />
-    <Compile Include="Areas\Admin\Controllers\TimeTableController.cs" />
-    <Compile Include="Areas\Admin\Models\Leagues\LeagueDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Leagues\LeagueViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\MatchDays\MatchDayDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\MatchDays\MatchDayViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Matches\MatchDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Matches\MatchViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Seasons\SeasonDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Seasons\SeasonViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Teams\TeamDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Teams\TeamViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\TimeTables\TimeTableSelectViewModels.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuestionnairesController.cs" />
+    <Compile Include="Areas\Admin\Models\Questionnaires\QuestionnaireDataSource.cs" />
+    <Compile Include="Areas\Admin\Models\Questionnaires\QuestionnaireViewModel.cs" />
+    <Compile Include="Areas\Application\ApplicationProfile.cs" />
+    <Compile Include="Areas\Application\ApplicationAreaRegistration.cs" />
+    <Compile Include="Areas\Application\Controllers\HomeController.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -366,8 +337,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Account\AccountAreaRegistration.cs" />
     <Compile Include="Areas\Account\Controllers\AccountController.cs" />
-    <Compile Include="Areas\Home\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Home\HomeAreaRegistration.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -377,32 +346,14 @@
     <Compile Include="T4MVC\Admin.ConfigurationController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\Admin.LeaguesController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.MatchController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.MatchDaysController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.SeasonsController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.SharedController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.TeamsController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Admin.TimeTableController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="T4MVC\Home.HomeController.generated.cs">
+    <Compile Include="T4MVC\Admin.QuestionnairesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="T4MVC\Home.ManageController.generated.cs">
+    <Compile Include="T4MVC\Application.HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Application.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
@@ -425,8 +376,8 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <None Include="T4MVC\T4MVC.tt.hooks.t4" />
-    <Content Include="Areas\Account\Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Grid.cshtml" />
+    <Content Include="Views\Shared\_Menu.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -437,7 +388,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Account\Views\Image\" />
-    <Folder Include="Areas\Home\Models\" />
+    <Folder Include="Areas\Application\Models\" />
+    <Folder Include="Areas\Application\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\JanuszMarcinik.Mvc.Domain\JanuszMarcinik.Mvc.Domain.csproj">
@@ -467,9 +419,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56442</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/football</IISUrl>
+          <IISUrl>http://localhost/questionnaire</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/football</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost/questionnaire</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

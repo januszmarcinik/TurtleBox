@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
@@ -23,11 +22,13 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                     var displayAttribute = prop.CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(DisplayAttribute));
                     if (displayAttribute != null)
                     {
+                        var imagePathAttribute = prop.CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(ImagePathAttribute));
                         this.Properties.Add(new CustomPropertyInfo()
                         {
                             PropertyName = prop.Name,
                             DisplayName = displayAttribute.NamedArguments.First().TypedValue.Value.ToString(),
-                            Order = (int)dataSourceListAttribute.NamedArguments.First().TypedValue.Value
+                            Order = (int)dataSourceListAttribute.NamedArguments.First().TypedValue.Value,
+                            ImagePathProperty = (imagePathAttribute != null)
                         });
                     }
                 }
@@ -47,14 +48,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                         PrimaryKeyStringProperty = true
                     });
                 }
-                else if (prop.CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(ImagePathAttribute)) != null)
-                {
-                    this.Properties.Add(new CustomPropertyInfo()
-                    {
-                        PropertyName = prop.Name,
-                        ImagePathProperty = true
-                    });
-                }
             }
 
             if (this.Properties.Count() > 1)
@@ -62,8 +55,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                 this.Properties = this.Properties.OrderBy(x => x.Order).ToList();
             }
         }
-
-        public string IsImage = "ImageValue";
 
         public string Title { get; set; }
         public ActionResult AddAction { get; set; }
@@ -89,28 +80,25 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                     {
                         row.PrimaryKeyStringId = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
                     }
-                    else if (prop.ImagePathProperty)
-                    {
-                        row.ImagePath = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
-                    }
-                    else if (item.GetType().GetProperty(prop.PropertyName).PropertyType == typeof(HttpPostedFileBase))
-                    {
-                        row.Values.Add(this.IsImage);
-                    }
                     else if (item.GetType().GetProperty(prop.PropertyName).GetValue(item).GetType().BaseType == typeof(Enum))
                     {
                         var enumValue = (Enum)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
-                        row.Values.Add(GetEnumDescription(enumValue));
+                        row.Values.Add(new DataItemValue(GetEnumDescription(enumValue)));
+                    }
+                    else if (item.GetType().GetProperty(prop.PropertyName).GetValue(item).GetType() == typeof(Boolean))
+                    {
+                        var boolValue = (bool)item.GetType().GetProperty(prop.PropertyName).GetValue(item) ? "Tak" : "Nie";
+                        row.Values.Add(new DataItemValue(boolValue));
                     }
                     else
                     {
                         try
                         {
-                            row.Values.Add(item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString());
+                            row.Values.Add(new DataItemValue(item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString(), prop.ImagePathProperty));
                         }
                         catch
                         {
-                            row.Values.Add(string.Empty);
+                            row.Values.Add(new DataItemValue(string.Empty));
                         }
                     }
                 }
@@ -139,7 +127,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                 BackAction = this.BackAction,
                 Data = this.Data,
                 Properties = this.Properties,
-                IsImage = this.IsImage,
                 Title = this.Title
             };
         }

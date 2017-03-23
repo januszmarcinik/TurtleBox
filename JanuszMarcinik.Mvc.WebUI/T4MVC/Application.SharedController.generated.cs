@@ -23,7 +23,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace T4MVC.Account
+namespace T4MVC.Application
 {
     public class SharedController
     {
@@ -38,11 +38,7 @@ namespace T4MVC.Account
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Error = "Error";
-                public readonly string Lockout = "Lockout";
             }
-            public readonly string Error = "~/Areas/Account/Views/Shared/Error.cshtml";
-            public readonly string Lockout = "~/Areas/Account/Views/Shared/Lockout.cshtml";
         }
     }
 

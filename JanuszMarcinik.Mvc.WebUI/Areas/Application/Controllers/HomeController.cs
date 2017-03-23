@@ -4,14 +4,13 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
+namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
 {
-    [Authorize(Roles = "Moderator")]
-    public partial class ConfigurationController : Controller
+    public partial class HomeController : Controller
     {
         public virtual ActionResult Index()
         {
-            return View();
+            return View(MVC.Application.Home.Views.Index);
         }
     }
 }

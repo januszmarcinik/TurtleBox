@@ -1,0 +1,26 @@
+﻿using JanuszMarcinik.Mvc.Domain.Application.Base;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires
+{
+    [Table("Questionnaires", Schema = "Questionnaire")]
+    public class Questionnaire : IApplicationEntity
+    {
+        public Questionnaire()
+        {
+            this.Questions = new HashSet<Question>();
+            this.Results = new HashSet<Result>();
+        }
+
+        public long QuestionnaireId { get; set; }
+
+        public string Name { get; set; }
+        public int OrderNumber { get; set; }
+        public bool EditDisable { get; set; }
+        public bool Active { get; set; }
+
+        public virtual ICollection<Question> Questions { get; set; }
+        public virtual ICollection<Result> Results { get; set; }
+    }
+}
