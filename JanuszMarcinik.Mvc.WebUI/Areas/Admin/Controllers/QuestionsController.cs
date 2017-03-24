@@ -42,6 +42,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             var model = new QuestionViewModel();
             model.QuestionnaireId = questionnaireId;
+            model.OrderNumber = 0;
             return View(model);
         }
 

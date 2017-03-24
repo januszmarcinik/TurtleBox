@@ -1,5 +1,4 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires;
 using System.ComponentModel.DataAnnotations;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questions
@@ -8,6 +7,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questions
     {
         [PrimaryKey]
         public long QuestionId { get; set; }
+
+        public long QuestionnaireId { get; set; }
 
         [Required]
         [DataSourceList(Order = 1)]
@@ -18,8 +19,5 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questions
         [DataSourceList(Order = 2)]
         [Display(Name = "Treść")]
         public string Text { get; set; }
-
-        public long QuestionnaireId { get; set; }
-        public QuestionnaireViewModel Questionnaire { get; set; }
     }
 }
