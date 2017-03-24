@@ -247,6 +247,9 @@
     <Content Include="Areas\Admin\Views\Questionnaires\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Questionnaires\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Questionnaires\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Questions\Edit.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\bo_play_pattern.png" />
     <Content Include="Images\Leagues\bundesliga.png" />
@@ -312,8 +315,11 @@
     <Compile Include="Areas\Admin\AdminProfile.cs" />
     <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionnairesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Admin\Models\Questionnaires\QuestionnaireDataSource.cs" />
     <Compile Include="Areas\Admin\Models\Questionnaires\QuestionnaireViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Questions\QuestionDataSource.cs" />
+    <Compile Include="Areas\Admin\Models\Questions\QuestionViewModel.cs" />
     <Compile Include="Areas\Application\ApplicationProfile.cs" />
     <Compile Include="Areas\Application\ApplicationAreaRegistration.cs" />
     <Compile Include="Areas\Application\Controllers\HomeController.cs" />
@@ -350,6 +356,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="T4MVC\Admin.QuestionsController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC\Application.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

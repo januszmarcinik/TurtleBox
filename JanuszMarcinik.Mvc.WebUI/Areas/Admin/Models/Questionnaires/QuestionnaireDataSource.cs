@@ -16,7 +16,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires
             foreach (var row in this.Data)
             {
                 row.ListText = "Pytania";
-                row.ListAction = MVC.Admin.Questionnaires.List();
+                row.ListAction = MVC.Admin.Questions.List(row.PrimaryKeyId);
                 row.EditAction = MVC.Admin.Questionnaires.Edit(row.PrimaryKeyId);
                 row.DeleteAction = MVC.Admin.Questionnaires.Delete(row.PrimaryKeyId);
             }

@@ -1,0 +1,38 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questions;
+@model QuestionViewModel
+
+@{
+    ViewBag.Title = "Edycja pytania";
+}
+
+<h2 class="center-block">
+    <span class="label label-warning center-block">@ViewBag.Title</span>
+</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.QuestionnaireId)
+            @Html.HiddenFor(x => x.QuestionId)
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.OrderNumber)
+                    @form.FormGroup().TextBoxFor(x => x.Text)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.Questions.List(Model.QuestionnaireId))
+            </div>
+        }
+    }
+}
