@@ -12,7 +12,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Answers
 
         [Required]
         [DataSourceList(Order = 1)]
-        [Display(Name = "Numer")]
+        [Display(Name = "Kolejność")]
         public int OrderNumber { get; set; }
 
         [Required]

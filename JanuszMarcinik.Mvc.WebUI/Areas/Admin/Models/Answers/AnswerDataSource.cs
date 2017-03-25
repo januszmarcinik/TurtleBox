@@ -1,6 +1,7 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questions;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Answers
 {
@@ -13,7 +14,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Answers
 
         public override void SetActions()
         {
-            base.PrepareData(this.Answers);
+            base.PrepareData(this.Answers.OrderBy(x => x.OrderNumber));
 
             foreach (var row in this.Data)
             {

@@ -63,7 +63,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
         public List<CustomPropertyInfo> Properties { get; set; }
         public List<DataItem> Data { get; set; }
 
-        protected virtual void PrepareData(List<TModel> data)
+        protected virtual void PrepareData(IEnumerable<TModel> data)
         {
             this.Data = new List<DataItem>();
 
@@ -72,7 +72,11 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                 var row = new DataItem();
                 foreach (var prop in this.Properties)
                 {
-                    if (prop.PrimaryKeyProperty)
+                    if (item.GetType().GetProperty(prop.PropertyName).GetValue(item) == null)
+                    {
+                        row.Values.Add(new DataItemValue(string.Empty));
+                    }
+                    else if (prop.PrimaryKeyProperty)
                     {
                         row.PrimaryKeyId = (long)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
                     }

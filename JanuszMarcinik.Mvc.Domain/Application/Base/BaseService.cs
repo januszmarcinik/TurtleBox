@@ -4,10 +4,10 @@ using System.Linq;
 
 namespace JanuszMarcinik.Mvc.Domain.Application.Base
 {
-    public class BaseService<TModel> where TModel : class, IApplicationEntity, new()
+    public abstract class BaseService<TModel> where TModel : class, IApplicationEntity, new()
     {
         #region GetById()
-        public TModel GetById(long id)
+        public virtual TModel GetById(long id)
         {
             using (var context = new ApplicationDbContext())
             {
@@ -17,7 +17,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
         #endregion
 
         #region GetList
-        public List<TModel> GetList()
+        public virtual List<TModel> GetList()
         {
             using (var context = new ApplicationDbContext())
             {
@@ -27,7 +27,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
         #endregion
 
         #region Create()
-        public TModel Create(TModel entity)
+        public virtual TModel Create(TModel entity)
         {
             using (var context = new ApplicationDbContext())
             {
@@ -39,7 +39,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
         #endregion
 
         #region Update()
-        public void Update(TModel entity)
+        public virtual void Update(TModel entity)
         {
             using (var context = new ApplicationDbContext())
             {
@@ -50,7 +50,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
         #endregion
 
         #region Delete()
-        public void Delete(long id)
+        public virtual void Delete(long id)
         {
             using (var context = new ApplicationDbContext())
             {

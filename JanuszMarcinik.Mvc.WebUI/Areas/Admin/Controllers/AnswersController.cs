@@ -57,7 +57,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                     QuestionId = model.QuestionId,
                     OrderNumber = model.OrderNumber,
                     Text = model.Text,
-                    Description = model.Text,
+                    Description = model.Description,
                     Value = model.Value
                 };
 
@@ -85,7 +85,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var answer = _answerService.GetById(model.QuestionId);
+                var answer = _answerService.GetById(model.AnswerId);
                 answer.OrderNumber = model.OrderNumber;
                 answer.Text = model.Text;
                 answer.Description = model.Description;
