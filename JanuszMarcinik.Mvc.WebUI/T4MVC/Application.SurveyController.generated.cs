@@ -82,6 +82,14 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         }
 
 
+        static readonly ActionParamsClass_FillSurvey s_params_FillSurvey = new ActionParamsClass_FillSurvey();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_FillSurvey FillSurveyParams { get { return s_params_FillSurvey; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_FillSurvey
+        {
+            public readonly string model = "model";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -111,6 +119,18 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FillSurvey);
             FillSurveyOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void FillSurveyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.SurveyViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult FillSurvey(JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.SurveyViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FillSurvey);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            FillSurveyOverride(callInfo, model);
             return callInfo;
         }
 

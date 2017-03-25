@@ -1,5 +1,4 @@
-﻿using JanuszMarcinik.Mvc.Domain.Application.Entities.Dictionaries;
-using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
+﻿using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -9,39 +8,46 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
 {
     public class SurveyViewModel
     {
-        public SurveyViewModel(List<BaseDictionary> dictionary, List<Questionnaire> questionnaires)
-        {
-            this.Interviewee = new IntervieweeViewModel(dictionary);
-            this.Questionnaires = new List<QuestionnaireViewModel>();
+        public IntervieweeViewModel Interviewee { get; set; }
+        public QuestionnaireViewModel Questionnaire { get; set; }
+        public int QuestionnairesCount { get; set; }
 
-            foreach (var questionnaire in questionnaires.OrderBy(x => x.OrderNumber))
+        public List<long> SelectedValues { get; set; }
+
+        public void SetQuestionnaire(Questionnaire questionnaire, List<long> selectedAnswers = null)
+        {
+            this.Questionnaire = new QuestionnaireViewModel()
             {
-                var questionnaireViewModel = new QuestionnaireViewModel()
+                Name = questionnaire.Name,
+                OrderNumber = questionnaire.OrderNumber,
+                QuestionnaireId = questionnaire.QuestionnaireId,
+                Questions = new List<QuestionViewModel>()
+            };
+
+            foreach (var question in questionnaire.Questions.OrderBy(x => x.OrderNumber))
+            {
+                var questionViewModel = new QuestionViewModel()
                 {
-                    Name = questionnaire.Name,
-                    OrderNumber = questionnaire.OrderNumber,
-                    QuestionnaireId = questionnaire.QuestionnaireId,
-                    Questions = new List<QuestionViewModel>()
+                    QuestionId = question.QuestionId,
+                    OrderNumber = question.OrderNumber,
+                    Text = question.Text,
+                    Answers = new List<DescriptionedSelectListItem>()
                 };
 
-                foreach (var question in questionnaire.Questions.OrderBy(x => x.OrderNumber))
+                foreach (var answer in question.Answers.OrderBy(x => x.OrderNumber))
                 {
-                    questionnaireViewModel.Questions.Add(new QuestionViewModel()
+                    questionViewModel.Answers.Add(new DescriptionedSelectListItem()
                     {
-                        QuestionId = question.QuestionId,
-                        OrderNumber = question.OrderNumber,
-                        Text = question.Text,
-                        Answers = question.Answers.OrderBy(x => x.OrderNumber)
-                            .Select(x => new SelectListItem() { Text = x.Text, Value = x.AnswerId.ToString() })
+                        Text = answer.Text,
+                        Value = answer.AnswerId.ToString(),
+                        Selected = selectedAnswers != null ? selectedAnswers.Any(x => x == answer.AnswerId) : false,
+                        Description = answer.Description
                     });
                 }
 
-                this.Questionnaires.Add(questionnaireViewModel);
+                this.Questionnaire.Questions.Add(questionViewModel);
             }
         }
-
-        public IntervieweeViewModel Interviewee { get; set; }
-        public List<QuestionnaireViewModel> Questionnaires { get; set; }
     }
 
     public class QuestionnaireViewModel
@@ -60,6 +66,11 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
 
         [Required]
         public long AnswerId { get; set; }
-        public IEnumerable<SelectListItem> Answers { get; set; }
+        public List<DescriptionedSelectListItem> Answers { get; set; }
+    }
+
+    public class DescriptionedSelectListItem : SelectListItem
+    {
+        public string Description { get; set; }
     }
 }

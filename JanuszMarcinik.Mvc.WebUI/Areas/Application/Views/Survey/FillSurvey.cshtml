@@ -7,8 +7,14 @@
 @using (var form = Html.Bootstrap().Begin(new Form()))
 {
     @Html.AntiForgeryToken()
-    @Html.ValidationSummary()
+
     @Html.HiddenFor(x => x.Interviewee.IntervieweeId)
+    @Html.HiddenFor(x => x.Questionnaire.Name)
+    @Html.HiddenFor(x => x.Questionnaire.QuestionnaireId)
+    @Html.HiddenFor(x => x.Questionnaire.OrderNumber)
+    @Html.HiddenFor(x => x.QuestionnairesCount)
+
+    <br />
 
     using (var panel = Html.Bootstrap().Begin(new Panel().Style(TwitterBootstrapMVC.Infrastructure.Enums.PanelStyle.Primary)))
     {
@@ -28,46 +34,77 @@
         }
     }
 
-    using (var tabs = Html.Bootstrap().Begin(new Tabs("tab").Style(NavType.Pills).Justified()))
+    @Html.Bootstrap().ValidationSummary()
+
+    using (var panel = Html.Bootstrap().Begin(new Panel().Style(TwitterBootstrapMVC.Infrastructure.Enums.PanelStyle.Primary)))
     {
-        for (int questionnaireIndex = 0; questionnaireIndex < Model.Questionnaires.Count(); questionnaireIndex++)
-        {
-            @tabs.Tab(Model.Questionnaires[questionnaireIndex].Name).Data(new { tabNum = questionnaireIndex })
-        }
+        @panel.Heading(string.Format("{0}. {1}", Model.Questionnaire.OrderNumber, Model.Questionnaire.Name))
 
-        <br />
-
-        for (int questionnaireIndex = 0; questionnaireIndex < Model.Questionnaires.Count(); questionnaireIndex++)
+        using (panel.BeginBody())
         {
-            using (tabs.BeginPanel())
+            for (int questionIndex = 0; questionIndex < Model.Questionnaire.Questions.Count(); questionIndex++)
             {
-                using (var panel = Html.Bootstrap().Begin(new Panel()))
+                <p><strong>@string.Format("{0}. {1}", questionIndex + 1, Model.Questionnaire.Questions[questionIndex].Text)</strong></p>
+
+                @Html.HiddenFor(x => x.Questionnaire.Questions[questionIndex].QuestionId)
+                @Html.HiddenFor(x => x.Questionnaire.Questions[questionIndex].Text)
+
+                @(Html.Bootstrap()
+                        .RadioButtonListFor(m => m.Questionnaire.Questions[questionIndex].AnswerId,
+                            m => m.Questionnaire.Questions[questionIndex].Answers,
+                            answer => answer.Value, answer => answer.Text).AsButtonGroup(ButtonStyle.Default).ContainerClass("btn-group-justified"))
+
+                var answersCount = Model.Questionnaire.Questions[questionIndex].Answers.Count();
+                var widthPercentage = (int)(100 / answersCount) - 1;
+
+                for (int i = 0; i < Model.Questionnaire.Questions[questionIndex].Answers.Count(); i++)
                 {
-                    using (panel.BeginBody())
+                    if (i % 2 == 0)
                     {
-                        for (int questionIndex = 0; questionIndex < Model.Questionnaires[questionnaireIndex].Questions.Count(); questionIndex++)
-                        {
-                            <div id="question-box-@questionIndex">
-                                <p><strong>@string.Format("{0}. {1}", questionIndex + 1, Model.Questionnaires[questionnaireIndex].Questions[questionIndex].Text)</strong></p>
-
-                                @Html.HiddenFor(x => x.Questionnaires[questionnaireIndex].Questions[questionIndex].QuestionId)
-                                @Html.HiddenFor(x => x.Questionnaires[questionnaireIndex].Questions[questionIndex].Text)
-
-                                @(Html.Bootstrap()
-                                    .RadioButtonListFor(m => m.Questionnaires[questionnaireIndex].Questions[questionIndex].AnswerId,
-                                        m => m.Questionnaires[questionnaireIndex].Questions[questionIndex].Answers,
-                                        answer => answer.Value, answer => answer.Text).AsButtonGroup(ButtonStyle.Default))
-                                <br /><br />
-                            </div>
-                        }
+                        <label class="text-center" style="width: @(widthPercentage + 1)%; font-weight: normal;">
+                            @Model.Questionnaire.Questions[questionIndex].Answers[i].Description
+                        </label>
                     }
-
-                    using (panel.BeginFooter())
+                    else
                     {
-                        @Html.Bootstrap().SubmitSaveButton().Text("Zapisz wyniki")
+                        <label class="text-center" style="width: @widthPercentage%; font-weight: normal;">
+                            @Model.Questionnaire.Questions[questionIndex].Answers[i].Description
+                        </label>
                     }
                 }
+                <br /><br />
+            }
+        }
+
+        using (panel.BeginFooter())
+        {
+            if (Model.Questionnaire.OrderNumber < Model.QuestionnairesCount)
+            {
+                @Html.Bootstrap().SubmitButton().Text("Przejdź do następnej ankiety").PrependIcon(FontAwesome.arrow_right).Style(ButtonStyle.Primary)
+            }
+            else
+            {
+                @Html.Bootstrap().SubmitButton().Text("Zapisz wyniki").PrependIcon(FontAwesome.save).Style(ButtonStyle.Success)
             }
         }
     }
 }
+
+<script type="text/javascript">
+
+    $(document).ready(function ()
+    {
+        var selectedValues = [];
+
+        @foreach (var d in Model.SelectedValues)
+        {
+            @:selectedValues.push("@d");
+        }
+
+        for (i = 0; i < selectedValues.length; i++)
+        {
+            $("input[value='" + selectedValues[i] + "']").parent().addClass("active");
+        }
+    })
+
+</script>

@@ -255,10 +255,8 @@
     <Content Include="Areas\Admin\Views\Answers\Edit.cshtml" />
     <Content Include="Areas\Application\Views\Survey\FillSurvey.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Images\bo_play_pattern.png" />
-    <Content Include="Images\Leagues\bundesliga.png" />
-    <Content Include="Images\Leagues\darmstadt.png" />
-    <Content Include="Images\Teams\Bundesliga\borussia-dortmund.png" />
+    <Content Include="Images\ep_naturalwhite.png" />
+    <Content Include="Images\pink_dust.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
