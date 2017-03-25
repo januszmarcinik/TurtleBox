@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
 {
@@ -10,7 +6,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
     {
         public virtual ActionResult Index()
         {
-            return View(MVC.Application.Home.Views.Index);
+            return RedirectToAction(MVC.Application.Survey.FillSurvey());
         }
     }
 }

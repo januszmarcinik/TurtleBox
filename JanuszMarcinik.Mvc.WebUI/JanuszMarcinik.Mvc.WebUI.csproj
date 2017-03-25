@@ -253,6 +253,7 @@
     <Content Include="Areas\Admin\Views\Answers\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Answers\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Answers\Edit.cshtml" />
+    <Content Include="Areas\Application\Views\Survey\FillSurvey.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\bo_play_pattern.png" />
     <Content Include="Images\Leagues\bundesliga.png" />
@@ -329,6 +330,9 @@
     <Compile Include="Areas\Application\ApplicationProfile.cs" />
     <Compile Include="Areas\Application\ApplicationAreaRegistration.cs" />
     <Compile Include="Areas\Application\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Application\Controllers\SurveyController.cs" />
+    <Compile Include="Areas\Application\Models\Survey\IntervieweeViewModel.cs" />
+    <Compile Include="Areas\Application\Models\Survey\SurveyViewModel.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -374,6 +378,9 @@
     <Compile Include="T4MVC\Application.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="T4MVC\Application.SurveyController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -406,7 +413,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Account\Views\Image\" />
-    <Folder Include="Areas\Application\Models\" />
     <Folder Include="Areas\Application\Views\Shared\" />
   </ItemGroup>
   <ItemGroup>

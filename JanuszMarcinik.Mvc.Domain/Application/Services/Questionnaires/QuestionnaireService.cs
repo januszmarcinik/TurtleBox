@@ -1,5 +1,7 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Base;
 using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 
 namespace JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires
@@ -17,6 +19,18 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires
                 context.SaveChanges();
 
                 return questionnaire;
+            }
+        }
+        #endregion
+
+        #region GetFullModel()
+        public List<Questionnaire> GetFullModel()
+        {
+            using (var context = new ApplicationDbContext())
+            {
+                return context.Questionnaires.Where(x => x.Active)
+                    .Include(q => q.Questions.Select(a => a.Answers))
+                    .ToList();
             }
         }
         #endregion

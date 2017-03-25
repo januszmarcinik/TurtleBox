@@ -1,0 +1,73 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.SurveyViewModel
+
+@{
+    ViewBag.Title = "Ankieta";
+}
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+    @Html.HiddenFor(x => x.Interviewee.IntervieweeId)
+
+    using (var panel = Html.Bootstrap().Begin(new Panel().Style(TwitterBootstrapMVC.Infrastructure.Enums.PanelStyle.Primary)))
+    {
+        @panel.Heading("Informacje podstawowe")
+
+        using (panel.BeginBody())
+        {
+            <div class="col-sm-4">
+                @form.FormGroup().DropDownListFor(x => x.Interviewee.SexId, Model.Interviewee.Sexes).OptionLabel("Wybierz")
+            </div>
+            <div class="col-sm-4">
+                @form.FormGroup().DropDownListFor(x => x.Interviewee.SeniorityId, Model.Interviewee.Seniorities).OptionLabel("Wybierz")
+            </div>
+            <div class="col-sm-4">
+                @form.FormGroup().DropDownListFor(x => x.Interviewee.PlaceOfResidenceId, Model.Interviewee.PlacesOfResidence).OptionLabel("Wybierz")
+            </div>
+        }
+    }
+
+    using (var tabs = Html.Bootstrap().Begin(new Tabs("tab").Style(NavType.Pills).Justified()))
+    {
+        for (int questionnaireIndex = 0; questionnaireIndex < Model.Questionnaires.Count(); questionnaireIndex++)
+        {
+            @tabs.Tab(Model.Questionnaires[questionnaireIndex].Name).Data(new { tabNum = questionnaireIndex })
+        }
+
+        <br />
+
+        for (int questionnaireIndex = 0; questionnaireIndex < Model.Questionnaires.Count(); questionnaireIndex++)
+        {
+            using (tabs.BeginPanel())
+            {
+                using (var panel = Html.Bootstrap().Begin(new Panel()))
+                {
+                    using (panel.BeginBody())
+                    {
+                        for (int questionIndex = 0; questionIndex < Model.Questionnaires[questionnaireIndex].Questions.Count(); questionIndex++)
+                        {
+                            <div id="question-box-@questionIndex">
+                                <p><strong>@string.Format("{0}. {1}", questionIndex + 1, Model.Questionnaires[questionnaireIndex].Questions[questionIndex].Text)</strong></p>
+
+                                @Html.HiddenFor(x => x.Questionnaires[questionnaireIndex].Questions[questionIndex].QuestionId)
+                                @Html.HiddenFor(x => x.Questionnaires[questionnaireIndex].Questions[questionIndex].Text)
+
+                                @(Html.Bootstrap()
+                                    .RadioButtonListFor(m => m.Questionnaires[questionnaireIndex].Questions[questionIndex].AnswerId,
+                                        m => m.Questionnaires[questionnaireIndex].Questions[questionIndex].Answers,
+                                        answer => answer.Value, answer => answer.Text).AsButtonGroup(ButtonStyle.Default))
+                                <br /><br />
+                            </div>
+                        }
+                    }
+
+                    using (panel.BeginFooter())
+                    {
+                        @Html.Bootstrap().SubmitSaveButton().Text("Zapisz wyniki")
+                    }
+                }
+            }
+        }
+    }
+}

@@ -63,6 +63,7 @@ namespace T4MVC
     {
         public readonly string Name = "Application";
         public JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.HomeController Home = new JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.T4MVC_HomeController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.SurveyController Survey = new JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.T4MVC_SurveyController();
         public T4MVC.Application.SharedController Shared = new T4MVC.Application.SharedController();
     }
 }

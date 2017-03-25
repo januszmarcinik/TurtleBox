@@ -11,14 +11,14 @@
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
+        <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.Bootstrap().ActionLink("Strona główna", MVC.Application.Home.Index()).Class("navbar-brand")
+                @Html.Bootstrap().ActionLink("Ankieta", MVC.Application.Home.Index()).Class("navbar-brand")
             </div>
             <div class="navbar-collapse collapse">
                 @Html.Partial(MVC.Shared.Views._Menu)
