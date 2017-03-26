@@ -254,6 +254,9 @@
     <Content Include="Areas\Admin\Views\Answers\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Answers\Edit.cshtml" />
     <Content Include="Areas\Application\Views\Survey\FillSurvey.cshtml" />
+    <Content Include="Areas\Admin\Views\Dictionaries\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Dictionaries\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Dictionaries\Edit.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\ep_naturalwhite.png" />
     <Content Include="Images\pink_dust.png" />
@@ -317,10 +320,13 @@
     <Compile Include="Areas\Admin\AdminProfile.cs" />
     <Compile Include="Areas\Admin\Controllers\AnswersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
+    <Compile Include="Areas\Admin\Controllers\DictionariesController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionnairesController.cs" />
     <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
     <Compile Include="Areas\Admin\Models\Answers\AnswerDataSource.cs" />
     <Compile Include="Areas\Admin\Models\Answers\AnswerViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Dictionaries\DictionaryDataSource.cs" />
+    <Compile Include="Areas\Admin\Models\Dictionaries\DictionaryViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Questionnaires\QuestionnaireDataSource.cs" />
     <Compile Include="Areas\Admin\Models\Questionnaires\QuestionnaireViewModel.cs" />
     <Compile Include="Areas\Admin\Models\Questions\QuestionDataSource.cs" />
@@ -361,6 +367,9 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Admin.ConfigurationController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC\Admin.DictionariesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Admin.QuestionnairesController.generated.cs">

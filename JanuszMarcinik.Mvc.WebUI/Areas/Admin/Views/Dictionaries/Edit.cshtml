@@ -1,0 +1,37 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Dictionaries;
+@model DictionaryViewModel
+
+@{
+    ViewBag.Title = "Edycja słownika";
+}
+
+<h2 class="center-block">
+    <span class="label label-warning center-block">@ViewBag.Title</span>
+</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.BaseDictionaryId)
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().DropDownListFromEnumFor(x => x.DictionaryType).OptionLabel("Wybierz")
+                    @form.FormGroup().TextBoxFor(x => x.Value)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.Dictionaries.List())
+            </div>
+        }
+    }
+}

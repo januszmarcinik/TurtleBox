@@ -9,6 +9,7 @@
 <div class="list-group">
     @if (User.IsInRole("Moderator"))
     {
-        @Html.Bootstrap().ListGroupItem("Konfiguracja ankiet, pytań i odpowiedzi", MVC.Admin.Questionnaires.List()).PrependIcon(FontAwesome.clipboard)
+        @Html.Bootstrap().ListGroupItem("Ankiety, pytania i odpowiedzi", MVC.Admin.Questionnaires.List()).PrependIcon(FontAwesome.clipboard)
+        @Html.Bootstrap().ListGroupItem("Słowniki", MVC.Admin.Dictionaries.List()).PrependIcon(FontAwesome.th_list)
     }
 </div>

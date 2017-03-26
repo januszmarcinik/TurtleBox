@@ -54,25 +54,15 @@
                             m => m.Questionnaire.Questions[questionIndex].Answers,
                             answer => answer.Value, answer => answer.Text).AsButtonGroup(ButtonStyle.Default).ContainerClass("btn-group-justified"))
 
-                var answersCount = Model.Questionnaire.Questions[questionIndex].Answers.Count();
-                var widthPercentage = (int)(100 / answersCount) - 1;
-
-                for (int i = 0; i < Model.Questionnaire.Questions[questionIndex].Answers.Count(); i++)
-                {
-                    if (i % 2 == 0)
-                    {
-                        <label class="text-center" style="width: @(widthPercentage + 1)%; font-weight: normal;">
-                            @Model.Questionnaire.Questions[questionIndex].Answers[i].Description
-                        </label>
-                    }
-                    else
-                    {
-                        <label class="text-center" style="width: @widthPercentage%; font-weight: normal;">
-                            @Model.Questionnaire.Questions[questionIndex].Answers[i].Description
-                        </label>
-                    }
-                }
-                <br /><br />
+                <table class="table text-center" style="table-layout: fixed; border: none;">
+                    <tr>
+                        @foreach (var item in Model.Questionnaire.Questions[questionIndex].Answers)
+                        {
+                            <td>@item.Description</td>
+                        }
+                    </tr>
+                </table>
+              
             }
         }
 
@@ -80,7 +70,7 @@
         {
             if (Model.Questionnaire.OrderNumber < Model.QuestionnairesCount)
             {
-                @Html.Bootstrap().SubmitButton().Text("Przejdź do następnej ankiety").PrependIcon(FontAwesome.arrow_right).Style(ButtonStyle.Primary)
+                @Html.Bootstrap().SubmitButton().Text("Dalej").PrependIcon(FontAwesome.arrow_right).Style(ButtonStyle.Primary)
             }
             else
             {

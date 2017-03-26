@@ -43,18 +43,5 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires
             }
         }
         #endregion
-
-
-        //#region GetFullModel()
-        //public List<Questionnaire> GetFullModel()
-        //{
-        //    using (var context = new ApplicationDbContext())
-        //    {
-        //        return context.Questionnaires.Where(x => x.Active)
-        //            .Include(q => q.Questions.Select(a => a.Answers))
-        //            .ToList();
-        //    }
-        //}
-        //#endregion
     }
 }
