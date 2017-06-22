@@ -1,7 +1,7 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
-using JanuszMarcinik.Mvc.Domain.Application.Services.Dictionaries;
-using JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires;
+using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
 using JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -10,82 +10,118 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
 {
     public partial class SurveyController : Controller
     {
-        #region SurveyController
-        private QuestionnaireService _questionnaireService;
-        private BaseDictionaryService _baseDictionaryService;
+        private const string _intervieweeSessionKey = "IntervieweeSessionKey";
+        private const string _resultsSessionKey = "ResultsSessionKey";
 
-        public SurveyController(QuestionnaireService questionnaireService, BaseDictionaryService baseDictionaryService)
+        #region SurveyController
+        private IQuestionnairesRepository _questionnairesRepository;
+        private IIntervieweesRepository _intervieweesRepository;
+        private IDictionariesRepository _dictionariesRepository;
+        private IResultsRepository _resultsRepository;
+
+        public SurveyController(IQuestionnairesRepository questionnairesRepository, IDictionariesRepository dictionariesRepository,
+            IIntervieweesRepository intervieweesRepository, IResultsRepository resultsRepository)
         {
-            this._questionnaireService = questionnaireService;
-            this._baseDictionaryService = baseDictionaryService;
+            this._dictionariesRepository = dictionariesRepository;
+            this._questionnairesRepository = questionnairesRepository;
+            this._intervieweesRepository = intervieweesRepository;
+            this._resultsRepository = resultsRepository;
         }
         #endregion
 
-        #region FillSurvey()
-        public virtual ActionResult FillSurvey()
+        #region IntervieweeInfo()
+        public virtual ActionResult IntervieweeInfo()
         {
-            var listQuestionnaires = new List<QuestionnaireViewModel>();
-            Session["listQuestionnaires"] = listQuestionnaires;
-
-            var actualQuestionnaire = _questionnaireService.GetFullModel(1);
-            Session["actualQuestionnaire"] = actualQuestionnaire;
-
-            var questionnaires = _questionnaireService.GetOnlyActives();
-
-            var model = new SurveyViewModel();
-            model.QuestionnairesCount = questionnaires.Count();
-            model.SetQuestionnaire(actualQuestionnaire);
-
-            model.Interviewee = new IntervieweeViewModel();
-            model.Interviewee.SetDictionaries(_baseDictionaryService.GetList());
-
-            model.SelectedValues = new List<long>();
+            var model = new IntervieweeViewModel();
+            model.SetDictionaries(_dictionariesRepository.GetList());
 
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult FillSurvey(SurveyViewModel model)
+        public virtual ActionResult IntervieweeInfo(IntervieweeViewModel model)
         {
-            if (model.Questionnaire.Questions.All(x => x.AnswerId > 0) && ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                var listQuestionnaires = (List<QuestionnaireViewModel>)Session["listQuestionnaires"];
-                listQuestionnaires.Add(model.Questionnaire);
-
-                if (model.Questionnaire.OrderNumber == model.QuestionnairesCount)
+                var interviewee = new Interviewee()
                 {
-                    // koniec
+                    InterviewDate = DateTime.Now,
+                    PlaceOfResidenceId = model.PlaceOfResidenceId,
+                    SeniorityId = model.SeniorityId,
+                    SexId = model.SexId,
+                };
+
+                Session[_intervieweeSessionKey] = interviewee;
+                Session[_resultsSessionKey] = new List<Result>();
+
+                return RedirectToAction(MVC.Application.Survey.FillSurvey(1));
+            }
+
+            model.SetDictionaries(_dictionariesRepository.GetList());
+
+            return View(model);
+        }
+        #endregion
+
+        #region FillSurvey()
+        public virtual ActionResult FillSurvey(int questionaireNumber)
+        {
+            var model = new QuestionnaireViewModel();
+            model.SetQuestionnaire(_questionnairesRepository.GetFullModel(questionaireNumber));
+            model.SelectedValues = new List<long>();
+            model.QuestionnairesCount = _questionnairesRepository.GetOnlyActives().Count();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult FillSurvey(QuestionnaireViewModel model)
+        {
+            if (model.Questions.All(x => x.AnswerId > 0))
+            {
+                var results = (List<Result>)Session[_resultsSessionKey];
+
+                foreach (var question in model.Questions)
+                {
+                    results.Add(new Result()
+                    {
+                        QuestionnaireId = model.QuestionnaireId,
+                        QuestionId = question.QuestionId,
+                        AnswerId = question.AnswerId
+                    });
+                }
+
+                Session[_resultsSessionKey] = results;
+
+                if (model.OrderNumber == model.QuestionnairesCount)
+                {
+                    var interviewee = (Interviewee)Session[_intervieweeSessionKey];
+                    _intervieweesRepository.Create(interviewee);
+
+                    _resultsRepository.CreateMany(results, interviewee.IntervieweeId);
+
+                    return View(MVC.Application.Survey.Views.ThankYou);
                 }
                 else
                 {
-                    Session["listQuestionnaires"] = listQuestionnaires;
-
-                    var actualQuestionnaire = _questionnaireService.GetFullModel(model.Questionnaire.OrderNumber + 1);
-                    Session["actualQuestionnaire"] = actualQuestionnaire;
-                    model.SetQuestionnaire(actualQuestionnaire);
-
-                    model.SelectedValues = new List<long>();
+                    return RedirectToAction(MVC.Application.Survey.FillSurvey(model.OrderNumber + 1));
                 }
             }
             else
             {
-                if (model.Questionnaire.Questions.Any(x => x.AnswerId == 0))
+                if (model.Questions.Any(x => x.AnswerId == 0))
                 {
                     ModelState.AddModelError("", "Należy odpowiedzieć na wszystkie pytnia");
                 }
 
-                var selectedAnswers = model.Questionnaire.Questions.Where(x => x.AnswerId > 0).Select(x => x.AnswerId).ToList();
-
-                var actualQuestionnaire = (Questionnaire)Session["actualQuestionnaire"];
-                model.SetQuestionnaire(actualQuestionnaire, selectedAnswers);
-
+                var selectedAnswers = model.Questions.Where(x => x.AnswerId > 0).Select(x => x.AnswerId).ToList();
+                model.SetQuestionnaire(_questionnairesRepository.GetFullModel(model.OrderNumber));
                 model.SelectedValues = selectedAnswers;
+
+                return View(model);
             }
-
-            model.Interviewee.SetDictionaries(_baseDictionaryService.GetList());
-
-            return View(model);
         }
         #endregion
     }

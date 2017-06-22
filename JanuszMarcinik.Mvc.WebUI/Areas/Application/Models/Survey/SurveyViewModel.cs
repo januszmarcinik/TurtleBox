@@ -6,23 +6,22 @@ using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
 {
-    public class SurveyViewModel
+    public class QuestionnaireViewModel
     {
-        public IntervieweeViewModel Interviewee { get; set; }
-        public QuestionnaireViewModel Questionnaire { get; set; }
+        public long QuestionnaireId { get; set; }
+        public string Name { get; set; }
+        public int OrderNumber { get; set; }
+        public List<QuestionViewModel> Questions { get; set; }
         public int QuestionnairesCount { get; set; }
 
         public List<long> SelectedValues { get; set; }
 
         public void SetQuestionnaire(Questionnaire questionnaire, List<long> selectedAnswers = null)
         {
-            this.Questionnaire = new QuestionnaireViewModel()
-            {
-                Name = questionnaire.Name,
-                OrderNumber = questionnaire.OrderNumber,
-                QuestionnaireId = questionnaire.QuestionnaireId,
-                Questions = new List<QuestionViewModel>()
-            };
+            this.Name = questionnaire.Name;
+            this.OrderNumber = questionnaire.OrderNumber;
+            this.QuestionnaireId = questionnaire.QuestionnaireId;
+            this.Questions = new List<QuestionViewModel>();
 
             foreach (var question in questionnaire.Questions.OrderBy(x => x.OrderNumber))
             {
@@ -45,17 +44,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
                     });
                 }
 
-                this.Questionnaire.Questions.Add(questionViewModel);
+                this.Questions.Add(questionViewModel);
             }
         }
-    }
-
-    public class QuestionnaireViewModel
-    {
-        public long QuestionnaireId { get; set; }
-        public string Name { get; set; }
-        public int OrderNumber { get; set; }
-        public List<QuestionViewModel> Questions { get; set; }
     }
 
     public class QuestionViewModel

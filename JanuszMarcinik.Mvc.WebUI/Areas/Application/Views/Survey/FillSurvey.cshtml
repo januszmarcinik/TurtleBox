@@ -1,4 +1,4 @@
-﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.SurveyViewModel
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.QuestionnaireViewModel
 
 @{
     ViewBag.Title = "Ankieta";
@@ -8,55 +8,36 @@
 {
     @Html.AntiForgeryToken()
 
-    @Html.HiddenFor(x => x.Interviewee.IntervieweeId)
-    @Html.HiddenFor(x => x.Questionnaire.Name)
-    @Html.HiddenFor(x => x.Questionnaire.QuestionnaireId)
-    @Html.HiddenFor(x => x.Questionnaire.OrderNumber)
+    @Html.HiddenFor(x => x.Name)
+    @Html.HiddenFor(x => x.QuestionnaireId)
+    @Html.HiddenFor(x => x.OrderNumber)
     @Html.HiddenFor(x => x.QuestionnairesCount)
 
     <br />
-
-    using (var panel = Html.Bootstrap().Begin(new Panel().Style(TwitterBootstrapMVC.Infrastructure.Enums.PanelStyle.Primary)))
-    {
-        @panel.Heading("Informacje podstawowe")
-
-        using (panel.BeginBody())
-        {
-            <div class="col-sm-4">
-                @form.FormGroup().DropDownListFor(x => x.Interviewee.SexId, Model.Interviewee.Sexes).OptionLabel("Wybierz")
-            </div>
-            <div class="col-sm-4">
-                @form.FormGroup().DropDownListFor(x => x.Interviewee.SeniorityId, Model.Interviewee.Seniorities).OptionLabel("Wybierz")
-            </div>
-            <div class="col-sm-4">
-                @form.FormGroup().DropDownListFor(x => x.Interviewee.PlaceOfResidenceId, Model.Interviewee.PlacesOfResidence).OptionLabel("Wybierz")
-            </div>
-        }
-    }
 
     @Html.Bootstrap().ValidationSummary()
 
     using (var panel = Html.Bootstrap().Begin(new Panel().Style(TwitterBootstrapMVC.Infrastructure.Enums.PanelStyle.Primary)))
     {
-        @panel.Heading(string.Format("{0}. {1}", Model.Questionnaire.OrderNumber, Model.Questionnaire.Name))
+        @panel.Heading(string.Format("{0}. {1}", Model.OrderNumber, Model.Name))
 
         using (panel.BeginBody())
         {
-            for (int questionIndex = 0; questionIndex < Model.Questionnaire.Questions.Count(); questionIndex++)
+            for (int questionIndex = 0; questionIndex < Model.Questions.Count(); questionIndex++)
             {
-                <p><strong>@string.Format("{0}. {1}", questionIndex + 1, Model.Questionnaire.Questions[questionIndex].Text)</strong></p>
+                <p><strong>@string.Format("{0}. {1}", questionIndex + 1, Model.Questions[questionIndex].Text)</strong></p>
 
-                @Html.HiddenFor(x => x.Questionnaire.Questions[questionIndex].QuestionId)
-                @Html.HiddenFor(x => x.Questionnaire.Questions[questionIndex].Text)
+                @Html.HiddenFor(x => x.Questions[questionIndex].QuestionId)
+                @Html.HiddenFor(x => x.Questions[questionIndex].Text)
 
                 @(Html.Bootstrap()
-                        .RadioButtonListFor(m => m.Questionnaire.Questions[questionIndex].AnswerId,
-                            m => m.Questionnaire.Questions[questionIndex].Answers,
+                        .RadioButtonListFor(m => m.Questions[questionIndex].AnswerId,
+                            m => m.Questions[questionIndex].Answers,
                             answer => answer.Value, answer => answer.Text).AsButtonGroup(ButtonStyle.Default).ContainerClass("btn-group-justified"))
 
                 <table class="table text-center" style="table-layout: fixed; border: none;">
                     <tr>
-                        @foreach (var item in Model.Questionnaire.Questions[questionIndex].Answers)
+                        @foreach (var item in Model.Questions[questionIndex].Answers)
                         {
                             <td>@item.Description</td>
                         }
@@ -68,7 +49,7 @@
 
         using (panel.BeginFooter())
         {
-            if (Model.Questionnaire.OrderNumber < Model.QuestionnairesCount)
+            if (Model.OrderNumber < Model.QuestionnairesCount)
             {
                 @Html.Bootstrap().SubmitButton().Text("Dalej").PrependIcon(FontAwesome.arrow_right).Style(ButtonStyle.Primary)
             }

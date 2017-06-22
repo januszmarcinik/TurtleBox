@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
-using JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires;
+using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Answers;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questions;
 using System.Collections.Generic;
@@ -12,21 +12,21 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
     public partial class AnswersController : Controller
     {
         #region AnswersController
-        private QuestionService _questionService;
-        private AnswerService _answerService;
+        private IQuestionsRepository _questionsRepository;
+        private IAnswersRepository _answersRepository;
 
-        public AnswersController(QuestionService questionService, AnswerService answerService)
+        public AnswersController(IQuestionsRepository questionsRepository, IAnswersRepository answersRepository)
         {
-            _questionService = questionService;
-            _answerService = answerService;
+            this._answersRepository = answersRepository;
+            this._questionsRepository = questionsRepository;
         }
         #endregion
 
         #region List()
         public virtual ActionResult List(long questionId)
         {
-            var question = _questionService.GetById(questionId);
-            var answers = _answerService.GetList(questionId);
+            var question = _questionsRepository.GetById(questionId);
+            var answers = _answersRepository.GetList(questionId);
 
             var model = new AnswerDataSource();
             model.Question = Mapper.Map<QuestionViewModel>(question);
@@ -61,7 +61,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                     Value = model.Value
                 };
 
-                _answerService.Create(answer);
+                _answersRepository.Create(answer);
 
                 return RedirectToAction(MVC.Admin.Answers.List(model.QuestionId));
             }
@@ -73,7 +73,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #region Edit
         public virtual ActionResult Edit(long id)
         {
-            var answer = _answerService.GetById(id);
+            var answer = _answersRepository.GetById(id);
             var model = Mapper.Map<AnswerViewModel>(answer);
 
             return View(model);
@@ -85,13 +85,13 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var answer = _answerService.GetById(model.AnswerId);
+                var answer = _answersRepository.GetById(model.AnswerId);
                 answer.OrderNumber = model.OrderNumber;
                 answer.Text = model.Text;
                 answer.Description = model.Description;
                 answer.Value = model.Value;
 
-                _answerService.Update(answer);
+                _answersRepository.Update(answer);
 
                 return RedirectToAction(MVC.Admin.Answers.List(model.QuestionId));
             }
@@ -102,7 +102,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #region Delete()
         public virtual ActionResult Delete(long id)
         {
-            var answer = _answerService.GetById(id);
+            var answer = _answersRepository.GetById(id);
             var model = Mapper.Map<AnswerViewModel>(answer);
 
             return View(model);
@@ -112,7 +112,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public virtual ActionResult DeleteConfirmed(AnswerViewModel model)
         {
-            _answerService.Delete(model.AnswerId);
+            _answersRepository.Delete(model.AnswerId);
 
             return RedirectToAction(MVC.Admin.Answers.List(model.QuestionId));
         }

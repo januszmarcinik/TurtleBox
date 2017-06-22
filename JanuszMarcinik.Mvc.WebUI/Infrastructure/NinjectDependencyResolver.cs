@@ -1,6 +1,5 @@
-﻿using JanuszMarcinik.Mvc.Domain.Application.Services;
-using JanuszMarcinik.Mvc.Domain.Application.Services.Dictionaries;
-using JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires;
+﻿using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
+using JanuszMarcinik.Mvc.Domain.Application.Repositories.Concrete;
 using JanuszMarcinik.Mvc.Domain.Identity.Context;
 using Ninject;
 using Ninject.Web.Common;
@@ -34,12 +33,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Infrastructure
         {
             kernel.Bind<ApplicationIdentityDbContext>().ToSelf().InRequestScope();
 
-            kernel.Bind<AnswerService>().ToSelf().InRequestScope();
-            kernel.Bind<IntervieweeService>().ToSelf().InRequestScope();
-            kernel.Bind<QuestionnaireService>().ToSelf().InRequestScope();
-            kernel.Bind<QuestionService>().ToSelf().InRequestScope();
-            kernel.Bind<ResultService>().ToSelf().InRequestScope();
-            kernel.Bind<BaseDictionaryService>().ToSelf().InRequestScope();
+            kernel.Bind<IAnswersRepository>().To<AnswersRepository>().InSingletonScope();
+            kernel.Bind<IDictionariesRepository>().To<DictionariesRepository>().InSingletonScope();
+            kernel.Bind<IIntervieweesRepository>().To<IntervieweesRepository>().InSingletonScope();
+            kernel.Bind<IQuestionnairesRepository>().To<QuestionnairesRepository>().InSingletonScope();
+            kernel.Bind<IQuestionsRepository>().To<QuestionsRepository>().InSingletonScope();
+            kernel.Bind<IResultsRepository>().To<ResultsRepository>().InSingletonScope();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Application.Entities.Dictionaries;
-using JanuszMarcinik.Mvc.Domain.Application.Services.Dictionaries;
+using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Dictionaries;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -11,18 +11,18 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
     public partial class DictionariesController : Controller
     {
         #region DictionariesController
-        private BaseDictionaryService _dictionaryService;
+        private IDictionariesRepository _dictionariesRepository;
 
-        public DictionariesController(BaseDictionaryService baseDictionaryService)
+        public DictionariesController(IDictionariesRepository dictionariesRepository)
         {
-            _dictionaryService = baseDictionaryService;
+            this._dictionariesRepository = dictionariesRepository;
         }
         #endregion
 
         #region List()
         public virtual ActionResult List()
         {
-            var dictionaries = _dictionaryService.GetList();
+            var dictionaries = _dictionariesRepository.GetList();
             var model = new DictionaryDataSource();
             model.Dictionaries = Mapper.Map<List<DictionaryViewModel>>(dictionaries);
             model.SetActions();
@@ -50,7 +50,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                     Value = model.Value
                 };
 
-                _dictionaryService.Create(dictionary);
+                _dictionariesRepository.Create(dictionary);
 
                 return RedirectToAction(MVC.Admin.Dictionaries.List());
             }
@@ -62,7 +62,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #region Edit
         public virtual ActionResult Edit(long id)
         {
-            var dictionary = _dictionaryService.GetById(id);
+            var dictionary = _dictionariesRepository.GetById(id);
             var model = Mapper.Map<DictionaryViewModel>(dictionary);
 
             return View(model);
@@ -74,11 +74,11 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var dictionary = _dictionaryService.GetById(model.BaseDictionaryId);
+                var dictionary = _dictionariesRepository.GetById(model.BaseDictionaryId);
                 dictionary.DictionaryType = model.DictionaryType;
                 dictionary.Value = model.Value;
 
-                _dictionaryService.Update(dictionary);
+                _dictionariesRepository.Update(dictionary);
 
                 return RedirectToAction(MVC.Admin.Dictionaries.List());
             }
@@ -89,7 +89,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #region Delete()
         public virtual ActionResult Delete(long id)
         {
-            var dictionary = _dictionaryService.GetById(id);
+            var dictionary = _dictionariesRepository.GetById(id);
             var model = Mapper.Map<DictionaryViewModel>(dictionary);
 
             return View(model);
@@ -99,7 +99,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult DeleteConfirmed(long id)
         {
-            _dictionaryService.Delete(id);
+            _dictionariesRepository.Delete(id);
 
             return RedirectToAction(MVC.Admin.Dictionaries.List());
         }

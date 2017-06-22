@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
-using JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires;
+using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questions;
 using System.Collections.Generic;
@@ -12,21 +12,21 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
     public partial class QuestionsController : Controller
     {
         #region QuestionsController
-        private QuestionnaireService _questionnaireService;
-        private QuestionService _questionService;
+        private IQuestionnairesRepository _questionnairesRepository;
+        private IQuestionsRepository _questionsRepository;
 
-        public QuestionsController(QuestionnaireService questionnaireService, QuestionService questionService)
+        public QuestionsController(IQuestionnairesRepository questionnairesRepository, IQuestionsRepository questionsRepository)
         {
-            _questionnaireService = questionnaireService;
-            _questionService = questionService;
+            this._questionnairesRepository = questionnairesRepository;
+            this._questionsRepository = questionsRepository;
         }
         #endregion
 
         #region List()
         public virtual ActionResult List(long questionnaireId)
         {
-            var questionnaire = _questionnaireService.GetById(questionnaireId);
-            var questions = _questionService.GetList(questionnaireId);
+            var questionnaire = _questionnairesRepository.GetById(questionnaireId);
+            var questions = _questionsRepository.GetList(questionnaireId);
 
             var model = new QuestionDataSource();
             model.Questionnaire = Mapper.Map<QuestionnaireViewModel>(questionnaire);
@@ -58,7 +58,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                     Text = model.Text
                 };
 
-                _questionService.Create(question);
+                _questionsRepository.Create(question);
 
                 return RedirectToAction(MVC.Admin.Questions.List(model.QuestionnaireId));
             }
@@ -70,7 +70,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #region Edit
         public virtual ActionResult Edit(long id)
         {
-            var question = _questionService.GetById(id);
+            var question = _questionsRepository.GetById(id);
             var model = Mapper.Map<QuestionViewModel>(question);
 
             return View(model);
@@ -82,11 +82,11 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var question = _questionService.GetById(model.QuestionId);
+                var question = _questionsRepository.GetById(model.QuestionId);
                 question.OrderNumber = model.OrderNumber;
                 question.Text = model.Text;
 
-                _questionService.Update(question);
+                _questionsRepository.Update(question);
 
                 return RedirectToAction(MVC.Admin.Questions.List(model.QuestionnaireId));
             }
@@ -97,7 +97,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #region Delete()
         public virtual ActionResult Delete(long id)
         {
-            var question = _questionService.GetById(id);
+            var question = _questionsRepository.GetById(id);
             var model = Mapper.Map<QuestionViewModel>(question);
 
             return View(model);
@@ -107,7 +107,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         [HttpPost, ActionName("Delete")]
         public virtual ActionResult DeleteConfirmed(QuestionViewModel model)
         {
-            _questionService.Delete(model.QuestionId);
+            _questionsRepository.Delete(model.QuestionId);
 
             return RedirectToAction(MVC.Admin.Questions.List(model.QuestionnaireId));
         }

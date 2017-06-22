@@ -257,6 +257,8 @@
     <Content Include="Areas\Admin\Views\Dictionaries\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Dictionaries\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\Dictionaries\Edit.cshtml" />
+    <Content Include="Areas\Application\Views\Survey\ThankYou.cshtml" />
+    <Content Include="Areas\Application\Views\Survey\IntervieweeInfo.cshtml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\ep_naturalwhite.png" />
     <Content Include="Images\pink_dust.png" />

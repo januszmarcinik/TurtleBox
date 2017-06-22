@@ -56,6 +56,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult FillSurvey()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FillSurvey);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public SurveyController Actions { get { return MVC.Application.Survey; } }
@@ -72,22 +78,33 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+            public readonly string IntervieweeInfo = "IntervieweeInfo";
             public readonly string FillSurvey = "FillSurvey";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+            public const string IntervieweeInfo = "IntervieweeInfo";
             public const string FillSurvey = "FillSurvey";
         }
 
 
+        static readonly ActionParamsClass_IntervieweeInfo s_params_IntervieweeInfo = new ActionParamsClass_IntervieweeInfo();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_IntervieweeInfo IntervieweeInfoParams { get { return s_params_IntervieweeInfo; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_IntervieweeInfo
+        {
+            public readonly string model = "model";
+        }
         static readonly ActionParamsClass_FillSurvey s_params_FillSurvey = new ActionParamsClass_FillSurvey();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_FillSurvey FillSurveyParams { get { return s_params_FillSurvey; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_FillSurvey
         {
+            public readonly string questionaireNumber = "questionaireNumber";
             public readonly string model = "model";
         }
         static readonly ViewsClass s_views = new ViewsClass();
@@ -101,8 +118,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
             public class _ViewNamesClass
             {
                 public readonly string FillSurvey = "FillSurvey";
+                public readonly string IntervieweeInfo = "IntervieweeInfo";
+                public readonly string ThankYou = "ThankYou";
             }
             public readonly string FillSurvey = "~/Areas/Application/Views/Survey/FillSurvey.cshtml";
+            public readonly string IntervieweeInfo = "~/Areas/Application/Views/Survey/IntervieweeInfo.cshtml";
+            public readonly string ThankYou = "~/Areas/Application/Views/Survey/ThankYou.cshtml";
         }
     }
 
@@ -112,21 +133,45 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         public T4MVC_SurveyController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void FillSurveyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void IntervieweeInfoOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult FillSurvey()
+        public override System.Web.Mvc.ActionResult IntervieweeInfo()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FillSurvey);
-            FillSurveyOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.IntervieweeInfo);
+            IntervieweeInfoOverride(callInfo);
             return callInfo;
         }
 
         [NonAction]
-        partial void FillSurveyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.SurveyViewModel model);
+        partial void IntervieweeInfoOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.IntervieweeViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult FillSurvey(JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.SurveyViewModel model)
+        public override System.Web.Mvc.ActionResult IntervieweeInfo(JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.IntervieweeViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.IntervieweeInfo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            IntervieweeInfoOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void FillSurveyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int questionaireNumber);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult FillSurvey(int questionaireNumber)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FillSurvey);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "questionaireNumber", questionaireNumber);
+            FillSurveyOverride(callInfo, questionaireNumber);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void FillSurveyOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.QuestionnaireViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult FillSurvey(JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey.QuestionnaireViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.FillSurvey);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);

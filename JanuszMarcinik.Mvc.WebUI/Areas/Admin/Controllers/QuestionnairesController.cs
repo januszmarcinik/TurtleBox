@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
-using JanuszMarcinik.Mvc.Domain.Application.Services.Questionnaires;
+using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires;
 using System.Collections.Generic;
 using System.Web.Mvc;
@@ -11,18 +11,18 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
     public partial class QuestionnairesController : Controller
     {
         #region QuestionnairesController
-        private QuestionnaireService _questionnaireService;
+        private IQuestionnairesRepository _questionnairesRepository;
 
-        public QuestionnairesController(QuestionnaireService questionnaireService)
+        public QuestionnairesController(IQuestionnairesRepository questionnairesRepository)
         {
-            _questionnaireService = questionnaireService;
+            this._questionnairesRepository = questionnairesRepository;
         }
         #endregion
 
         #region List()
         public virtual ActionResult List()
         {
-            var questionnaires = _questionnaireService.GetList();
+            var questionnaires = _questionnairesRepository.GetList();
             var model = new QuestionnaireDataSource();
             model.Questionnaires = Mapper.Map<List<QuestionnaireViewModel>>(questionnaires);
             model.SetActions();
@@ -52,7 +52,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                     EditDisable = model.EditDisable
                 };
 
-                _questionnaireService.Create(questionnaire);
+                _questionnairesRepository.Create(questionnaire);
 
                 return RedirectToAction(MVC.Admin.Questionnaires.List());
             }
@@ -64,7 +64,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #region Edit
         public virtual ActionResult Edit(long id)
         {
-            var questionnaire = _questionnaireService.GetById(id);
+            var questionnaire = _questionnairesRepository.GetById(id);
             var model = Mapper.Map<QuestionnaireViewModel>(questionnaire);
 
             return View(model);
@@ -76,13 +76,13 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var questionnaire = _questionnaireService.GetById(model.QuestionnaireId);
+                var questionnaire = _questionnairesRepository.GetById(model.QuestionnaireId);
                 questionnaire.OrderNumber = model.OrderNumber;
                 questionnaire.Name = model.Name;
                 questionnaire.Active = model.Active;
                 questionnaire.EditDisable = model.EditDisable;
 
-                _questionnaireService.Update(questionnaire);
+                _questionnairesRepository.Update(questionnaire);
 
                 return RedirectToAction(MVC.Admin.Questionnaires.List());
             }
@@ -93,7 +93,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #region Delete()
         public virtual ActionResult Delete(long id)
         {
-            var questionnaire = _questionnaireService.GetById(id);
+            var questionnaire = _questionnairesRepository.GetById(id);
             var model = Mapper.Map<QuestionnaireViewModel>(questionnaire);
 
             return View(model);
@@ -103,7 +103,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public virtual ActionResult DeleteConfirmed(long id)
         {
-            _questionnaireService.Delete(id);
+            _questionnairesRepository.Delete(id);
 
             return RedirectToAction(MVC.Admin.Questionnaires.List());
         }
