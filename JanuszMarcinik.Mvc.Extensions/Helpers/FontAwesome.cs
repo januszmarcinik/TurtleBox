@@ -529,6 +529,8 @@
         public const string user = "fa fa-fw fa-user";
         public const string user_md = "fa fa-fw fa-user-md";
         public const string users = "fa fa-fw fa-users";
+        public const string user_circle = "fa fa-fw fa-user-circle";
+        public const string venus_mars = "fa fa-fw fa-venus-mars";
         public const string video_camera = "fa fa-fw fa-video-camera";
         public const string vimeo_square = "fa fa-fw fa-vimeo-square";
         public const string vine = "fa fa-fw fa-vine";

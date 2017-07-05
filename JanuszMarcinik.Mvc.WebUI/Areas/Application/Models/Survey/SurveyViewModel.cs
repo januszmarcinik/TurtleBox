@@ -10,6 +10,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
     {
         public long QuestionnaireId { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public int OrderNumber { get; set; }
         public List<QuestionViewModel> Questions { get; set; }
         public int QuestionnairesCount { get; set; }
@@ -21,6 +22,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
             this.Name = questionnaire.Name;
             this.OrderNumber = questionnaire.OrderNumber;
             this.QuestionnaireId = questionnaire.QuestionnaireId;
+            this.Description = questionnaire.Description;
             this.Questions = new List<QuestionViewModel>();
 
             foreach (var question in questionnaire.Questions.OrderBy(x => x.OrderNumber))

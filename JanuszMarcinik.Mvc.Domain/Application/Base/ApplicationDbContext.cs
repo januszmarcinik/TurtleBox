@@ -70,11 +70,32 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
                         .HasForeignKey(s => s.SeniorityId)
                         .WillCascadeOnDelete(false);
 
+            // BaseDictionary -> Interviewees (Educations)
+            modelBuilder.Entity<BaseDictionary>()
+                        .HasMany<Interviewee>(s => s.Educations)
+                        .WithRequired(s => s.Education)
+                        .HasForeignKey(s => s.EducationId)
+                        .WillCascadeOnDelete(false);
+
             // BaseDictionary -> Interviewees (PlaceOfResidences)
             modelBuilder.Entity<BaseDictionary>()
                         .HasMany<Interviewee>(s => s.PlaceOfResidences)
                         .WithRequired(s => s.PlaceOfResidence)
                         .HasForeignKey(s => s.PlaceOfResidenceId)
+                        .WillCascadeOnDelete(false);
+
+            // BaseDictionary -> Interviewees (MartialStatuses)
+            modelBuilder.Entity<BaseDictionary>()
+                        .HasMany<Interviewee>(s => s.MartialStatuses)
+                        .WithRequired(s => s.MartialStatus)
+                        .HasForeignKey(s => s.MartialStatusId)
+                        .WillCascadeOnDelete(false);
+
+            // BaseDictionary -> Interviewees (MaterialStatuses)
+            modelBuilder.Entity<BaseDictionary>()
+                        .HasMany<Interviewee>(s => s.MaterialStatuses)
+                        .WithRequired(s => s.MaterialStatus)
+                        .HasForeignKey(s => s.MaterialStatusId)
                         .WillCascadeOnDelete(false);
             #endregion
         }

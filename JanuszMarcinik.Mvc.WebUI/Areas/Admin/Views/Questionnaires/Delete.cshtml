@@ -18,10 +18,15 @@
             @Html.AntiForgeryToken()
             @Html.HiddenFor(x => x.QuestionnaireId)
 
-            @form.FormGroup().TextBoxFor(x => x.OrderNumber).Readonly(true)
-            @form.FormGroup().TextBoxFor(x => x.Name).Readonly(true)
-            @form.FormGroup().CheckBoxFor(x => x.Active).Readonly(true)
-            @form.FormGroup().CheckBoxFor(x => x.EditDisable).Readonly(true)
+            <div class="col-sm-6">
+                @form.FormGroup().TextBoxFor(x => x.OrderNumber).Readonly(true)
+                @form.FormGroup().TextBoxFor(x => x.Name).Readonly(true)
+                @form.FormGroup().CheckBoxFor(x => x.Active).Readonly(true)
+                @form.FormGroup().CheckBoxFor(x => x.EditDisable).Readonly(true)
+            </div>
+            <div class="col-sm-6">
+                @form.FormGroup().TextAreaFor(x => x.Description).Rows(4).Readonly(true)
+            </div>
         }
 
         using (panel.BeginFooter())

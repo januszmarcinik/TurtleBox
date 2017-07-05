@@ -1,5 +1,6 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
 using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires
 {
@@ -28,5 +29,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires
         [DataSourceList(Order = 4)]
         [Display(Name = "Edycja zablokowana")]
         public bool EditDisable { get; set; }
+
+        [Required]
+        [Display(Name = "Opis")]
+        [AllowHtml]
+        public string Description { get; set; }
     }
 }

@@ -33,6 +33,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         public virtual ActionResult IntervieweeInfo()
         {
             var model = new IntervieweeViewModel();
+            model.Age = 22;
             model.SetDictionaries(_dictionariesRepository.GetList());
 
             return View(model);
@@ -50,6 +51,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
                     PlaceOfResidenceId = model.PlaceOfResidenceId,
                     SeniorityId = model.SeniorityId,
                     SexId = model.SexId,
+                    EducationId = model.EducationId,
+                    Age = model.Age,
+                    MartialStatusId = model.MartialStatusId,
+                    MaterialStatusId = model.MaterialStatusId
                 };
 
                 Session[_intervieweeSessionKey] = interviewee;

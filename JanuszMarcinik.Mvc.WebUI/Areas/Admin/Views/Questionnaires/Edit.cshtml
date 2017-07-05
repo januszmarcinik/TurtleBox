@@ -25,6 +25,9 @@
                     @form.FormGroup().CheckBoxFor(x => x.Active)
                     @form.FormGroup().CheckBoxFor(x => x.EditDisable)
                 </div>
+                <div class="col-sm-6">
+                    @form.FormGroup().TextAreaFor(x => x.Description).Rows(4)
+                </div>
             </div>
         }
 

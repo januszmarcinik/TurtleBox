@@ -49,7 +49,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                     OrderNumber = model.OrderNumber,
                     Name = model.Name,
                     Active = model.Active,
-                    EditDisable = model.EditDisable
+                    EditDisable = model.EditDisable,
+                    Description = model.Description
                 };
 
                 _questionnairesRepository.Create(questionnaire);
@@ -81,6 +82,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                 questionnaire.Name = model.Name;
                 questionnaire.Active = model.Active;
                 questionnaire.EditDisable = model.EditDisable;
+                questionnaire.Description = model.Description;
 
                 _questionnairesRepository.Update(questionnaire);
 

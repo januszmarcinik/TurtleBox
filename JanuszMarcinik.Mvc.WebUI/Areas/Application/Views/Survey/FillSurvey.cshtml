@@ -23,6 +23,9 @@
 
         using (panel.BeginBody())
         {
+            <p>@Html.Raw(Model.Description)</p>
+            <br />
+
             for (int questionIndex = 0; questionIndex < Model.Questions.Count(); questionIndex++)
             {
                 <p><strong>@string.Format("{0}. {1}", questionIndex + 1, Model.Questions[questionIndex].Text)</strong></p>

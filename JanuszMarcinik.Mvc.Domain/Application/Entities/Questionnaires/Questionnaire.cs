@@ -19,6 +19,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires
         public int OrderNumber { get; set; }
         public bool EditDisable { get; set; }
         public bool Active { get; set; }
+        public string Description { get; set; }
 
         public virtual ICollection<Question> Questions { get; set; }
         public virtual ICollection<Result> Results { get; set; }

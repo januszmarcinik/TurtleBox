@@ -13,6 +13,11 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
 
         public DateTime InterviewDate { get; set; }
 
+        [Required(ErrorMessage = "Wybierz wiek")]
+        [Display(Name = "Wiek")]
+        [Range(minimum: 20, maximum: 67, ErrorMessage = "Wiek musi być z przedziału od 20 do 67 lat.")]
+        public int Age { get; set; }
+
         [Required(ErrorMessage = "Wybierz płeć")]
         [Display(Name = "Płeć")]
         public long SexId { get; set; }
@@ -28,6 +33,21 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
         public long PlaceOfResidenceId { get; set; }
         public IEnumerable<SelectListItem> PlacesOfResidence { get; set; }
 
+        [Required(ErrorMessage = "Wybierz wykształcenie")]
+        [Display(Name = "Wykształcenie")]
+        public long EducationId { get; set; }
+        public IEnumerable<SelectListItem> Educations { get; set; }
+
+        [Required(ErrorMessage = "Wybierz stan cywilny")]
+        [Display(Name = "Stan cywilny")]
+        public long MartialStatusId { get; set; }
+        public IEnumerable<SelectListItem> MartialStatuses { get; set; }
+
+        [Required(ErrorMessage = "Wskaż ocenę swojego stanu materialnego")]
+        [Display(Name = "Ocena swojego stanu materialnego")]
+        public long MaterialStatusId { get; set; }
+        public IEnumerable<SelectListItem> MaterialStatuses { get; set; }
+
         public void SetDictionaries(IEnumerable<BaseDictionary> dictionary)
         {
             this.Sexes = dictionary.Where(x => x.DictionaryType == DictionaryType.Sex)
@@ -37,6 +57,15 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
                 .Select(x => new SelectListItem() { Text = x.Value, Value = x.BaseDictionaryId.ToString() });
 
             this.PlacesOfResidence = dictionary.Where(x => x.DictionaryType == DictionaryType.PlaceOfResidence)
+                .Select(x => new SelectListItem() { Text = x.Value, Value = x.BaseDictionaryId.ToString() });
+
+            this.Educations = dictionary.Where(x => x.DictionaryType == DictionaryType.Education)
+                .Select(x => new SelectListItem() { Text = x.Value, Value = x.BaseDictionaryId.ToString() });
+
+            this.MartialStatuses = dictionary.Where(x => x.DictionaryType == DictionaryType.MartialStatus)
+                .Select(x => new SelectListItem() { Text = x.Value, Value = x.BaseDictionaryId.ToString() });
+
+            this.MaterialStatuses = dictionary.Where(x => x.DictionaryType == DictionaryType.MaterialStatus)
                 .Select(x => new SelectListItem() { Text = x.Value, Value = x.BaseDictionaryId.ToString() });
         }
     }
