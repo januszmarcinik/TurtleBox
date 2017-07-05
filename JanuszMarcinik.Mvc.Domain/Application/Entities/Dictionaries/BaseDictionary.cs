@@ -1,5 +1,5 @@
-﻿using JanuszMarcinik.Mvc.Domain.Application.Base;
-using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
+﻿using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
+using JanuszMarcinik.Mvc.Domain.Data;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations.Schema;

@@ -1,7 +1,7 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
 using System.Collections.Generic;
 using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
-using JanuszMarcinik.Mvc.Domain.Application.Base;
+using JanuszMarcinik.Mvc.Domain.Data;
 
 namespace JanuszMarcinik.Mvc.Domain.Application.Repositories.Concrete
 {

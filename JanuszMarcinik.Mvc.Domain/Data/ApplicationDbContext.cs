@@ -1,12 +1,22 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Entities.Dictionaries;
 using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
+using JanuszMarcinik.Mvc.Domain.Identity.Entities;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Data.Entity;
 
-namespace JanuszMarcinik.Mvc.Domain.Application.Base
+namespace JanuszMarcinik.Mvc.Domain.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
-        public ApplicationDbContext() : base("JanuszMarcinikConnection") { }
+        public ApplicationDbContext()
+            : base("JanuszMarcinikConnection", throwIfV1Schema: false)
+        {
+        }
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
 
         public DbSet<Questionnaire> Questionnaires { get; set; }
         public DbSet<Question> Questions { get; set; }
@@ -17,6 +27,14 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Base
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            #region Identity
+            modelBuilder.Entity<IdentityUserRole>()
+                .HasKey(x => x.UserId);
+
+            modelBuilder.Entity<IdentityUserLogin>()
+                .HasKey(x => x.UserId);
+            #endregion
+
             #region Questionnaires
             // Questionnaire -> Questions
             modelBuilder.Entity<Questionnaire>()

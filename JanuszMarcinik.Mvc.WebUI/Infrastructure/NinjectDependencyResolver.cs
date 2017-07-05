@@ -1,6 +1,6 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
 using JanuszMarcinik.Mvc.Domain.Application.Repositories.Concrete;
-using JanuszMarcinik.Mvc.Domain.Identity.Context;
+using JanuszMarcinik.Mvc.Domain.Data;
 using Ninject;
 using Ninject.Web.Common;
 using System;
@@ -31,7 +31,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Infrastructure
 
         private void AddBindings()
         {
-            kernel.Bind<ApplicationIdentityDbContext>().ToSelf().InRequestScope();
+            kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope();
 
             kernel.Bind<IAnswersRepository>().To<AnswersRepository>().InSingletonScope();
             kernel.Bind<IDictionariesRepository>().To<DictionariesRepository>().InSingletonScope();

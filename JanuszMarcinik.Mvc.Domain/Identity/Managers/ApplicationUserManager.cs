@@ -4,8 +4,8 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using JanuszMarcinik.Mvc.Domain.Identity.Entities;
-using JanuszMarcinik.Mvc.Domain.Identity.Context;
 using JanuszMarcinik.Mvc.Domain.Identity.Services;
+using JanuszMarcinik.Mvc.Domain.Data;
 
 namespace JanuszMarcinik.Mvc.Domain.Identity.Managers
 {
@@ -19,7 +19,7 @@ namespace JanuszMarcinik.Mvc.Domain.Identity.Managers
 
         public static ApplicationUserManager Create(IdentityFactoryOptions<ApplicationUserManager> options, IOwinContext context)
         {
-            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationIdentityDbContext>()));
+            var manager = new ApplicationUserManager(new UserStore<ApplicationUser>(context.Get<ApplicationDbContext>()));
             // Configure validation logic for usernames
             manager.UserValidator = new UserValidator<ApplicationUser>(manager)
             {

@@ -3,11 +3,10 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin;
 using Microsoft.Owin.Security.Cookies;
-using Microsoft.Owin.Security.Google;
 using Owin;
-using JanuszMarcinik.Mvc.Domain.Identity.Context;
 using JanuszMarcinik.Mvc.Domain.Identity.Managers;
 using JanuszMarcinik.Mvc.Domain.Identity.Entities;
+using JanuszMarcinik.Mvc.Domain.Data;
 
 namespace JanuszMarcinik.Mvc.WebUI
 {
@@ -17,7 +16,7 @@ namespace JanuszMarcinik.Mvc.WebUI
         public void ConfigureAuth(IAppBuilder app)
         {
             // Configure the db context, user manager and signin manager to use a single instance per request
-            app.CreatePerOwinContext(ApplicationIdentityDbContext.Create);
+            app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 

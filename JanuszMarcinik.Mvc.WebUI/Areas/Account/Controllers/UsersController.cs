@@ -1,13 +1,10 @@
 ﻿using AutoMapper;
-using JanuszMarcinik.Mvc.Domain.Identity.Context;
-using JanuszMarcinik.Mvc.Domain.Identity.Entities;
+using JanuszMarcinik.Mvc.Domain.Data;
 using JanuszMarcinik.Mvc.Domain.Identity.Managers;
-using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles;
 using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -22,12 +19,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         private ApplicationUserManager _userManager;
         private RoleManager<IdentityRole> _roleManager;
 
-        public UsersController(ApplicationIdentityDbContext context)
+        public UsersController(ApplicationDbContext context)
         {
             _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
         }
 
-        public UsersController(ApplicationUserManager userManager, ApplicationIdentityDbContext context)
+        public UsersController(ApplicationUserManager userManager, ApplicationDbContext context)
         {
             UserManager = userManager;
             _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));

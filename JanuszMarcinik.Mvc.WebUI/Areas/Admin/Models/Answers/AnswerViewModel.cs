@@ -17,16 +17,11 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Answers
 
         [Required]
         [DataSourceList(Order = 2)]
-        [Display(Name = "Treść")]
-        public string Text { get; set; }
+        [Display(Name = "Wartość")]
+        public int Value { get; set; }
 
         [DataSourceList(Order = 3)]
         [Display(Name = "Opis")]
         public string Description { get; set; }
-
-        [Required]
-        [DataSourceList(Order = 4)]
-        [Display(Name = "Wartość")]
-        public int Value { get; set; }
     }
 }

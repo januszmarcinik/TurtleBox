@@ -20,9 +20,8 @@
             @Html.HiddenFor(x => x.AnswerId)
 
             @form.FormGroup().TextBoxFor(x => x.OrderNumber).Readonly(true)
-            @form.FormGroup().TextBoxFor(x => x.Text).Readonly(true)
-            @form.FormGroup().TextBoxFor(x => x.Description).Readonly(true)
             @form.FormGroup().TextBoxFor(x => x.Value).Readonly(true)
+            @form.FormGroup().TextBoxFor(x => x.Description).Readonly(true)
         }
 
         using (panel.BeginFooter())

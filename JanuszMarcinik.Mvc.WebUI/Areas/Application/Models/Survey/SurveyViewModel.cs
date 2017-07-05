@@ -39,7 +39,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
                 {
                     questionViewModel.Answers.Add(new DescriptionedSelectListItem()
                     {
-                        Text = answer.Text,
+                        Text = answer.Value.ToString(),
                         Value = answer.AnswerId.ToString(),
                         Selected = selectedAnswers != null ? selectedAnswers.Any(x => x == answer.AnswerId) : false,
                         Description = answer.Description

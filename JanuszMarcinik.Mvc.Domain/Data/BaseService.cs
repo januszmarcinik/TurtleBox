@@ -2,7 +2,7 @@
 using System.Data.Entity;
 using System.Linq;
 
-namespace JanuszMarcinik.Mvc.Domain.Application.Base
+namespace JanuszMarcinik.Mvc.Domain.Data
 {
     public abstract class BaseService<TModel> where TModel : class, IApplicationEntity, new()
     {

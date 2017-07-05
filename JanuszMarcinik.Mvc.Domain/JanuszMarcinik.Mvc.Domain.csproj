@@ -119,9 +119,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Application\Base\ApplicationDbContext.cs" />
-    <Compile Include="Application\Base\BaseService.cs" />
-    <Compile Include="Application\Base\IApplicationEntity.cs" />
     <Compile Include="Application\DataSource\CustomPropertyInfo.cs" />
     <Compile Include="Application\DataSource\DataItem.cs" />
     <Compile Include="Application\DataSource\DataSource.cs" />
@@ -137,7 +134,7 @@
     <Compile Include="Application\Entities\Questionnaires\Questionnaire.cs" />
     <Compile Include="Application\Entities\Questionnaires\Result.cs" />
     <Compile Include="Application\Managers\ImageManager.cs" />
-    <Compile Include="Application\Migrations\Configuration.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Application\Repositories\Abstract\IAnswersRepository.cs" />
     <Compile Include="Application\Repositories\Abstract\IDictionariesRepository.cs" />
     <Compile Include="Application\Repositories\Abstract\IIntervieweesRepository.cs" />
@@ -150,11 +147,12 @@
     <Compile Include="Application\Repositories\Concrete\QuestionnairesRepository.cs" />
     <Compile Include="Application\Repositories\Concrete\QuestionsRepository.cs" />
     <Compile Include="Application\Repositories\Concrete\ResultsRepository.cs" />
-    <Compile Include="Identity\Context\ApplicationIdentityDbContext.cs" />
+    <Compile Include="Data\ApplicationDbContext.cs" />
+    <Compile Include="Data\BaseService.cs" />
+    <Compile Include="Data\IApplicationEntity.cs" />
     <Compile Include="Identity\Entities\ApplicationUser.cs" />
     <Compile Include="Identity\Managers\ApplicationSignInManager.cs" />
     <Compile Include="Identity\Managers\ApplicationUserManager.cs" />
-    <Compile Include="Identity\Migrations\Configuration.cs" />
     <Compile Include="Identity\Services\EmailService.cs" />
     <Compile Include="Identity\Services\SmsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

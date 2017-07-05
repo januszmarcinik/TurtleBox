@@ -1,4 +1,4 @@
-﻿using JanuszMarcinik.Mvc.Domain.Application.Base;
+﻿using JanuszMarcinik.Mvc.Domain.Data;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires

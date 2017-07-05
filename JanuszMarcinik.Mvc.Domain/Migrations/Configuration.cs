@@ -2,7 +2,7 @@
 {
     using System.Data.Entity.Migrations;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<JanuszMarcinik.Mvc.Domain.Application.Base.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<JanuszMarcinik.Mvc.Domain.Data.ApplicationDbContext>
     {
         public Configuration()
         {
@@ -10,7 +10,7 @@
             AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(JanuszMarcinik.Mvc.Domain.Application.Base.ApplicationDbContext context)
+        protected override void Seed(JanuszMarcinik.Mvc.Domain.Data.ApplicationDbContext context)
         {
 
         }

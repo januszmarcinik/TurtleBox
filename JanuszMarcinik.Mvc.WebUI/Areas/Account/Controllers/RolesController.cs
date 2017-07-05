@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using JanuszMarcinik.Mvc.Domain.Identity.Context;
+using JanuszMarcinik.Mvc.Domain.Data;
 using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
@@ -14,7 +14,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #region RolesController()
         private RoleManager<IdentityRole> _roleManager;
 
-        public RolesController(ApplicationIdentityDbContext context)
+        public RolesController(ApplicationDbContext context)
         {
             _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
         }
