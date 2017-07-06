@@ -7,7 +7,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Dictionaries
     public class DictionaryViewModel
     {
         [PrimaryKey]
-        public long BaseDictionaryId { get; set; }
+        public int BaseDictionaryId { get; set; }
 
         [Required]
         [DataSourceList(Order = 1)]

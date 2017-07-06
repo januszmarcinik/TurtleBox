@@ -9,7 +9,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
 {
     public class IntervieweeViewModel
     {
-        public long IntervieweeId { get; set; }
+        public int IntervieweeId { get; set; }
 
         public DateTime InterviewDate { get; set; }
 
@@ -20,32 +20,32 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
 
         [Required(ErrorMessage = "Wybierz płeć")]
         [Display(Name = "Płeć")]
-        public long SexId { get; set; }
+        public int SexId { get; set; }
         public IEnumerable<SelectListItem> Sexes { get; set; }
 
         [Required(ErrorMessage = "Wybierz staż pracy")]
         [Display(Name = "Staż pracy")]
-        public long SeniorityId { get; set; }
+        public int SeniorityId { get; set; }
         public IEnumerable<SelectListItem> Seniorities { get; set; }
 
         [Required(ErrorMessage = "Wybierz miejsce zamieszkania")]
         [Display(Name = "Miejsce zamieszkania")]
-        public long PlaceOfResidenceId { get; set; }
+        public int PlaceOfResidenceId { get; set; }
         public IEnumerable<SelectListItem> PlacesOfResidence { get; set; }
 
         [Required(ErrorMessage = "Wybierz wykształcenie")]
         [Display(Name = "Wykształcenie")]
-        public long EducationId { get; set; }
+        public int EducationId { get; set; }
         public IEnumerable<SelectListItem> Educations { get; set; }
 
         [Required(ErrorMessage = "Wybierz stan cywilny")]
         [Display(Name = "Stan cywilny")]
-        public long MartialStatusId { get; set; }
+        public int MartialStatusId { get; set; }
         public IEnumerable<SelectListItem> MartialStatuses { get; set; }
 
         [Required(ErrorMessage = "Wskaż ocenę swojego stanu materialnego")]
         [Display(Name = "Ocena swojego stanu materialnego")]
-        public long MaterialStatusId { get; set; }
+        public int MaterialStatusId { get; set; }
         public IEnumerable<SelectListItem> MaterialStatuses { get; set; }
 
         public void SetDictionaries(IEnumerable<BaseDictionary> dictionary)

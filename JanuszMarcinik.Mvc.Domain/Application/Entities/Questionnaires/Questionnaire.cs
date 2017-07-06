@@ -13,7 +13,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires
             this.Results = new HashSet<Result>();
         }
 
-        public long QuestionnaireId { get; set; }
+        public int QuestionnaireId { get; set; }
 
         public string Name { get; set; }
         public int OrderNumber { get; set; }

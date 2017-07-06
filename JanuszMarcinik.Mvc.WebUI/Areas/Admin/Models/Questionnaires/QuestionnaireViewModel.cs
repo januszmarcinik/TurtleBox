@@ -7,7 +7,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires
     public class QuestionnaireViewModel
     {
         [PrimaryKey]
-        public long QuestionnaireId { get; set; }
+        public int QuestionnaireId { get; set; }
 
         [Required]
         [DataSourceList(Order = 1)]

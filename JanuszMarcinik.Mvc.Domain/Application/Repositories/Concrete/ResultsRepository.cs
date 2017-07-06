@@ -9,7 +9,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Repositories.Concrete
     {
         private ApplicationDbContext context = new ApplicationDbContext();
 
-        public void CreateMany(List<Result> entities, long intervieweeId)
+        public void CreateMany(List<Result> entities, int intervieweeId)
         {
             foreach (var item in entities)
             {

@@ -8,16 +8,16 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
 {
     public class QuestionnaireViewModel
     {
-        public long QuestionnaireId { get; set; }
+        public int QuestionnaireId { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
         public int OrderNumber { get; set; }
         public List<QuestionViewModel> Questions { get; set; }
         public int QuestionnairesCount { get; set; }
 
-        public List<long> SelectedValues { get; set; }
+        public List<int> SelectedValues { get; set; }
 
-        public void SetQuestionnaire(Questionnaire questionnaire, List<long> selectedAnswers = null)
+        public void SetQuestionnaire(Questionnaire questionnaire, List<int> selectedAnswers = null)
         {
             this.Name = questionnaire.Name;
             this.OrderNumber = questionnaire.OrderNumber;
@@ -53,12 +53,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.Survey
 
     public class QuestionViewModel
     {
-        public long QuestionId { get; set; }
+        public int QuestionId { get; set; }
         public int OrderNumber { get; set; }
         public string Text { get; set; }
 
         [Required]
-        public long AnswerId { get; set; }
+        public int AnswerId { get; set; }
         public List<DescriptionedSelectListItem> Answers { get; set; }
     }
 

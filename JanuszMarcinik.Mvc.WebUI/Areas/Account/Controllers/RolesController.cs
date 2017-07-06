@@ -1,10 +1,12 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Data;
+using JanuszMarcinik.Mvc.Domain.Identity.Entities;
+using JanuszMarcinik.Mvc.Domain.Identity.Managers;
 using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
@@ -12,11 +14,11 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
     public partial class RolesController : Controller
     {
         #region RolesController()
-        private RoleManager<IdentityRole> _roleManager;
+        private ApplicationRoleManager _roleManager;
 
         public RolesController(ApplicationDbContext context)
         {
-            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            _roleManager = new ApplicationRoleManager(new ApplicationRoleStore(context));
         }
         #endregion
 
@@ -45,7 +47,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         {
             if (ModelState.IsValid)
             {
-                _roleManager.Create(new IdentityRole(model.Name));
+                _roleManager.Create(new Role() { Name = model.Name });
                 return RedirectToAction(MVC.Account.Roles.List());
             }
 
@@ -54,7 +56,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #endregion
 
         #region Edit
-        public virtual ActionResult Edit(string id)
+        public virtual ActionResult Edit(int id)
         {
             var role = _roleManager.Roles.FirstOrDefault(x => x.Id == id);
             var model = Mapper.Map<RoleViewModel>(role);
@@ -79,7 +81,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #endregion
 
         #region Delete()
-        public virtual ActionResult Delete(string id)
+        public virtual ActionResult Delete(int id)
         {
             var role = _roleManager.Roles.FirstOrDefault(x => x.Id == id);
             var model = Mapper.Map<RoleViewModel>(role);

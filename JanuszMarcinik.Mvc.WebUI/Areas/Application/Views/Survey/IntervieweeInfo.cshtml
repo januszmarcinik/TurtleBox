@@ -44,29 +44,29 @@
         {
             <div class="row">
                 <div class="col-sm-4">
-                    @form.FormGroup().DropDownListFor(x => x.SexId, Model.Sexes).OptionLabel("Wybierz").PrependIcon(FontAwesome.venus_mars)
+                    @form.FormGroup().DropDownListFor(x => x.SexId, Model.Sexes).OptionLabel("-").PrependIcon(FontAwesome.venus_mars)
                 </div>
                 <div class="col-sm-4">
                     @form.FormGroup().TextBoxFor(x => x.Age).PrependIcon(FontAwesome.user_circle)
                 </div>
                 <div class="col-sm-4">
-                    @form.FormGroup().DropDownListFor(x => x.SeniorityId, Model.Seniorities).OptionLabel("Wybierz").PrependIcon(FontAwesome.user_md)
+                    @form.FormGroup().DropDownListFor(x => x.SeniorityId, Model.Seniorities).OptionLabel("-").PrependIcon(FontAwesome.user_md)
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    @form.FormGroup().DropDownListFor(x => x.EducationId, Model.Educations).OptionLabel("Wybierz").PrependIcon(FontAwesome.graduation_cap)
+                    @form.FormGroup().DropDownListFor(x => x.EducationId, Model.Educations).OptionLabel("-").PrependIcon(FontAwesome.graduation_cap)
                 </div>
                 <div class="col-sm-4">
-                    @form.FormGroup().DropDownListFor(x => x.PlaceOfResidenceId, Model.PlacesOfResidence).OptionLabel("Wybierz").PrependIcon(FontAwesome.building)
+                    @form.FormGroup().DropDownListFor(x => x.PlaceOfResidenceId, Model.PlacesOfResidence).OptionLabel("-").PrependIcon(FontAwesome.building)
                 </div>
                 <div class="col-sm-4">
-                    @form.FormGroup().DropDownListFor(x => x.MartialStatusId, Model.MartialStatuses).OptionLabel("Wybierz").PrependIcon(FontAwesome.users)
+                    @form.FormGroup().DropDownListFor(x => x.MartialStatusId, Model.MartialStatuses).OptionLabel("-").PrependIcon(FontAwesome.users)
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-4">
-                    @form.FormGroup().DropDownListFor(x => x.MaterialStatusId, Model.MaterialStatuses).OptionLabel("Wybierz").PrependIcon(FontAwesome.money)
+                    @form.FormGroup().DropDownListFor(x => x.MaterialStatusId, Model.MaterialStatuses).OptionLabel("-").PrependIcon(FontAwesome.money)
                 </div>
             </div>
         }

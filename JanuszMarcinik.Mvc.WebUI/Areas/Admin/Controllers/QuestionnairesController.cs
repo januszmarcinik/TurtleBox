@@ -63,7 +63,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #endregion
 
         #region Edit
-        public virtual ActionResult Edit(long id)
+        public virtual ActionResult Edit(int id)
         {
             var questionnaire = _questionnairesRepository.GetById(id);
             var model = Mapper.Map<QuestionnaireViewModel>(questionnaire);
@@ -93,7 +93,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #endregion
 
         #region Delete()
-        public virtual ActionResult Delete(long id)
+        public virtual ActionResult Delete(int id)
         {
             var questionnaire = _questionnairesRepository.GetById(id);
             var model = Mapper.Map<QuestionnaireViewModel>(questionnaire);
@@ -103,7 +103,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult DeleteConfirmed(long id)
+        public virtual ActionResult DeleteConfirmed(int id)
         {
             _questionnairesRepository.Delete(id);
 

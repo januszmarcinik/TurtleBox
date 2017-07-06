@@ -188,10 +188,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         public T4MVC_AnswersController() : base(Dummy.Instance) { }
 
         [NonAction]
-        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long questionId);
+        partial void ListOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int questionId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult List(long questionId)
+        public override System.Web.Mvc.ActionResult List(int questionId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.List);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "questionId", questionId);
@@ -200,10 +200,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long questionId);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int questionId);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(long questionId)
+        public override System.Web.Mvc.ActionResult Create(int questionId)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "questionId", questionId);
@@ -224,10 +224,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(long id)
+        public override System.Web.Mvc.ActionResult Edit(int id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
@@ -248,10 +248,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         }
 
         [NonAction]
-        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
+        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Delete(long id)
+        public override System.Web.Mvc.ActionResult Delete(int id)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);

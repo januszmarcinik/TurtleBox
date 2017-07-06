@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using JanuszMarcinik.Mvc.Domain.Data;
+using JanuszMarcinik.Mvc.Domain.Identity.Entities;
 using JanuszMarcinik.Mvc.Domain.Identity.Managers;
 using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,17 +17,17 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
     {
         #region UsersController()
         private ApplicationUserManager _userManager;
-        private RoleManager<IdentityRole> _roleManager;
+        private ApplicationRoleManager _roleManager;
 
         public UsersController(ApplicationDbContext context)
         {
-            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            _roleManager = new ApplicationRoleManager(new ApplicationRoleStore(context));
         }
 
         public UsersController(ApplicationUserManager userManager, ApplicationDbContext context)
         {
             UserManager = userManager;
-            _roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+            _roleManager = new ApplicationRoleManager(new ApplicationRoleStore(context));
         }
 
         public ApplicationUserManager UserManager
@@ -57,7 +57,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #endregion
 
         #region Edit
-        public virtual ActionResult Edit(string id)
+        public virtual ActionResult Edit(int id)
         {
             var user = UserManager.Users.FirstOrDefault(x => x.Id == id);
             var model = Mapper.Map<UserViewModel>(user);
@@ -66,7 +66,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
             {
                 model.AllRoles.Add(new SelectListItem()
                 {
-                    Value = role.Id,
+                    Value = role.Id.ToString(),
                     Text = role.Name,
                     Selected = user.Roles.Any(x => x.RoleId == role.Id)
                 });
@@ -88,7 +88,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
                 user.Roles.Clear();
                 foreach (var selectedRole in model.SelectedRoles)
                 {
-                    user.Roles.Add(new IdentityUserRole()
+                    user.Roles.Add(new UserRole()
                     {
                         RoleId = selectedRole,
                         UserId = user.Id
@@ -105,7 +105,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         #endregion
 
         #region Delete()
-        public virtual ActionResult Delete(string id)
+        public virtual ActionResult Delete(int id)
         {
             var user = UserManager.Users.FirstOrDefault(x => x.Id == id);
             var model = Mapper.Map<UserViewModel>(user);

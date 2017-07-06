@@ -126,7 +126,6 @@
     <Compile Include="Application\DataSource\GridModel.cs" />
     <Compile Include="Application\DataSource\ImagePathAttribute.cs" />
     <Compile Include="Application\DataSource\PrimaryKeyAttribute.cs" />
-    <Compile Include="Application\DataSource\PrimaryKeyStringAttribute.cs" />
     <Compile Include="Application\Entities\Dictionaries\BaseDictionary.cs" />
     <Compile Include="Application\Entities\Questionnaires\Answer.cs" />
     <Compile Include="Application\Entities\Questionnaires\Interviewee.cs" />
@@ -134,6 +133,14 @@
     <Compile Include="Application\Entities\Questionnaires\Questionnaire.cs" />
     <Compile Include="Application\Entities\Questionnaires\Result.cs" />
     <Compile Include="Application\Managers\ImageManager.cs" />
+    <Compile Include="Identity\Entities\Role.cs" />
+    <Compile Include="Identity\Entities\User.cs" />
+    <Compile Include="Identity\Entities\UserClaim.cs" />
+    <Compile Include="Identity\Entities\UserLogin.cs" />
+    <Compile Include="Identity\Entities\UserRole.cs" />
+    <Compile Include="Identity\Managers\ApplicationRoleManager.cs" />
+    <Compile Include="Identity\Managers\ApplicationRoleStore.cs" />
+    <Compile Include="Identity\Managers\ApplicationUserStore.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Application\Repositories\Abstract\IAnswersRepository.cs" />
     <Compile Include="Application\Repositories\Abstract\IDictionariesRepository.cs" />
@@ -150,7 +157,6 @@
     <Compile Include="Data\ApplicationDbContext.cs" />
     <Compile Include="Data\BaseService.cs" />
     <Compile Include="Data\IApplicationEntity.cs" />
-    <Compile Include="Identity\Entities\ApplicationUser.cs" />
     <Compile Include="Identity\Managers\ApplicationSignInManager.cs" />
     <Compile Include="Identity\Managers\ApplicationUserManager.cs" />
     <Compile Include="Identity\Services\EmailService.cs" />

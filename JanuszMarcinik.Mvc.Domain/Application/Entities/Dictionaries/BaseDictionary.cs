@@ -19,7 +19,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities.Dictionaries
             this.MaterialStatuses = new HashSet<Interviewee>();
         }
 
-        public long BaseDictionaryId { get; set; }
+        public int BaseDictionaryId { get; set; }
         public DictionaryType DictionaryType { get; set; }
         public string Value { get; set; }
 

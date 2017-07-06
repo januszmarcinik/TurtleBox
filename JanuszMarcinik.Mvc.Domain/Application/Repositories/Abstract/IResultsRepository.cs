@@ -5,6 +5,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract
 {
     public interface IResultsRepository
     {
-        void CreateMany(List<Result> entities, long intervieweeId);
+        void CreateMany(List<Result> entities, int intervieweeId);
     }
 }

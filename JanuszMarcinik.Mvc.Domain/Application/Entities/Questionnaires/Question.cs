@@ -13,12 +13,12 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires
             this.Results = new HashSet<Result>();
         }
 
-        public long QuestionId { get; set; }
+        public int QuestionId { get; set; }
 
         public int OrderNumber { get; set; }
         public string Text { get; set; }
 
-        public long QuestionnaireId { get; set; }
+        public int QuestionnaireId { get; set; }
         public virtual Questionnaire Questionnaire { get; set; }
 
         public virtual ICollection<Answer> Answers { get; set; }

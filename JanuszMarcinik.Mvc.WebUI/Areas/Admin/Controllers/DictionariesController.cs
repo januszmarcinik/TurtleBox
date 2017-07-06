@@ -60,7 +60,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #endregion
 
         #region Edit
-        public virtual ActionResult Edit(long id)
+        public virtual ActionResult Edit(int id)
         {
             var dictionary = _dictionariesRepository.GetById(id);
             var model = Mapper.Map<DictionaryViewModel>(dictionary);
@@ -87,7 +87,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #endregion
 
         #region Delete()
-        public virtual ActionResult Delete(long id)
+        public virtual ActionResult Delete(int id)
         {
             var dictionary = _dictionariesRepository.GetById(id);
             var model = Mapper.Map<DictionaryViewModel>(dictionary);
@@ -97,7 +97,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
 
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public virtual ActionResult DeleteConfirmed(long id)
+        public virtual ActionResult DeleteConfirmed(int id)
         {
             _dictionariesRepository.Delete(id);
 

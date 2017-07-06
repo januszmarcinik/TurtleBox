@@ -14,31 +14,31 @@ namespace JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires
             this.Results = new HashSet<Result>();
         }
 
-        public long IntervieweeId { get; set; }
+        public int IntervieweeId { get; set; }
         public DateTime InterviewDate { get; set; }
         public int Age { get; set; }
 
-        public long SexId { get; set; }
+        public int SexId { get; set; }
         [ForeignKey("SexId")]
         public virtual BaseDictionary Sex { get; set; }
 
-        public long SeniorityId { get; set; }
+        public int SeniorityId { get; set; }
         [ForeignKey("SeniorityId")]
         public virtual BaseDictionary Seniority { get; set; }
 
-        public long EducationId { get; set; }
+        public int EducationId { get; set; }
         [ForeignKey("EducationId")]
         public virtual BaseDictionary Education { get; set; }
 
-        public long PlaceOfResidenceId { get; set; }
+        public int PlaceOfResidenceId { get; set; }
         [ForeignKey("PlaceOfResidenceId")]
         public virtual BaseDictionary PlaceOfResidence { get; set; }
 
-        public long MartialStatusId { get; set; }
+        public int MartialStatusId { get; set; }
         [ForeignKey("MartialStatusId")]
         public virtual BaseDictionary MartialStatus { get; set; }
 
-        public long MaterialStatusId { get; set; }
+        public int MaterialStatusId { get; set; }
         [ForeignKey("MaterialStatusId")]
         public virtual BaseDictionary MaterialStatus { get; set; }
 

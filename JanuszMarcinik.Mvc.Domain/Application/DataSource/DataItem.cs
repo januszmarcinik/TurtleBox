@@ -10,7 +10,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
             this.Values = new List<DataItemValue>();
         }
 
-        public long PrimaryKeyId { get; set; }
+        public int PrimaryKeyId { get; set; }
         public string PrimaryKeyStringId { get; set; }
 
         public List<DataItemValue> Values { get; set; }

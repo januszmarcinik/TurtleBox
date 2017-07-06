@@ -40,14 +40,6 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                         PrimaryKeyProperty = true
                     });
                 }
-                else if (prop.CustomAttributes.FirstOrDefault(x => x.AttributeType == typeof(PrimaryKeyStringAttribute)) != null)
-                {
-                    this.Properties.Add(new CustomPropertyInfo()
-                    {
-                        PropertyName = prop.Name,
-                        PrimaryKeyStringProperty = true
-                    });
-                }
             }
 
             if (this.Properties.Count() > 1)
@@ -78,11 +70,7 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                     }
                     else if (prop.PrimaryKeyProperty)
                     {
-                        row.PrimaryKeyId = (long)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
-                    }
-                    else if (prop.PrimaryKeyStringProperty)
-                    {
-                        row.PrimaryKeyStringId = item.GetType().GetProperty(prop.PropertyName).GetValue(item).ToString();
+                        row.PrimaryKeyId = (int)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
                     }
                     else if (item.GetType().GetProperty(prop.PropertyName).GetValue(item).GetType().BaseType == typeof(Enum))
                     {

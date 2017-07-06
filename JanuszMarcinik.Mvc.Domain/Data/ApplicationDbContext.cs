@@ -6,10 +6,10 @@ using System.Data.Entity;
 
 namespace JanuszMarcinik.Mvc.Domain.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext<User, Role, int, UserLogin, UserRole, UserClaim>
     {
         public ApplicationDbContext()
-            : base("JanuszMarcinikConnection", throwIfV1Schema: false)
+            : base("JanuszMarcinikConnection")
         {
         }
 
@@ -27,14 +27,6 @@ namespace JanuszMarcinik.Mvc.Domain.Data
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            #region Identity
-            modelBuilder.Entity<IdentityUserRole>()
-                .HasKey(x => x.UserId);
-
-            modelBuilder.Entity<IdentityUserLogin>()
-                .HasKey(x => x.UserId);
-            #endregion
-
             #region Questionnaires
             // Questionnaire -> Questions
             modelBuilder.Entity<Questionnaire>()

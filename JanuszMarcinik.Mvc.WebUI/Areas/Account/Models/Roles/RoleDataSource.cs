@@ -15,8 +15,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles
 
             foreach (var row in this.Data)
             {
-                row.EditAction = MVC.Account.Roles.Edit(row.PrimaryKeyStringId);
-                row.DeleteAction = MVC.Account.Roles.Delete(row.PrimaryKeyStringId);
+                row.EditAction = MVC.Account.Roles.Edit(row.PrimaryKeyId);
+                row.DeleteAction = MVC.Account.Roles.Delete(row.PrimaryKeyId);
             }
 
             this.AddAction = MVC.Account.Roles.Create();

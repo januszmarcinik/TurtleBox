@@ -1,5 +1,5 @@
 ﻿using JanuszMarcinik.Mvc.Domain.Application.DataSource;
-using JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles;
+using JanuszMarcinik.Mvc.Domain.Identity.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -11,13 +11,13 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
     {
         public UserViewModel()
         {
-            this.Roles = new List<IdentityUserRole>();
+            this.Roles = new List<UserRole>();
             this.AllRoles = new List<SelectListItem>();
-            this.SelectedRoles = new List<string>();
+            this.SelectedRoles = new List<int>();
         }
 
-        [PrimaryKeyString]
-        public string Id { get; set; }
+        [PrimaryKey]
+        public int Id { get; set; }
 
         [DataSourceList(Order = 1)]
         [Display(Name = "Nazwa")]
@@ -27,9 +27,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Users
         [Display(Name = "Email")]
         public string Email { get; set; }
 
-        public ICollection<IdentityUserRole> Roles { get; set; }
+        public ICollection<UserRole> Roles { get; set; }
 
-        public IEnumerable<string> SelectedRoles { get; set; }
+        public IEnumerable<int> SelectedRoles { get; set; }
         public List<SelectListItem> AllRoles { get; set; }
     }
 }

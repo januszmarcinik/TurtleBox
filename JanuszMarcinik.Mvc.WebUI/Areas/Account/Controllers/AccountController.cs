@@ -133,7 +133,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -157,9 +157,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
 
         #region ConfirmEmail
         [AllowAnonymous]
-        public virtual async Task<ActionResult> ConfirmEmail(string userId, string code)
+        public virtual async Task<ActionResult> ConfirmEmail(int userId, string code)
         {
-            if (userId == null || code == null)
+            if (userId == 0 || code == null)
             {
                 return View(MVC.Account.Shared.Views.Error);
             }
@@ -351,7 +351,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Controllers
                 {
                     return View(MVC.Account.Account.Views.ExternalLoginFailure);
                 }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
+                var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {

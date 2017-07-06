@@ -23,7 +23,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #endregion
 
         #region List()
-        public virtual ActionResult List(long questionnaireId)
+        public virtual ActionResult List(int questionnaireId)
         {
             var questionnaire = _questionnairesRepository.GetById(questionnaireId);
             var questions = _questionsRepository.GetList(questionnaireId);
@@ -38,7 +38,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #endregion
 
         #region Create()
-        public virtual ActionResult Create(long questionnaireId)
+        public virtual ActionResult Create(int questionnaireId)
         {
             var model = new QuestionViewModel();
             model.QuestionnaireId = questionnaireId;
@@ -68,7 +68,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #endregion
 
         #region Edit
-        public virtual ActionResult Edit(long id)
+        public virtual ActionResult Edit(int id)
         {
             var question = _questionsRepository.GetById(id);
             var model = Mapper.Map<QuestionViewModel>(question);
@@ -95,7 +95,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         #endregion
 
         #region Delete()
-        public virtual ActionResult Delete(long id)
+        public virtual ActionResult Delete(int id)
         {
             var question = _questionsRepository.GetById(id);
             var model = Mapper.Map<QuestionViewModel>(question);

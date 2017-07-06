@@ -5,8 +5,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Account.Models.Roles
 {
     public class RoleViewModel
     {
-        [PrimaryKeyString]
-        public string Id { get; set; }
+        [PrimaryKey]
+        public int Id { get; set; }
 
         [DataSourceList(Order = 1)]
         [Display(Name = "Nazwa roli")]
