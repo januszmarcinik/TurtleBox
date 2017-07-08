@@ -7,7 +7,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
     @Scripts.Render("~/bundles/jquery")
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -18,7 +17,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.Bootstrap().ActionLink("Ankieta", MVC.Application.Home.Index()).Class("navbar-brand")
+                @Html.Bootstrap().ActionLink("Rozpocznij ankietę", MVC.Application.Home.Index()).Class("navbar-brand")
             </div>
             <div class="navbar-collapse collapse">
                 @Html.Partial(MVC.Shared.Views._Menu)
@@ -30,10 +29,18 @@
         @RenderBody()
     </div>
 
+    <div class="navbar navbar-inverse navbar-fixed-bottom">
+        <div class="container">
+            <p class="navbar-text">
+                &copy @DateTime.Now.Year Janusz Marcinik | ASP.NET MVC
+            </p>
+        </div>
+    </div>
+
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 
 </body>
-</htm
+</html
 l>
