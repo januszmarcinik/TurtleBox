@@ -1,5 +1,10 @@
 ﻿@using Microsoft.AspNet.Identity
 
+<ul class="nav navbar-nav">
+    <li>@Html.ActionLink("Herbatka", MVC.Application.TurtleBarrel.TeaFountain())</li>
+    <li>@Html.ActionLink("Odliczanie", MVC.Application.TurtleBarrel.TimeCounters())</li>
+</ul>
+
 @if (Request.IsAuthenticated)
 {
     using (var form = Html.Bootstrap().Begin(new Form(MVC.Account.Account.LogOff()).Id("formLogOut")))

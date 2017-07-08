@@ -19,6 +19,7 @@ namespace JanuszMarcinik.Mvc.Domain.Data
 
         public DbSet<Note> Notes { get; set; }
         public DbSet<NoteImage> NoteImages { get; set; }
+        public DbSet<TimeCounter> TimeCounters { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -31,6 +32,9 @@ namespace JanuszMarcinik.Mvc.Domain.Data
                 .HasKey(x => x.Id);
 
             modelBuilder.Entity<NoteImage>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<TimeCounter>()
                 .HasKey(x => x.Id);
         }
     }

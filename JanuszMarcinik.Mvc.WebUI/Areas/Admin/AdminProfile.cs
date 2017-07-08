@@ -2,6 +2,7 @@
 using JanuszMarcinik.Mvc.Domain.Application.Entities.TurtleBarrel;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.NoteImages;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Notes;
+using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.TimeCounters;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin
 {
@@ -21,6 +22,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin
 
             CreateMap<NoteImage, NoteImageViewModel>()
                 .Ignore(p => p.Image);
+
+            CreateMap<TimeCounter, TimeCounterViewModel>();
         }
         #endregion
     }

@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Herbaciana fontanna dla Marty";
+}
+
+<br /><br />
+
+<audio autoplay="autoplay" loop="">
+    <source src="~/Music/akurat.mp3" type="audio/mp3">
+</audio>
+
+<video id="videoHerbatka" class="container" loop="">
+    <source src="~/Videos/herbatka.mp4" type="video/mp4">
+</video>
+<video id="videoFontanna" class="container" loop="" hidden="">
+    <source src="~/Videos/fontanna.mp4" type="video/mp4">
+</video>
+
+<div class="container text-center">
+    <div class="btn-group-justified btn-group-lg">
+        <div class="btn btn-success" id="btnPlay">
+            Włącz fontannę
+        </div>
+        <div class="btn btn-danger" id="btnPause">
+            Zatrzymaj fontannę
+        </div>
+        <div class="btn btn-primary" id="btnClean">
+            Posprzątaj
+        </div>
+    </div>
+</div>
+
+<br /><br />
+
+<h1 class="text-center">
+    <span class="label label-warning">Dla Marty - Intrygującej koleżanki z zepsutego autobusu :)</span>
+</h1>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        var herbatka = document.getElementById("videoHerbatka");
+        herbatka.play();
+        var fontanna = document.getElementById("videoFontanna");
+        fontanna.play();
+    });
+
+    $('#btnPlay').click(function () {
+        var herbatka = document.getElementById("videoHerbatka");
+        herbatka.pause();
+        $('#videoHerbatka').hide();
+
+        $('#videoFontanna').show();
+        var fontanna = document.getElementById("videoFontanna");
+        fontanna.volume = 0;
+        fontanna.play();
+    });
+
+    $('#btnPause').click(function () {
+        var fontanna = document.getElementById("videoFontanna");
+        fontanna.pause();
+    });
+
+    $('#btnClean').click(function () {
+        var fontanna = document.getElementById("videoFontanna");
+        fontanna.pause();
+        $('#videoFontanna').hide();
+
+        $('#videoHerbatka').show();
+        var herbatka = document.getElementById("videoHerbatka");
+        herbatka.volume = 0;
+        herbatka.play();
+    });
+
+</script>

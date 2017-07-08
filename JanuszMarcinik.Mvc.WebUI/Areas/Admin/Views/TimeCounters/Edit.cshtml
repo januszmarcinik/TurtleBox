@@ -1,0 +1,39 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.TimeCounters
+@model TimeCounterViewModel
+
+@{
+    ViewBag.Title = "Edycja odliczania";
+}
+
+<h2 class="center-block">
+    <span class="label label-warning center-block">@ViewBag.Title</span>
+</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Name)
+                </div>
+                <div class="col-sm-6">
+                    @form.FormGroup().EditorFor(x => x.Date)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.TimeCounters.List())
+            </div>
+        }
+    }
+}

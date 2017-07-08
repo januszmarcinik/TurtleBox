@@ -56,6 +56,7 @@ namespace T4MVC
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.ConfigurationController Configuration = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_ConfigurationController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.NoteImagesController NoteImages = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_NoteImagesController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.NotesController Notes = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_NotesController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.TimeCountersController TimeCounters = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_TimeCountersController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class ApplicationClass

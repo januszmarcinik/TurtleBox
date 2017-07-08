@@ -128,10 +128,13 @@
     <Compile Include="Application\DataSource\PrimaryKeyAttribute.cs" />
     <Compile Include="Application\Entities\TurtleBarrel\Note.cs" />
     <Compile Include="Application\Entities\TurtleBarrel\NoteImage.cs" />
+    <Compile Include="Application\Entities\TurtleBarrel\TimeCounter.cs" />
     <Compile Include="Application\Managers\ImageManager.cs" />
     <Compile Include="Application\Repositories\Abstract\INoteImagesRepository.cs" />
+    <Compile Include="Application\Repositories\Abstract\ITimeCountersRepository.cs" />
     <Compile Include="Application\Repositories\Abstract\INotesRepository.cs" />
     <Compile Include="Application\Repositories\Concrete\NoteImagesRepository.cs" />
+    <Compile Include="Application\Repositories\Concrete\TimeCountersRepository.cs" />
     <Compile Include="Application\Repositories\Concrete\NotesRepository.cs" />
     <Compile Include="Identity\Entities\Role.cs" />
     <Compile Include="Identity\Entities\User.cs" />
@@ -159,6 +162,10 @@
     <Compile Include="Migrations\201707081943351_NoteImageName.Designer.cs">
       <DependentUpon>201707081943351_NoteImageName.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707082253552_AddTimeCounters.cs" />
+    <Compile Include="Migrations\201707082253552_AddTimeCounters.Designer.cs">
+      <DependentUpon>201707082253552_AddTimeCounters.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -183,6 +190,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707081943351_NoteImageName.resx">
       <DependentUpon>201707081943351_NoteImageName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707082253552_AddTimeCounters.resx">
+      <DependentUpon>201707082253552_AddTimeCounters.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

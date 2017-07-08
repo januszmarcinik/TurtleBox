@@ -56,12 +56,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.FileContentResult GetImage()
-        {
-            return new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetImage);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public TurtleBarrelController Actions { get { return MVC.Application.TurtleBarrel; } }
@@ -79,25 +73,19 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         public class ActionNamesClass
         {
             public readonly string Notes = "Notes";
-            public readonly string GetImage = "GetImage";
+            public readonly string TeaFountain = "TeaFountain";
+            public readonly string TimeCounters = "TimeCounters";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Notes = "Notes";
-            public const string GetImage = "GetImage";
+            public const string TeaFountain = "TeaFountain";
+            public const string TimeCounters = "TimeCounters";
         }
 
 
-        static readonly ActionParamsClass_GetImage s_params_GetImage = new ActionParamsClass_GetImage();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_GetImage GetImageParams { get { return s_params_GetImage; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_GetImage
-        {
-            public readonly string path = "path";
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -109,8 +97,12 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
             public class _ViewNamesClass
             {
                 public readonly string Notes = "Notes";
+                public readonly string TeaFountain = "TeaFountain";
+                public readonly string TimeCounters = "TimeCounters";
             }
             public readonly string Notes = "~/Areas/Application/Views/TurtleBarrel/Notes.cshtml";
+            public readonly string TeaFountain = "~/Areas/Application/Views/TurtleBarrel/TeaFountain.cshtml";
+            public readonly string TimeCounters = "~/Areas/Application/Views/TurtleBarrel/TimeCounters.cshtml";
         }
     }
 
@@ -131,14 +123,24 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         }
 
         [NonAction]
-        partial void GetImageOverride(T4MVC_System_Web_Mvc_FileContentResult callInfo, string path);
+        partial void TeaFountainOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.FileContentResult GetImage(string path)
+        public override System.Web.Mvc.ActionResult TeaFountain()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetImage);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "path", path);
-            GetImageOverride(callInfo, path);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.TeaFountain);
+            TeaFountainOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void TimeCountersOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult TimeCounters()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.TimeCounters);
+            TimeCountersOverride(callInfo);
             return callInfo;
         }
 

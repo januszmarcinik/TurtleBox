@@ -9,6 +9,7 @@
 <div class="list-group">
     @if (User.IsInRole("Moderator"))
     {
-        @Html.Bootstrap().ListGroupItem("Edytuj wpisy", MVC.Admin.Notes.List()).PrependIcon(FontAwesome.clipboard)
+        @Html.Bootstrap().ListGroupItem("Wpisy, zdjęcia", MVC.Admin.Notes.List()).PrependIcon(FontAwesome.comments_o)
+        @Html.Bootstrap().ListGroupItem("Odliczania", MVC.Admin.TimeCounters.List()).PrependIcon(FontAwesome.clock_o)
     }
 </div>

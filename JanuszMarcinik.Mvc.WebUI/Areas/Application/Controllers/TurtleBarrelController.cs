@@ -2,6 +2,7 @@
 using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.NoteImages;
 using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Notes;
+using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.TimeCounters;
 using JanuszMarcinik.Mvc.WebUI.Areas.Application.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,11 +15,13 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         #region TurtleBarrelController
         private INotesRepository _notesRepository;
         private INoteImagesRepository _imagesRepository;
+        private ITimeCountersRepository _timeCountersRepository;
 
-        public TurtleBarrelController(INotesRepository notesRepository, INoteImagesRepository imagesRepository)
+        public TurtleBarrelController(INotesRepository notesRepository, INoteImagesRepository imagesRepository, ITimeCountersRepository timeCounters)
         {
             this._notesRepository = notesRepository;
             this._imagesRepository = imagesRepository;
+            this._timeCountersRepository = timeCounters;
         }
         #endregion
 
@@ -40,11 +43,18 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
         }
         #endregion
 
-        #region GetImage()
-        public virtual FileContentResult GetImage(string path)
+        #region TeaFountain()
+        public virtual ActionResult TeaFountain()
         {
-            byte[] image = System.IO.File.ReadAllBytes(Server.MapPath(Url.Content(path)));
-            return File(image, System.Net.Mime.MediaTypeNames.Application.Octet);
+            return View();
+        }
+        #endregion
+
+        #region TimeCounters()
+        public virtual ActionResult TimeCounters()
+        {
+            var model = Mapper.Map<List<TimeCounterViewModel>>(_timeCountersRepository.TimeCounters);
+            return View(model);
         }
         #endregion
     }

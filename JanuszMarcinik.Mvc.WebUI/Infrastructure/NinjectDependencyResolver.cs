@@ -35,6 +35,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Infrastructure
 
             kernel.Bind<INotesRepository>().To<NotesRepository>().InSingletonScope();
             kernel.Bind<INoteImagesRepository>().To<NoteImagesRepository>().InSingletonScope();
+            kernel.Bind<ITimeCountersRepository>().To<TimeCountersRepository>().InSingletonScope();
         }
     }
 }
