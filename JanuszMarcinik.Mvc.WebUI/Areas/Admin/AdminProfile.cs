@@ -1,10 +1,7 @@
 ﻿using AutoMapper;
-using JanuszMarcinik.Mvc.Domain.Application.Entities.Dictionaries;
-using JanuszMarcinik.Mvc.Domain.Application.Entities.Questionnaires;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Answers;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Dictionaries;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questionnaires;
-using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Questions;
+using JanuszMarcinik.Mvc.Domain.Application.Entities.TurtleBarrel;
+using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.NoteImages;
+using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Notes;
 
 namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin
 {
@@ -20,10 +17,10 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin
         #region AdminProfile()
         public AdminProfile()
         {
-            CreateMap<Questionnaire, QuestionnaireViewModel>();
-            CreateMap<Question, QuestionViewModel>();
-            CreateMap<Answer, AnswerViewModel>();
-            CreateMap<BaseDictionary, DictionaryViewModel>();
+            CreateMap<Note, NoteViewModel>();
+
+            CreateMap<NoteImage, NoteImageViewModel>()
+                .Ignore(p => p.Image);
         }
         #endregion
     }

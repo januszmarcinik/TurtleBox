@@ -126,13 +126,13 @@
     <Compile Include="Application\DataSource\GridModel.cs" />
     <Compile Include="Application\DataSource\ImagePathAttribute.cs" />
     <Compile Include="Application\DataSource\PrimaryKeyAttribute.cs" />
-    <Compile Include="Application\Entities\Dictionaries\BaseDictionary.cs" />
-    <Compile Include="Application\Entities\Questionnaires\Answer.cs" />
-    <Compile Include="Application\Entities\Questionnaires\Interviewee.cs" />
-    <Compile Include="Application\Entities\Questionnaires\Question.cs" />
-    <Compile Include="Application\Entities\Questionnaires\Questionnaire.cs" />
-    <Compile Include="Application\Entities\Questionnaires\Result.cs" />
+    <Compile Include="Application\Entities\TurtleBarrel\Note.cs" />
+    <Compile Include="Application\Entities\TurtleBarrel\NoteImage.cs" />
     <Compile Include="Application\Managers\ImageManager.cs" />
+    <Compile Include="Application\Repositories\Abstract\INoteImagesRepository.cs" />
+    <Compile Include="Application\Repositories\Abstract\INotesRepository.cs" />
+    <Compile Include="Application\Repositories\Concrete\NoteImagesRepository.cs" />
+    <Compile Include="Application\Repositories\Concrete\NotesRepository.cs" />
     <Compile Include="Identity\Entities\Role.cs" />
     <Compile Include="Identity\Entities\User.cs" />
     <Compile Include="Identity\Entities\UserClaim.cs" />
@@ -141,20 +141,7 @@
     <Compile Include="Identity\Managers\ApplicationRoleManager.cs" />
     <Compile Include="Identity\Managers\ApplicationRoleStore.cs" />
     <Compile Include="Identity\Managers\ApplicationUserStore.cs" />
-    <Compile Include="Application\Repositories\Abstract\IAnswersRepository.cs" />
-    <Compile Include="Application\Repositories\Abstract\IDictionariesRepository.cs" />
-    <Compile Include="Application\Repositories\Abstract\IIntervieweesRepository.cs" />
-    <Compile Include="Application\Repositories\Abstract\IQuestionnairesRepository.cs" />
-    <Compile Include="Application\Repositories\Abstract\IQuestionsRepository.cs" />
-    <Compile Include="Application\Repositories\Abstract\IResultsRepository.cs" />
-    <Compile Include="Application\Repositories\Concrete\AnswersRepository.cs" />
-    <Compile Include="Application\Repositories\Concrete\DictionariesRepository.cs" />
-    <Compile Include="Application\Repositories\Concrete\IntervieweesRepository.cs" />
-    <Compile Include="Application\Repositories\Concrete\QuestionnairesRepository.cs" />
-    <Compile Include="Application\Repositories\Concrete\QuestionsRepository.cs" />
-    <Compile Include="Application\Repositories\Concrete\ResultsRepository.cs" />
     <Compile Include="Data\ApplicationDbContext.cs" />
-    <Compile Include="Data\BaseService.cs" />
     <Compile Include="Data\IApplicationEntity.cs" />
     <Compile Include="Identity\Managers\ApplicationSignInManager.cs" />
     <Compile Include="Identity\Managers\ApplicationUserManager.cs" />
@@ -163,6 +150,14 @@
     <Compile Include="Migrations\201707061948212_001_initial_2017_06_07.cs" />
     <Compile Include="Migrations\201707061948212_001_initial_2017_06_07.Designer.cs">
       <DependentUpon>201707061948212_001_initial_2017_06_07.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707081834035_DeleteQuestionnaireAddTurtleBarrel.cs" />
+    <Compile Include="Migrations\201707081834035_DeleteQuestionnaireAddTurtleBarrel.Designer.cs">
+      <DependentUpon>201707081834035_DeleteQuestionnaireAddTurtleBarrel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707081943351_NoteImageName.cs" />
+    <Compile Include="Migrations\201707081943351_NoteImageName.Designer.cs">
+      <DependentUpon>201707081943351_NoteImageName.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -182,6 +177,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201707061948212_001_initial_2017_06_07.resx">
       <DependentUpon>201707061948212_001_initial_2017_06_07.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707081834035_DeleteQuestionnaireAddTurtleBarrel.resx">
+      <DependentUpon>201707081834035_DeleteQuestionnaireAddTurtleBarrel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707081943351_NoteImageName.resx">
+      <DependentUpon>201707081943351_NoteImageName.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

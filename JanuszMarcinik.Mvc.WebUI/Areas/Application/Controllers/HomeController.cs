@@ -6,7 +6,7 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers
     {
         public virtual ActionResult Index()
         {
-            return RedirectToAction(MVC.Application.Survey.IntervieweeInfo());
+            return RedirectToAction(MVC.Application.TurtleBarrel.Notes());
         }
     }
 }

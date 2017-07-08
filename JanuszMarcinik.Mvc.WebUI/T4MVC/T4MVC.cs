@@ -53,18 +53,16 @@ namespace T4MVC
     public class AdminClass
     {
         public readonly string Name = "Admin";
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.AnswersController Answers = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_AnswersController();
         public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.ConfigurationController Configuration = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_ConfigurationController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.DictionariesController Dictionaries = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_DictionariesController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.QuestionnairesController Questionnaires = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_QuestionnairesController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.QuestionsController Questions = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_QuestionsController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.NoteImagesController NoteImages = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_NoteImagesController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.NotesController Notes = new JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers.T4MVC_NotesController();
     }
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
     public class ApplicationClass
     {
         public readonly string Name = "Application";
         public JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.HomeController Home = new JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.T4MVC_HomeController();
-        public JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.SurveyController Survey = new JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.T4MVC_SurveyController();
+        public JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.TurtleBarrelController TurtleBarrel = new JanuszMarcinik.Mvc.WebUI.Areas.Application.Controllers.T4MVC_TurtleBarrelController();
         public T4MVC.Application.SharedController Shared = new T4MVC.Application.SharedController();
     }
 }
@@ -88,6 +86,19 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
     }
      
     public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+internal partial class T4MVC_System_Web_Mvc_FileContentResult : System.Web.Mvc.FileContentResult, IT4MVCActionResult
+{
+    public T4MVC_System_Web_Mvc_FileContentResult(string area, string controller, string action, string protocol = null): base(new byte[0], " ")
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
     
     public string Controller { get; set; }
     public string Action { get; set; }

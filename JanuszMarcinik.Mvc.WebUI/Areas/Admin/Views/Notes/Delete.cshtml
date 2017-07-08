@@ -1,0 +1,44 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.Notes
+@model NoteViewModel
+
+@{
+    ViewBag.Title = "Usuwanie wpisu";
+}
+
+<h2 class="center-block">
+    <span class="label label-danger center-block">@ViewBag.Title</span>
+</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Title).Readonly(true)
+                </div>
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Date).Readonly(true)
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    @form.FormGroup().TextAreaFor(x => x.Text).Rows(6).Readonly(true)
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitDeleteButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.Notes.List())
+            </div>
+        }
+    }
+}

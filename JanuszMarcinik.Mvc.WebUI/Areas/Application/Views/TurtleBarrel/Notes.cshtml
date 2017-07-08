@@ -1,0 +1,33 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Application.Models
+@model List<TurtleBarrelViewModel>
+
+@{
+    ViewBag.Title = "Żółwik Beczka Paróweczka i Piąteczka !";
+}
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <h3>
+            <span>@item.Note.Title</span>
+            <span class="pull-right">@item.Note.Date.ToString("yyyy-MM-dd HH:mm")</span>
+        </h3>
+        <hr />
+
+        <div class="bs-callout bs-callout-info"> 
+            <h4>@item.Note.Text</h4> 
+        </div>
+
+        <div class="row">
+            @foreach (var image in item.Images)
+            {
+                <div class="col-xs-6 col-md-3">
+                    <a href="~/Images/@image.Name" class="thumbnail">
+                        <img src="~/Images/@image.Name" />
+                    </a>
+                    @image.Title
+                </div>
+            }
+        </div>
+    </div>
+}

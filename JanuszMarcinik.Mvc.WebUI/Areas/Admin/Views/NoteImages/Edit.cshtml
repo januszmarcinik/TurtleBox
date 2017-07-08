@@ -1,0 +1,49 @@
+﻿@using JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.NoteImages
+@model NoteImageViewModel
+
+@{
+    ViewBag.Title = "Edycja zdjecia";
+}
+
+<h2 class="center-block">
+    <span class="label label-warning center-block">@ViewBag.Title</span>
+</h2>
+
+@using (var form = Html.Bootstrap().Begin(new Form().Upload()))
+{
+    using (var panel = Html.Bootstrap().Begin(new Panel()))
+    {
+        using (panel.BeginBody())
+        {
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(x => x.Id)
+            @Html.HiddenFor(x => x.NoteId)
+
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Title)
+                </div>
+                <div class="col-sm-6">
+                    @form.FormGroup().FileFor(x => x.Image)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Path))
+                    {
+                        <img class="img-rounded img-responsive" src="@Url.Action(MVC.Admin.NoteImages.GetImage(Model.Path))" />
+                    }
+                </div>
+            </div>
+        }
+
+        using (panel.BeginFooter())
+        {
+            <div class="btn-group">
+                @Html.Bootstrap().SubmitSaveButton()
+                @Html.Bootstrap().BackButton(MVC.Admin.NoteImages.List(Model.NoteId))
+            </div>
+        }
+    }
+}

@@ -1,7 +1,8 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
-    background-image: url(../Images/ep_naturalwhite.png);
+    background-image: url(../Images/type.png);
+    color: #f2f2f2;
 }
 
 /* Set padding to keep content from hitting the edges */
@@ -15,4 +16,42 @@
 */
 .dl-horizontal dt {
     white-space: normal;
+}
+
+.panel-body{
+    color: #141212;
+}
+
+.bs-callout-info {
+    border-left-color: #1b809e !important;
+}
+
+.bs-callout {
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid #eee;
+    border-left-width: 25px;
+    border-radius: 3px;
+}
+
+.navbar-default {
+    background-color: #1b809e;
+    color: #f2f2f2 !important;
+}
+
+.navbar-brand {
+    color: #f2f2f2 !important;
+}
+
+.navbar-default .navbar-nav > li > a {
+    color: #f2f2f2 !important;
+}
+
+.navbar-default .navbar-text {
+    color: #f2f2f2 !important;
+}
+
+hr {
+    border-top-color: #1b809e;
+    border-top-width: 3px;
 }

@@ -2,5 +2,6 @@
 {
     public interface IApplicationEntity
     {
+        int Id { get; set; }
     }
 }

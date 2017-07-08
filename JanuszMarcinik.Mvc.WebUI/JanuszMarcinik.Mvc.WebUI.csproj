@@ -228,21 +228,6 @@
     </Content>
     <Content Include="Areas\Application\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Application\Views\Home\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Questionnaires\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Questionnaires\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Questionnaires\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Questions\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Questions\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Questions\Edit.cshtml" />
-    <Content Include="Areas\Admin\Views\Answers\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Answers\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Answers\Edit.cshtml" />
-    <Content Include="Areas\Application\Views\Survey\FillSurvey.cshtml" />
-    <Content Include="Areas\Admin\Views\Dictionaries\Create.cshtml" />
-    <Content Include="Areas\Admin\Views\Dictionaries\Delete.cshtml" />
-    <Content Include="Areas\Admin\Views\Dictionaries\Edit.cshtml" />
-    <Content Include="Areas\Application\Views\Survey\ThankYou.cshtml" />
-    <Content Include="Areas\Application\Views\Survey\IntervieweeInfo.cshtml" />
     <Content Include="Areas\Account\Views\Account\ConfirmEmail.cshtml" />
     <Content Include="Areas\Account\Views\Account\ExternalLoginConfirmation.cshtml" />
     <Content Include="Areas\Account\Views\Account\ExternalLoginFailure.cshtml" />
@@ -259,11 +244,24 @@
     <Content Include="Areas\Account\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Account\Views\Manage\SetPassword.cshtml" />
     <Content Include="Areas\Account\Views\Manage\VerifyPhoneNumber.cshtml" />
+    <Content Include="Areas\Admin\Views\Notes\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Notes\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Notes\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\NoteImages\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\NoteImages\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\NoteImages\Edit.cshtml" />
+    <Content Include="Areas\Application\Views\TurtleBarrel\Notes.cshtml" />
     <None Include="Properties\PublishProfiles\ankietapoczuciakoherencji - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ankietapoczuciakoherencji - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Images\ep_naturalwhite.png" />
-    <Content Include="Images\pink_dust.png" />
+    <Content Include="Images\NoteImages\1\1533631_532032663571375_708835381_n.jpg" />
+    <Content Include="Images\NoteImages\1\17077961_642228735988177_1978815897_n.jpg" />
+    <Content Include="Images\NoteImages\1\886228_1027906287248443_6264579554956160443_o.jpg" />
+    <Content Include="Images\NoteImages\1\marta.jpg" />
+    <Content Include="Images\NoteImages\1\_DSC0406.jpg" />
+    <Content Include="Images\NoteImages\1\_DSC0412.jpg" />
+    <Content Include="Images\Turtle.ico" />
+    <Content Include="Images\type.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jquery-3.1.1.js" />
@@ -322,25 +320,18 @@
     <Compile Include="Areas\Account\Models\Users\UserViewModel.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\AdminProfile.cs" />
-    <Compile Include="Areas\Admin\Controllers\AnswersController.cs" />
     <Compile Include="Areas\Admin\Controllers\ConfigurationController.cs" />
-    <Compile Include="Areas\Admin\Controllers\DictionariesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\QuestionnairesController.cs" />
-    <Compile Include="Areas\Admin\Controllers\QuestionsController.cs" />
-    <Compile Include="Areas\Admin\Models\Answers\AnswerDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Answers\AnswerViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Dictionaries\DictionaryDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Dictionaries\DictionaryViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Questionnaires\QuestionnaireDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Questionnaires\QuestionnaireViewModel.cs" />
-    <Compile Include="Areas\Admin\Models\Questions\QuestionDataSource.cs" />
-    <Compile Include="Areas\Admin\Models\Questions\QuestionViewModel.cs" />
+    <Compile Include="Areas\Admin\Controllers\NoteImagesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\NotesController.cs" />
+    <Compile Include="Areas\Admin\Models\NoteImages\NoteImageDataSource.cs" />
+    <Compile Include="Areas\Admin\Models\NoteImages\NoteImageViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\Notes\NoteDataSource.cs" />
+    <Compile Include="Areas\Admin\Models\Notes\NoteViewModel.cs" />
     <Compile Include="Areas\Application\ApplicationProfile.cs" />
     <Compile Include="Areas\Application\ApplicationAreaRegistration.cs" />
     <Compile Include="Areas\Application\Controllers\HomeController.cs" />
-    <Compile Include="Areas\Application\Controllers\SurveyController.cs" />
-    <Compile Include="Areas\Application\Models\Survey\IntervieweeViewModel.cs" />
-    <Compile Include="Areas\Application\Models\Survey\SurveyViewModel.cs" />
+    <Compile Include="Areas\Application\Controllers\TurtleBarrelController.cs" />
+    <Compile Include="Areas\Application\Models\TurtleBarrelViewModel.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -367,29 +358,23 @@
     <Compile Include="T4MVC\Account.UsersController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\Admin.AnswersController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="T4MVC\Admin.ConfigurationController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\Admin.DictionariesController.generated.cs">
+    <Compile Include="T4MVC\Admin.NoteImagesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\Admin.QuestionnairesController.generated.cs">
+    <Compile Include="T4MVC\Admin.NotesController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="T4MVC\Admin.QuestionsController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="T4MVC\Application.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\Application.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="T4MVC\Application.SurveyController.generated.cs">
+    <Compile Include="T4MVC\Application.TurtleBarrelController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC\SharedController.generated.cs">
@@ -454,9 +439,9 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>56442</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost/questionnaire</IISUrl>
+          <IISUrl>http://localhost/turtlebarrel</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
-          <IISAppRootUrl>http://localhost/questionnaire</IISAppRootUrl>
+          <IISAppRootUrl>http://localhost/turtlebarrel</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

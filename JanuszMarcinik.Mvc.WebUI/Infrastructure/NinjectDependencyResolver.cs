@@ -33,12 +33,8 @@ namespace JanuszMarcinik.Mvc.WebUI.Infrastructure
         {
             kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope();
 
-            kernel.Bind<IAnswersRepository>().To<AnswersRepository>().InSingletonScope();
-            kernel.Bind<IDictionariesRepository>().To<DictionariesRepository>().InSingletonScope();
-            kernel.Bind<IIntervieweesRepository>().To<IntervieweesRepository>().InSingletonScope();
-            kernel.Bind<IQuestionnairesRepository>().To<QuestionnairesRepository>().InSingletonScope();
-            kernel.Bind<IQuestionsRepository>().To<QuestionsRepository>().InSingletonScope();
-            kernel.Bind<IResultsRepository>().To<ResultsRepository>().InSingletonScope();
+            kernel.Bind<INotesRepository>().To<NotesRepository>().InSingletonScope();
+            kernel.Bind<INoteImagesRepository>().To<NoteImagesRepository>().InSingletonScope();
         }
     }
 }
