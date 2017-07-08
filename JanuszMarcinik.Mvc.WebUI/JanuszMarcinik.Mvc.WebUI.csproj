@@ -259,6 +259,8 @@
     <Content Include="Areas\Account\Views\Manage\ManageLogins.cshtml" />
     <Content Include="Areas\Account\Views\Manage\SetPassword.cshtml" />
     <Content Include="Areas\Account\Views\Manage\VerifyPhoneNumber.cshtml" />
+    <None Include="Properties\PublishProfiles\ankietapoczuciakoherencji - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\ankietapoczuciakoherencji - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
     <Content Include="Images\ep_naturalwhite.png" />
     <Content Include="Images\pink_dust.png" />
