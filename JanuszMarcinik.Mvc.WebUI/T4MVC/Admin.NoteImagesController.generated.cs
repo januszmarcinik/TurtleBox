@@ -86,12 +86,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.FileContentResult GetImage()
-        {
-            return new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetImage);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public NoteImagesController Actions { get { return MVC.Admin.NoteImages; } }
@@ -113,7 +107,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             public readonly string Edit = "Edit";
             public readonly string Delete = "Delete";
             public readonly string DeleteConfirmed = "Delete";
-            public readonly string GetImage = "GetImage";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -124,7 +117,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             public const string Edit = "Edit";
             public const string Delete = "Delete";
             public const string DeleteConfirmed = "Delete";
-            public const string GetImage = "GetImage";
         }
 
 
@@ -169,14 +161,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         public class ActionParamsClass_DeleteConfirmed
         {
             public readonly string model = "model";
-        }
-        static readonly ActionParamsClass_GetImage s_params_GetImage = new ActionParamsClass_GetImage();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_GetImage GetImageParams { get { return s_params_GetImage; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_GetImage
-        {
-            public readonly string path = "path";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -284,18 +268,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             DeleteConfirmedOverride(callInfo, model);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void GetImageOverride(T4MVC_System_Web_Mvc_FileContentResult callInfo, string path);
-
-        [NonAction]
-        public override System.Web.Mvc.FileContentResult GetImage(string path)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_FileContentResult(Area, Name, ActionNames.GetImage);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "path", path);
-            GetImageOverride(callInfo, path);
             return callInfo;
         }
 

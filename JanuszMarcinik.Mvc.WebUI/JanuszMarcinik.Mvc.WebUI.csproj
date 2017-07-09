@@ -256,18 +256,11 @@
     <Content Include="Areas\Admin\Views\TimeCounters\Create.cshtml" />
     <Content Include="Areas\Admin\Views\TimeCounters\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\TimeCounters\Edit.cshtml" />
-    <Content Include="Areas\Application\Views\TurtleBarrel\TimeCounters - Copy.cshtml" />
     <None Include="Properties\PublishProfiles\ankietapoczuciakoherencji - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ankietapoczuciakoherencji - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TurtleBarrel - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TurtleBarrel - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
-    <Content Include="Images\NoteImages\1\1533631_532032663571375_708835381_n.jpg" />
-    <Content Include="Images\NoteImages\1\17077961_642228735988177_1978815897_n.jpg" />
-    <Content Include="Images\NoteImages\1\886228_1027906287248443_6264579554956160443_o.jpg" />
-    <Content Include="Images\NoteImages\1\marta.jpg" />
-    <Content Include="Images\NoteImages\1\_DSC0406.jpg" />
-    <Content Include="Images\NoteImages\1\_DSC0412.jpg" />
     <Content Include="Images\Turtle.ico" />
     <Content Include="Images\type.png" />
     <Content Include="Music\akurat.mp3" />
@@ -346,7 +339,6 @@
     <Compile Include="Areas\Application\Controllers\HomeController.cs" />
     <Compile Include="Areas\Application\Controllers\TurtleBarrelController.cs" />
     <Compile Include="Areas\Application\Models\TurtleBarrelViewModel.cs" />
-    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

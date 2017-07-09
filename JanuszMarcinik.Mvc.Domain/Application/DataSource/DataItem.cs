@@ -30,6 +30,5 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
 
         public string Value { get; set; }
         public bool IsImage { get; set; }
-        public ActionResult GetImageAction { get; set; }
     }
 }

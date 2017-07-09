@@ -50,15 +50,27 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (model.Image == null)
+                {
+                    ModelState.AddModelError("", "Proszę wybrać zdjecie.");
+                    return View(model);
+                }
+
                 var image = new NoteImage()
                 {
                     NoteId = model.NoteId,
                     Title = model.Title
                 };
 
-                if (model.Image != null)
+                var imageManager = new ImageManager(model.Image);
+
+                if (ImageExist(imageManager))
                 {
-                    var imageManager = new ImageManager(model.Image);
+                    ModelState.AddModelError("", "Zdjęcie z taką nazwą już istnieje.");
+                    return View(model);
+                }
+                else
+                {
                     if (UploadImage(imageManager))
                     {
                         image.Path = imageManager.FilePath;
@@ -100,10 +112,18 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                         RemoveImage(imageManager, image.Path);
                     }
 
-                    if (UploadImage(imageManager))
+                    if (ImageExist(imageManager))
                     {
-                        image.Path = imageManager.FilePath;
-                        image.Name = model.Image.FileName;
+                        ModelState.AddModelError("", "Zdjęcie z taką nazwą już istnieje.");
+                        return View(model);
+                    }
+                    else
+                    {
+                        if (UploadImage(imageManager))
+                        {
+                            image.Path = imageManager.FilePath;
+                            image.Name = model.Image.FileName;
+                        }
                     }
                 }
 
@@ -132,13 +152,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
         }
         #endregion
 
-        #region GetImage()
-        public virtual FileContentResult GetImage(string path)
-        {
-            byte[] image = System.IO.File.ReadAllBytes(Server.MapPath(Url.Content(path)));
-            return File(image, System.Net.Mime.MediaTypeNames.Application.Octet);
-        }
-        #endregion
 
         #region UploadImage()
         private bool UploadImage(ImageManager imageManager)
@@ -154,6 +167,20 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Controllers
                 return true;
             }
             catch
+            {
+                return false;
+            }
+        }
+        #endregion
+
+        #region ImageExist()
+        private bool ImageExist(ImageManager imageManager)
+        {
+            if (System.IO.File.Exists(Server.MapPath(Url.Content(imageManager.FilePath))))
+            {
+                return true;
+            }
+            else
             {
                 return false;
             }

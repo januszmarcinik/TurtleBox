@@ -55,3 +55,16 @@ hr {
     border-top-color: #1b809e;
     border-top-width: 3px;
 }
+
+.thumbnail{
+    background-color: transparent !important;
+}
+
+.caption{
+    color: #f2f2f2 !important;
+}
+
+.thumbnail:hover > .caption, a {
+    color: #1b809e !important;
+    text-decoration: none !important;
+}

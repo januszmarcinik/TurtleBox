@@ -9,6 +9,8 @@
     <span class="label label-success center-block">@ViewBag.Title</span>
 </h2>
 
+@Html.Bootstrap().ValidationSummary()
+
 @using (var form = Html.Bootstrap().Begin(new Form().Upload()))
 {
     using (var panel = Html.Bootstrap().Begin(new Panel()))

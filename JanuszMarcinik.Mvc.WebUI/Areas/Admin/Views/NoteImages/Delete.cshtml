@@ -19,8 +19,19 @@
             @Html.HiddenFor(x => x.Id)
             @Html.HiddenFor(x => x.NoteId)
 
-            <div class="col-sm-6">
-                @form.FormGroup().TextBoxFor(x => x.Title).Readonly(true)
+            <div class="row">
+                <div class="col-sm-6">
+                    @form.FormGroup().TextBoxFor(x => x.Title).Readonly(true)
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-12">
+                    @if (!string.IsNullOrEmpty(Model.Path))
+                    {
+                        <img class="img-rounded img-responsive" src="~/Images/@Model.Name" />
+                    }
+                </div>
             </div>
         }
 

@@ -12,9 +12,6 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.NoteImages
 
         public int NoteId { get; set; }
 
-        [ImagePath]
-        [DataSourceList(Order = 1)]
-        [Display(Name = "Miniaturka")]
         public string Path { get; set; }
 
         [Required]
@@ -23,6 +20,9 @@ namespace JanuszMarcinik.Mvc.WebUI.Areas.Admin.Models.NoteImages
         [StringLength(100, ErrorMessage = "Tytuł może zawierać maksymalnie 100 znaków,")]
         public string Title { get; set; }
 
+        [ImagePath]
+        [DataSourceList(Order = 1)]
+        [Display(Name = "Miniaturka")]
         public string Name { get; set; }
 
         [Display(Name = "Zdjęcie")]

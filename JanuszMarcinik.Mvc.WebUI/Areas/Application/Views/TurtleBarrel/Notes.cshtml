@@ -21,11 +21,13 @@
         <div class="row">
             @foreach (var image in item.Images)
             {
-                <div class="col-xs-6 col-md-3">
+                <div class="col-xs-12 col-sm-6 col-md-3">
                     <a href="~/Images/@image.Name" class="thumbnail">
-                        <img src="~/Images/@image.Name" />
+                        <img class="img-responsive" src="~/Images/@image.Name" />
+                        <div class="caption">
+                            @image.Title
+                        </div>
                     </a>
-                    @image.Title
                 </div>
             }
         </div>

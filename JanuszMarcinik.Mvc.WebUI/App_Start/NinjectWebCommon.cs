@@ -10,6 +10,9 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using JanuszMarcinik.Mvc.Domain.Application.Repositories.Abstract;
+    using JanuszMarcinik.Mvc.Domain.Application.Repositories.Concrete;
+    using JanuszMarcinik.Mvc.Domain.Data;
 
     public static class NinjectWebCommon 
     {
@@ -61,7 +64,11 @@ namespace JanuszMarcinik.Mvc.WebUI.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            System.Web.Mvc.DependencyResolver.SetResolver(new JanuszMarcinik.Mvc.WebUI.Infrastructure.NinjectDependencyResolver(kernel));
+            kernel.Bind<ApplicationDbContext>().ToSelf().InRequestScope();
+
+            kernel.Bind<INotesRepository>().To<NotesRepository>().InSingletonScope();
+            kernel.Bind<INoteImagesRepository>().To<NoteImagesRepository>().InSingletonScope();
+            kernel.Bind<ITimeCountersRepository>().To<TimeCountersRepository>().InSingletonScope();
         }        
     }
 }

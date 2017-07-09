@@ -9,6 +9,8 @@
     <span class="label label-warning center-block">@ViewBag.Title</span>
 </h2>
 
+@Html.Bootstrap().ValidationSummary()
+
 @using (var form = Html.Bootstrap().Begin(new Form().Upload()))
 {
     using (var panel = Html.Bootstrap().Begin(new Panel()))
@@ -32,7 +34,7 @@
                 <div class="col-sm-12">
                     @if (!string.IsNullOrEmpty(Model.Path))
                     {
-                        <img class="img-rounded img-responsive" src="@Url.Action(MVC.Admin.NoteImages.GetImage(Model.Path))" />
+                        <img class="img-rounded img-responsive" src="~/Images/@Model.Name" />
                     }
                 </div>
             </div>
