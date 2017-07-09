@@ -18,7 +18,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.Bootstrap().ActionLink("Żółwik Beczka Paróweczka i Piąteczka !", MVC.Application.Home.Index()).Class("navbar-brand")
+                @Html.Bootstrap().ActionLink("Turtle Barrel", MVC.Application.Home.Index()).Class("navbar-brand")
             </div>
             <div class="navbar-collapse collapse">
                 @Html.Partial(MVC.Shared.Views._Menu)
@@ -30,14 +30,17 @@
         @RenderBody()
     </div>
 
-    <br /><br />
-    <div class="navbar navbar-default navbar-fixed-bottom">
-        <div class="container">
-            <p class="navbar-text">
-                &copy @DateTime.Now.Year Janusz Marcinik | ASP.NET MVC
-            </p>
+    @if (!Request.Browser.IsMobileDevice)
+    {
+        <br /><br />
+        <div class="navbar navbar-default navbar-fixed-bottom">
+            <div class="container">
+                <p class="navbar-text">
+                    &copy @DateTime.Now.Year Janusz Marcinik | ASP.NET MVC
+                </p>
+            </div>
         </div>
-    </div>
+    }
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -5,31 +5,50 @@
     ViewBag.Title = "Odliczamy czas";
 }
 
-@foreach (var counter in Model)
-{
-    <div class="row">
-        <h3>
-            <span>@counter.Name</span>
-            <span class="pull-right">@counter.Date.ToString("yyyy-MM-dd HH:mm")</span>
-        </h3>
-        <hr />
-
-        <div class="bs-callout bs-callout-info text-center" style="font-size: xx-large">
-            <div class="row">
-                <div class="col-xs-3" id="@(string.Format("Days{0}", counter.Id))"></div>
-                <div class="col-xs-3" id="@(string.Format("Hours{0}", counter.Id))"></div>
-                <div class="col-xs-3" id="@(string.Format("Minutes{0}", counter.Id))"></div>
-                <div class="col-xs-3" id="@(string.Format("Seconds{0}", counter.Id))"></div>
+<div class="container">
+    @foreach (var counter in Model)
+    {
+        <div class="row">
+            <div class="visible-xs">
+                <h4>
+                    <span>@counter.Name</span> <br />
+                    <span>@counter.Date.ToString("yyyy-MM-dd HH:mm")</span>
+                </h4>
             </div>
-            <div class="row">
-                <div class="col-xs-3">dni</div>
-                <div class="col-xs-3">godziny</div>
-                <div class="col-xs-3">minuty</div>
-                <div class="col-xs-3">sekundy</div>
+            <div class="hidden-xs">
+                <h3>
+                    <span>@counter.Name</span>
+                    <span class="pull-right">@counter.Date.ToString("yyyy-MM-dd HH:mm")</span>
+                </h3>
+            </div>
+            
+            <hr />
+
+            <div class="bs-callout bs-callout-info text-center" style="font-size: xx-large">
+                <div class="row">
+                    <div class="col-xs-3" id="@(string.Format("Days{0}", counter.Id))"></div>
+                    <div class="col-xs-3" id="@(string.Format("Hours{0}", counter.Id))"></div>
+                    <div class="col-xs-3" id="@(string.Format("Minutes{0}", counter.Id))"></div>
+                    <div class="col-xs-3" id="@(string.Format("Seconds{0}", counter.Id))"></div>
+                </div>
+                <div class="row">
+                    <div class="visible-xs">
+                        <div class="col-xs-3">d</div>
+                        <div class="col-xs-3">g</div>
+                        <div class="col-xs-3">m</div>
+                        <div class="col-xs-3">s</div>
+                    </div>
+                    <div class="hidden-xs">
+                        <div class="col-xs-3">dni</div>
+                        <div class="col-xs-3">godziny</div>
+                        <div class="col-xs-3">minuty</div>
+                        <div class="col-xs-3">sekundy</div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
 
 <script type="text/javascript">
 

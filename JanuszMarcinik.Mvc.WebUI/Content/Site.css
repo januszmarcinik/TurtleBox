@@ -54,6 +54,7 @@
 hr {
     border-top-color: #1b809e;
     border-top-width: 3px;
+    margin-top: unset;
 }
 
 .thumbnail{

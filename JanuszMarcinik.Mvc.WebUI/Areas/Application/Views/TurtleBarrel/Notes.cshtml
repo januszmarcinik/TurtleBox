@@ -5,34 +5,48 @@
     ViewBag.Title = "Żółwik Beczka Paróweczka i Piąteczka !";
 }
 
-@foreach (var item in Model)
-{
-    <div class="row">
-        <h3>
-            <span>@item.Note.Title</span>
-            <span class="pull-right">@item.Note.Date.ToString("yyyy-MM-dd HH:mm")</span>
-        </h3>
-        <hr />
-
-        <div class="bs-callout bs-callout-info"> 
-            <h4>@item.Note.Text</h4> 
-        </div>
-
+<div class="container">
+    @foreach (var item in Model)
+    {
         <div class="row">
-            @foreach (var image in item.Images)
-            {
-                <div class="col-xs-12 col-sm-6 col-md-3">
-                    <a href="~/Images/@image.Name" class="thumbnail">
-                        <img class="img-responsive" src="~/Images/@image.Name" />
-                        <div class="caption">
-                            @image.Title
-                        </div>
-                    </a>
+            <div class="visible-xs">
+                <h4>
+                    <span>@item.Note.Title</span> <br />
+                    <span>@item.Note.Date.ToString("yyyy-MM-dd HH:mm")</span>
+                </h4>
+                <hr />
+                <div class="bs-callout bs-callout-info">
+                    <h5>@item.Note.Text</h5>
                 </div>
-            }
+            </div>
+            <div class="hidden-xs">
+                <h3>
+                    <span>@item.Note.Title</span>
+                    <span class="pull-right">@item.Note.Date.ToString("yyyy-MM-dd HH:mm")</span>
+                </h3>
+                <hr />
+                <div class="bs-callout bs-callout-info">
+                    <h4>@item.Note.Text</h4>
+                </div>
+            </div>
+
+            <div class="row">
+                @foreach (var image in item.Images)
+                {
+                    <div class="col-xs-12 col-sm-6 col-md-3">
+                        <a href="~/Images/@image.Name" class="thumbnail">
+                            <img class="img-responsive" src="~/Images/@image.Name" />
+                            <div class="caption">
+                                @image.Title
+                            </div>
+                        </a>
+                    </div>
+                }
+            </div>
         </div>
-    </div>
-}
+    }
+
+</div>
 
 <style>
 
