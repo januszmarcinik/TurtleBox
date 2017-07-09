@@ -82,6 +82,11 @@ namespace JanuszMarcinik.Mvc.Domain.Application.DataSource
                         var boolValue = (bool)item.GetType().GetProperty(prop.PropertyName).GetValue(item) ? "Tak" : "Nie";
                         row.Values.Add(new DataItemValue(boolValue));
                     }
+                    else if (item.GetType().GetProperty(prop.PropertyName).GetValue(item).GetType() == typeof(DateTime))
+                    {
+                        var dateTimeValue = (DateTime)item.GetType().GetProperty(prop.PropertyName).GetValue(item);
+                        row.Values.Add(new DataItemValue(dateTimeValue.ToString("yyyy-MM-dd HH:mm")));
+                    }
                     else
                     {
                         try

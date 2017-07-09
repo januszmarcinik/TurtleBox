@@ -287,8 +287,6 @@
     </None>
     <None Include="T4MVC\T4MVC.tt.settings.xml" />
     <Content Include="Scripts\TwitterBootstrapMvcJs.js" />
-    <Content Include="Videos\fontanna.mp4" />
-    <Content Include="Videos\herbatka.mp4" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

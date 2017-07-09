@@ -63,8 +63,3 @@ hr {
 .caption{
     color: #f2f2f2 !important;
 }
-
-.thumbnail:hover > .caption, a {
-    color: #1b809e !important;
-    text-decoration: none !important;
-}
