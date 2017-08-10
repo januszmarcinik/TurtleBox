@@ -1,0 +1,20 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.CV.SkillsSetViewModel
+
+<h2>
+    <span class="label label-blue center-block"> 
+    <i class="@Model.Icon"></i> 
+    @Model.Head
+    </span>
+</h2>
+
+@foreach (var skill in Model.Skills)
+{
+    <div class="row">
+        <div class="col-sm-5">
+            <h4>@skill.Name</h4>
+        </div>
+        <div class="col-sm-7">
+            @Html.Partial("_Stars", skill.Range)
+        </div>
+    </div>
+}

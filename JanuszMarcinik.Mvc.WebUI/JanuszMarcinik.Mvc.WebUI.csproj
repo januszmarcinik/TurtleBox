@@ -124,6 +124,9 @@
       <HintPath>..\packages\Portable.Licensing.1.1.0\lib\portable-net40+sl4+wp7+win8\Portable.Licensing.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Select.HtmlToPdf, Version=17.1.0.0, Culture=neutral, PublicKeyToken=e0ae9f6e27a97018, processorArchitecture=MSIL">
+      <HintPath>..\packages\Select.HtmlToPdf.17.1.0\lib\net40\Select.HtmlToPdf.dll</HintPath>
+    </Reference>
     <Reference Include="System.Activities" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.WebRequest" />
@@ -256,11 +259,15 @@
     <Content Include="Areas\Admin\Views\TimeCounters\Create.cshtml" />
     <Content Include="Areas\Admin\Views\TimeCounters\Delete.cshtml" />
     <Content Include="Areas\Admin\Views\TimeCounters\Edit.cshtml" />
+    <Content Include="Areas\Application\Views\CV\Index.cshtml" />
+    <Content Include="Areas\Application\Views\CV\_Stars.cshtml" />
+    <Content Include="Areas\Application\Views\CV\_Skills.cshtml" />
     <None Include="Properties\PublishProfiles\ankietapoczuciakoherencji - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\ankietapoczuciakoherencji - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\TurtleBarrel - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\TurtleBarrel - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.1.1.intellisense.js" />
+    <Content Include="Images\jmcv.jpg" />
     <Content Include="Images\Turtle.ico" />
     <Content Include="Images\type.png" />
     <Content Include="Music\akurat.mp3" />
@@ -334,8 +341,12 @@
     <Compile Include="Areas\Admin\Models\TimeCounters\TimeCounterViewModel.cs" />
     <Compile Include="Areas\Application\ApplicationProfile.cs" />
     <Compile Include="Areas\Application\ApplicationAreaRegistration.cs" />
+    <Compile Include="Areas\Application\Controllers\CVController.cs" />
     <Compile Include="Areas\Application\Controllers\HomeController.cs" />
     <Compile Include="Areas\Application\Controllers\TurtleBarrelController.cs" />
+    <Compile Include="Areas\Application\Models\CV\CVViewModel.cs" />
+    <Compile Include="Areas\Application\Models\CV\SkillsSetViewModel.cs" />
+    <Compile Include="Areas\Application\Models\CV\SkillViewModel.cs" />
     <Compile Include="Areas\Application\Models\TurtleBarrelViewModel.cs" />
     <Compile Include="T4MVC\Account.AccountController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>

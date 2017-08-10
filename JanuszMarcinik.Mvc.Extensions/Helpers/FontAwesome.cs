@@ -324,6 +324,7 @@
         public const string meanpath = "fa fa-fw fa-meanpath";
         public const string medkit = "fa fa-fw fa-medkit";
         public const string meh_o = "fa fa-fw fa-meh-o";
+        public const string microchip = "fa fa-fw fa-microchip";
         public const string microphone = "fa fa-fw fa-microphone";
         public const string microphone_slash = "fa fa-fw fa-microphone-slash";
         public const string minus = "fa fa-fw fa-minus";

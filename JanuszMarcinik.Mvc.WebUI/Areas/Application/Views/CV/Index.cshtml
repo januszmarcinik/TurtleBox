@@ -1,0 +1,176 @@
+﻿@model JanuszMarcinik.Mvc.WebUI.Areas.Application.Models.CV.CVViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Janusz Marcinik CV</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <style>
+
+        i {
+            width: 40px !important;
+            height: 24px !important;
+            font-size: 25px !important;
+        }
+
+        h2 {
+            padding-top: 10px;
+        }
+
+        .label-blue {
+            background-color: #1b809e;
+            padding-top: 7px;
+        }
+
+        li {
+            font-size: 16px;
+            margin-bottom: 6px;
+        }
+
+        a {
+            color: #000000;
+        }
+
+    </style>
+</head>
+<body style="background-image:unset; color: #000000;">
+    <div class="container"> 
+        <div class="row">
+            <div class="col-sm-4">
+                <img src="~/Images/jmcv.jpg" class="img-responsive img-thumbnail"/>
+            </div>
+            <div class="col-sm-8 text-center">
+                <h1><strong>Janusz Marcinik</strong></h1>
+                <h2><span class="label label-blue center-block">.NET Developer</span></h2>
+                
+                <div class="bs-callout bs-callout-info" style="padding: 0px;">
+                    <h4>
+                        <i class="@FontAwesome.facebook_square" aria-hidden="true"></i>
+                        <a href="https://www.facebook.com/janusz.marcinik" target="_blank">
+                            https://www.facebook.com/janusz.marcinik
+                        </a>
+                    </h4>
+                </div>
+                <div class="bs-callout bs-callout-info" style="padding: 0px;">
+                    <h4>
+                        <i class="@FontAwesome.linkedin_square" aria-hidden="true"></i>
+                        <a href="https://www.linkedin.com/in/janusz-marcinik-371045144" target="_blank">
+                            https://www.linkedin.com/in/janusz-marcinik-371045144
+                        </a>
+                    </h4>
+                </div>
+                <div class="bs-callout bs-callout-info" style="padding: 0px;">
+                    <h4>
+                        <i class="@FontAwesome.github_square" aria-hidden="true"></i>
+                        <a href="https://github.com/januszmarcinik" target="_blank">
+                            https://github.com/januszmarcinik
+                        </a>
+                    </h4>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-6">
+                <h2><span class="label label-blue center-block"><i class="fa fa-id-card-o" aria-hidden="true"></i> Podstawowe informacje</span></h2>
+                <h4>
+                    <i class="@FontAwesome.home" aria-hidden="true"></i> 
+                    38-606 Baligród, ul. Wincentego Pola 5
+                </h4>
+                <h4>
+                    <i class="@FontAwesome.envelope" aria-hidden="true"></i>
+                    januszmarcinik@gmail.com
+                </h4>
+                <h4>
+                    <i class="@FontAwesome.mobile_phone" aria-hidden="true"></i>
+                    +48 726-816-283
+                </h4>
+                <h4>
+                    <i class="@FontAwesome.user" aria-hidden="true"></i>
+                    ur. 19.06.1994r.
+                </h4>
+
+                <br />
+
+                <h2><span class="label label-blue center-block"><i class="@FontAwesome.graduation_cap"></i> Edukacja</span></h2>
+                <h4>
+                    <small>2015 - obecnie<br /></small>
+                    Wyższa Szkoła Informatyki i Zarządzania w Rzeszowie<br />
+                    <small>Kierunek: Informatyka</small>
+                </h4>
+                <hr />
+                <h4>
+                    <small>2010 - 2013<br /></small>
+                    Liceum Ogólnokształcące w Lesku<br />
+                    <small>Fakultet: Matematyka / Fizyka</small>
+                </h4>
+                <hr />
+                <br />
+
+                <h2><span class="label label-blue center-block"><i class="@FontAwesome.briefcase"></i> Praca</span></h2>
+                <h4>
+                    <small>2016 - obecnie<br /></small>
+                    Ideo Sp. z o.o., 35-234 Rzeszów, ul. Nad Przyrwą 13<br />
+                    <small>Stanowisko: Programista .NET</small>
+                </h4>
+                <h4>Wykonywane zadania</h4>
+                <ul>
+                    <li>Tworzenie oprogramowania usprawniającego procesy produkcyjne</li>
+                    <li>Współtworzenie oprogramowania dla przedsiębiorstw typu B2B</li>
+                    <li>Stała praca z bazami danych w systemie MSSQL</li>
+                    <li>Integracja aplikacji z systemami ERP poprzez sferę oraz Web API</li>
+                    <li>Wdrażanie oraz utrzymywanie aplikacji na serwerach klienckich</li>
+                    <li>Bezpośredni kontakt z klientem</li>
+                    <li>Wyjazdy służbowe w celach ustaleń wymagań projektów</li>
+                </ul>
+                <hr />
+
+                <h4>
+                    <small>2015 - 2016<br /></small>
+                    ElektroPro, 38-606 Baligród, ul. T. Kościa 9<br />
+                    <small>Stanowisko: Pracownik biurowy</small>
+                </h4>
+                <h4>Wykonywane zadania</h4>
+                <ul>
+                    <li>Praca nad projektami linii elektroenergetycznych SN i nN</li>
+                    <li>Rysunki techniczne w oprogramowaniu CAD</li>
+                    <li>Tworzenie aplikacji usprawniających pracę przy projektach</li>
+                </ul>
+                <hr />
+
+            </div>
+
+            <div class="col-sm-5 col-sm-offset-1">
+
+                @Html.Partial("_Skills", Model.ProgrammingLanguages)
+                @Html.Partial("_Skills", Model.NETTechnologies)
+                @Html.Partial("_Skills", Model.BackEnd)
+                @Html.Partial("_Skills", Model.FrontEnd)
+                @Html.Partial("_Skills", Model.ForeignLanguages)
+                @Html.Partial("_Skills", Model.Personal)
+
+            </div>
+        </div>
+
+        <div class="page-header text-center">
+            <small>
+                Wyrażam zgodę na przetwarzanie i przechowywanie moich danych osobowych <br />
+                dla potrzeb procesu rekrutacji zgodnie z Ustawą z dnia 29.08.1997r. o Ochronie danych osobowych, Dz. U. Nr 133 poz. 883
+            </small>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+</body>
+</html>
